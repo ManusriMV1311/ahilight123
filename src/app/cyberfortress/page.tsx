@@ -1,17 +1,29 @@
-import { CyberFortressHero } from "@/components/cyberfortress/hero";
-import { CyberFortressValueProps } from "@/components/cyberfortress/value-props";
-import { ArchitectureDiagram } from "@/components/cyberfortress/architecture";
-import { ComplianceTrust } from "@/components/cyberfortress/compliance";
-import { CTA } from "@/components/sections/cta"; // Reusing the global CTA for now, could be customized
+import { Hero } from "@/components/cyberfortress/sections/hero";
+import { TrustSignals } from "@/components/cyberfortress/sections/trust-signals";
+import { ProblemStatement } from "@/components/cyberfortress/sections/problem";
+import { ValuePillars } from "@/components/sections/value-pillars";
+import { ProductDemo } from "@/components/sections/product-demo";
+import { TechnicalCredibility } from "@/components/sections/technical-credibility";
+import { AISkepticism } from "@/components/sections/ai-skepticism";
+import { Roadmap } from "@/components/sections/roadmap";
+import { EarlyAccessCTA } from "@/components/sections/early-access-cta";
+import { StickyCTA } from "@/components/layout/sticky-cta";
 
 export default function CyberFortressPage() {
     return (
-        <main className="flex flex-col gap-0 bg-deep-navy text-white">
-            <CyberFortressHero />
-            <CyberFortressValueProps />
-            <ArchitectureDiagram />
-            <ComplianceTrust />
-            <CTA />
-        </main>
+        <div className="flex flex-col gap-0 relative">
+            <div className="relative z-10">
+                <Hero />
+                <TrustSignals />
+                <ProblemStatement />
+                <ValuePillars />
+                <ProductDemo />
+                <TechnicalCredibility />
+                <AISkepticism />
+                <Roadmap />
+                <EarlyAccessCTA />
+            </div>
+            <StickyCTA />
+        </div>
     );
 }

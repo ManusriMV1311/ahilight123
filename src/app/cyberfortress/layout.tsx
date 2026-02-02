@@ -11,7 +11,7 @@ export default function CyberFortressLayout({
     children: React.ReactNode;
 }) {
     return (
-        <div className="bg-deep-navy min-h-screen">
+        <div className="bg-deep-navy min-h-screen theme-cyberfortress">
             {children}
         </div>
     );

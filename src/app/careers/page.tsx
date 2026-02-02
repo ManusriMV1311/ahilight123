@@ -23,7 +23,8 @@ export default function CareersPage() {
                                 text="Team"
                                 delay={1}
                                 cursor={true}
-                                className="text-5xl md:text-7xl font-bold tracking-tight text-electric-blue"
+                                animation="clip"
+                                className="text-5xl md:text-7xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#00d4aa] to-[#0066FF] pb-2"
                             />
                         </div>
                     </div>
@@ -64,7 +65,7 @@ export default function CareersPage() {
                                         <span className="flex items-center gap-1"><MapPin className="w-3 h-3" /> {job.loc}</span>
                                     </div>
                                 </div>
-                                <Button className="shrink-0 transition-colors duration-300 group-hover:bg-white group-hover:text-electric-blue">
+                                <Button className="shrink-0 bg-electric-blue text-deep-navy hover:bg-white hover:text-electric-blue transition-colors duration-300 group-hover:bg-white group-hover:text-deep-navy">
                                     Apply Now <ArrowRight className="w-4 h-4 ml-2" />
                                 </Button>
                             </motion.div>

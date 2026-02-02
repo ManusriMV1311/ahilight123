@@ -66,7 +66,7 @@ export function TypewriterText({ text, className, delay = 0, cursor = true, anim
                         initial={{ opacity: 0 }}
                         animate={{ opacity: [0, 1, 0] }}
                         transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-                        className={cn(className, "inline-block ml-1 w-[2px] h-[1em] bg-electric-blue align-middle bg-none box-border p-0 my-0")}
+                        className={cn("inline-block ml-1 w-[2px] h-[1em] bg-electric-blue align-middle bg-none box-border p-0 my-0")}
                         style={{ backgroundClip: "border-box", WebkitBackgroundClip: "border-box", color: "transparent", backgroundImage: "none" }}
                     />
                 )}

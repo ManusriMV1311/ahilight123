@@ -1,156 +1,133 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { Section } from "@/components/ui/section"
-import Image from "next/image"
-import { useState, useEffect } from "react"
-import { TypewriterText } from "@/components/ui/typewriter-text"
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
+import { motion } from "framer-motion"
+
+function AbstractNetworkGraph() {
+    return (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-60">
+                <svg viewBox="0 0 800 800" className="w-full h-full">
+                    <defs>
+                        <linearGradient id="network-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="#00d4aa" />
+                            <stop offset="100%" stopColor="#0066FF" />
+                        </linearGradient>
+                        <radialGradient id="pulse-grad" cx="0.5" cy="0.5" r="0.5">
+                            <stop offset="0%" stopColor="#00d4aa" stopOpacity="0.8" />
+                            <stop offset="100%" stopColor="#0066FF" stopOpacity="0" />
+                        </radialGradient>
+                    </defs>
+
+                    {/* Central Core */}
+                    <motion.circle
+                        cx="400" cy="400"
+                        r="100"
+                        fill="none"
+                        stroke="url(#network-gradient)"
+                        strokeWidth="0.5"
+                        strokeDasharray="4 4"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                        style={{ transformOrigin: "center" }}
+                    />
+
+                    <motion.circle
+                        cx="400" cy="400"
+                        r="200"
+                        fill="none"
+                        stroke="url(#network-gradient)"
+                        strokeWidth="0.2"
+                        opacity="0.5"
+                        animate={{ rotate: -360, scale: [1, 1.05, 1] }}
+                        transition={{
+                            rotate: { duration: 90, repeat: Infinity, ease: "linear" },
+                            scale: { duration: 8, repeat: Infinity, ease: "easeInOut" }
+                        }}
+                        style={{ transformOrigin: "center" }}
+                    />
+
+                    {/* Orbiting Nodes & Connections */}
+                    <motion.g animate={{ rotate: 360 }} transition={{ duration: 120, repeat: Infinity, ease: "linear" }} style={{ transformOrigin: "center" }}>
+                        {/* Node Group 1 */}
+                        <g transform="translate(400, 400)">
+                            <motion.g animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }}>
+                                <circle cx="150" cy="0" r="3" fill="#00d4aa" opacity="0.8" />
+                                <line x1="0" y1="0" x2="150" y2="0" stroke="url(#network-gradient)" strokeWidth="0.5" opacity="0.4" />
+                            </motion.g>
+                        </g>
+
+                        {/* Node Group 2 */}
+                        <g transform="translate(400, 400)">
+                            <motion.g animate={{ rotate: -360 }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }}>
+                                <circle cx="0" cy="250" r="4" fill="#0066FF" opacity="0.6" />
+                                <line x1="0" y1="0" x2="0" y2="250" stroke="url(#network-gradient)" strokeWidth="0.5" opacity="0.3" />
+                            </motion.g>
+                        </g>
+
+                        {/* Satellite Nodes */}
+                        <motion.circle cx="600" cy="400" r="2" fill="#00d4aa" opacity="0.4" animate={{ r: [2, 4, 2] }} transition={{ duration: 3, repeat: Infinity }} />
+                        <motion.circle cx="200" cy="400" r="2" fill="#0066FF" opacity="0.4" animate={{ r: [2, 4, 2] }} transition={{ duration: 3, repeat: Infinity, delay: 1.5 }} />
+                    </motion.g>
+
+                    {/* Dynamic Pulses */}
+                    <motion.circle
+                        cx="400" cy="400" r="20"
+                        fill="url(#pulse-grad)"
+                        animate={{ r: [20, 300], opacity: [0.5, 0] }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "easeOut" }}
+                    />
+                </svg>
+            </div>
+
+            {/* Gradient Overlay for Depth */}
+            <div className="absolute inset-0 bg-gradient-to-t from-deep-navy via-transparent to-transparent" />
+            <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-deep-navy to-transparent opacity-80" />
+        </div>
+    )
+}
 
 export function Hero() {
     return (
-        <Section background="transparent" className="min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden relative">
-            {/* Background Animated Elements */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <FloatingElement delay={0} x="10%" y="20%" size={60} />
-                <FloatingElement delay={1} x="80%" y="15%" size={100} />
-                <FloatingElement delay={2} x="15%" y="70%" size={40} />
-                <FloatingElement delay={3} x="85%" y="60%" size={80} />
+        <Section background="transparent" className="min-h-screen flex items-center relative overflow-hidden pt-20">
+            {/* Background Texture */}
+            <div className="absolute inset-0 bg-deep-navy z-0" />
+            <div className="absolute inset-0 opacity-20 bg-[url('/noise.png')] mix-blend-overlay z-0 pointer-events-none" />
 
-                {/* Grid Pattern Overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]" />
-            </div>
+            {/* Animation */}
+            <AbstractNetworkGraph />
 
-            <div className="container mx-auto px-4 text-center relative z-10 max-w-5xl">
-                <div className="mb-8">
-                    <TypewriterText
-                        text="Engineering the Future of"
-                        className="text-5xl md:text-7xl font-bold tracking-tight text-white block mb-2"
-                        cursor={false}
-                    />
-                    <div className="pb-4">
-                        <TypewriterText
-                            text="Enterprise Intelligence"
-                            delay={0.5}
-                            cursor={false}
-                            animation="clip"
-                            className="text-5xl md:text-7xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent inline-block"
-                        />
-                    </div>
-                </div>
-
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                    className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed"
-                >
-                    AhiLight builds research-driven software systems to solve the most critical operational challenges in the enterprise.
-                </motion.p>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-                    className="flex flex-col sm:flex-row items-center justify-center gap-4"
-                >
-                    <Button size="lg" className="h-14 px-8 text-lg group">
-                        Explore Our Research
-                        <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                    <Button size="lg" variant="ghost" className="h-14 px-8 text-lg text-white hover:text-white hover:bg-white/10">
-                        View Technologies
-                    </Button>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-                    className="mt-20 relative w-full max-w-4xl mx-auto"
-                >
+            <div className="container mx-auto px-4 z-10 relative">
+                <div className="max-w-4xl">
                     <motion.div
-                        animate={{
-                            y: [-15, 15, -15],
-                        }}
-                        transition={{
-                            duration: 6,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                        className="relative z-10"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
                     >
-                        <div className="absolute -inset-1 bg-gradient-to-r from-electric-blue to-cyan-accent opacity-30 blur-2xl rounded-2xl" />
-                        <FrameAnimation />
+                        <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-8">
+                            Engineering the Future of <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent">
+                                Enterprise Intelligence
+                            </span>
+                        </h1>
+                        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-12 max-w-2xl">
+                            AhiLight builds research driven autonomous software systems for the world&apos;s most critical operations, from security to supply chain.
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row gap-6">
+                            <Button size="lg" className="bg-electric-blue hover:bg-cyan-accent text-deep-navy font-bold h-14 px-8 rounded-full text-lg shadow-[0_0_20px_rgba(0,212,170,0.3)] hover:shadow-[0_0_30px_rgba(0,212,170,0.5)] transition-all">
+                                Explore Our Research
+                                <ArrowRight className="ml-2 w-5 h-5" />
+                            </Button>
+                            <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 hover:border-white h-14 px-8 rounded-full text-lg">
+                                View Technologies
+                            </Button>
+                        </div>
                     </motion.div>
-                </motion.div>
+                </div>
             </div>
         </Section>
     )
 }
-
-
-function FrameAnimation() {
-    const [currentFrame, setCurrentFrame] = useState(0);
-    const totalFrames = 40;
-
-    useEffect(() => {
-        let timer: NodeJS.Timeout;
-
-        if (currentFrame === totalFrames - 1) {
-            // Pause on the last frame before restarting
-            timer = setTimeout(() => {
-                setCurrentFrame(0);
-            }, 3000); // 3 second pause on the last frame
-        } else {
-            // Play next frame
-            timer = setTimeout(() => {
-                setCurrentFrame((prev) => prev + 1);
-            }, 50); // 50ms per frame for smoother, video-like motion
-        }
-
-        return () => clearTimeout(timer);
-    }, [currentFrame]);
-
-    return (
-        <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black/50">
-            {[...Array(totalFrames)].map((_, index) => (
-                <div
-                    key={index}
-                    className={`absolute inset-0 ${index === currentFrame ? "block z-10" : "hidden z-0"}`}
-                >
-                    <Image
-                        src={`/frames/${index}.jpg`}
-                        alt={`Enterprise SaaS Solution Frame ${index + 1}`}
-                        fill
-                        className="object-cover"
-                        priority={true} // Priority true for all to ensure instant switching
-                        loading="eager"
-                    />
-                </div>
-            ))}
-        </div>
-    );
-}
-
-function FloatingElement({ delay, x, y, size }: { delay: number; x: string; y: string; size: number }) {
-    return (
-        <motion.div
-            initial={{ y: 0, opacity: 0.3 }}
-            animate={{
-                y: [-10, 10, -10],
-                rotate: [0, 5, -5, 0]
-            }}
-            transition={{
-                duration: 5 + delay,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: delay
-            }}
-            style={{ left: x, top: y, width: size, height: size }}
-            className="absolute rounded-3xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/5"
-        />
-    )
-}
-

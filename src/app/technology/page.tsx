@@ -22,7 +22,8 @@ export default function TechnologyPage() {
                                 text="Advanced Research"
                                 delay={1}
                                 cursor={true}
-                                className="text-5xl md:text-7xl font-bold tracking-tight text-cyan-accent"
+                                animation="clip"
+                                className="text-5xl md:text-7xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#00d4aa] to-[#0066FF] pb-2"
                             />
                         </div>
                     </div>

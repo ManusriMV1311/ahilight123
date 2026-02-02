@@ -6,6 +6,9 @@ import { ArrowRight, CheckCircle2, Globe, Lightbulb, Users } from "lucide-react"
 import { motion } from "framer-motion";
 import { FrameBackground } from "@/components/ui/frame-background";
 import { TypewriterText } from "@/components/ui/typewriter-text";
+import { AboutTimeline } from "@/components/sections/about-timeline";
+import { AboutTeam } from "@/components/sections/about-team";
+import { AboutBacking } from "@/components/sections/about-backing";
 
 const fadeIn = {
     initial: { opacity: 0, y: 30 },
@@ -88,7 +91,7 @@ export default function AboutPage() {
                         transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
                         className="text-xl text-slate-300 font-medium max-w-2xl mx-auto leading-relaxed"
                     >
-                        AhiLight is a research-driven technology company dedicated to solving the most critical operational challenges in the modern enterprise through advanced software systems.
+                        AhiLight is a research driven technology company dedicated to solving the most critical operational challenges in the modern enterprise through advanced software systems.
                     </motion.p>
                 </div>
             </section>
@@ -141,10 +144,10 @@ export default function AboutPage() {
                             <h3 className="text-2xl font-bold text-white mb-4">Why AhiLight?</h3>
                             <ul className="space-y-4">
                                 {[
-                                    "Research-backed methodologies",
+                                    "Research backed methodologies",
                                     "Enterprise-grade reliability",
-                                    "Security-first architecture",
-                                    "User-centric design"
+                                    "Security first architecture",
+                                    "User centric design"
                                 ].map((item, i) => (
                                     <motion.li
                                         key={i}
@@ -163,6 +166,9 @@ export default function AboutPage() {
                     </motion.div>
                 </motion.div>
             </Section>
+
+            {/* Timeline Section */}
+            <AboutTimeline />
 
             {/* Team/Culture Placeholder */}
             <Section className="bg-slate-900/50">
@@ -187,7 +193,7 @@ export default function AboutPage() {
                     </motion.p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-3 gap-8 mb-20">
                     {[
                         { title: "Excellence", description: "We hold ourselves to the highest standards in code quality and product design.", icon: Users },
                         { title: "Curiosity", description: "We never stop asking questions and exploring new technologies.", icon: Lightbulb },
@@ -213,6 +219,12 @@ export default function AboutPage() {
                     ))}
                 </div>
             </Section>
+
+            {/* Core Team & Advisors */}
+            <AboutTeam />
+
+            {/* Backing & Standards */}
+            <AboutBacking />
 
             {/* CTA Section */}
             <Section className="py-24 relative overflow-hidden">
