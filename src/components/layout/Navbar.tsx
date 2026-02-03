@@ -71,7 +71,7 @@ export function Navbar() {
                 href="/contact"
                 className="fixed top-8 right-8 z-50 px-6 py-3 bg-teal-500 text-white rounded-full font-semibold hover:bg-teal-400 transition-all hover:scale-105 hover:shadow-lg hover:shadow-teal-500/50 hidden md:block" // Hidden on mobile to avoid clutter or overlapping
             >
-                Contact Us
+                Contact Us v3.0
             </Link>
             {/* Mobile Contact Button - positioned bottom right or integrated? keeping it hidden on mobile for now per design or maybe absolute top right works */}
             <Link
