@@ -1,68 +1,73 @@
 "use client";
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Text } from '@react-three/drei';
+import { useRef, useMemo } from 'react';
+import * as THREE from 'three';
 
-import React, { useRef, useMemo } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import * as THREE from "three";
+function FloatingData() {
+    const groupRef = useRef<THREE.Group>(null);
 
-function Particles({ count = 2000 }) {
-    const mesh = useRef<THREE.Points>(null);
-
-    // Generate random particle positions
-    const particles = useMemo(() => {
-        const temp = new Float32Array(count * 3);
-        for (let i = 0; i < count; i++) {
-            // Spread broadly
-            const x = (Math.random() - 0.5) * 20;
-            const y = (Math.random() - 0.5) * 20;
-            const z = (Math.random() - 0.5) * 10;
-            temp[i * 3] = x;
-            temp[i * 3 + 1] = y;
-            temp[i * 3 + 2] = z;
+    const dataPoints = useMemo(() => {
+        const points = [];
+        for (let i = 0; i < 50; i++) {
+            points.push({
+                position: [
+                    (Math.random() - 0.5) * 20,
+                    (Math.random() - 0.5) * 10,
+                    (Math.random() - 0.5) * 10,
+                ] as [number, number, number],
+                value: Math.floor(Math.random() * 100),
+                speed: Math.random() * 0.5 + 0.2,
+            });
         }
-        return temp;
-    }, [count]);
+        return points;
+    }, []);
 
     useFrame((state) => {
-        if (!mesh.current) return;
-        // Move particles upwards
-        mesh.current.rotation.y += 0.001;
-        mesh.current.position.y += 0.002;
-
-        // Reset if too high loops (simple visual trick, or just let them float indefinitely)
-        // For a cleaner infinite scroll effect, we might use a shader, but this is simple enough.
-        // Let's just oscillate slightly
-        mesh.current.position.y = Math.sin(state.clock.getElapsedTime() * 0.1) * 0.5;
+        if (groupRef.current) {
+            groupRef.current.rotation.y = state.clock.elapsedTime * 0.05;
+        }
     });
 
     return (
-        <points ref={mesh}>
-            <bufferGeometry>
-                <bufferAttribute
-                    attach="attributes-position"
-                    args={[particles, 3]}
-                />
-            </bufferGeometry>
-            <pointsMaterial
-                size={0.03}
-                color="#ffffff"
-                sizeAttenuation
-                transparent
-                opacity={0.6}
-                blending={THREE.AdditiveBlending}
-            />
-        </points>
+        <group ref={groupRef}>
+            {dataPoints.map((point, idx) => (
+                <group key={idx} position={point.position}>
+                    {/* Bar chart column */}
+                    <mesh position={[0, point.value / 100, 0]}>
+                        <boxGeometry args={[0.2, point.value / 50, 0.2]} />
+                        <meshStandardMaterial
+                            color="#00d4aa"
+                            emissive="#00d4aa"
+                            emissiveIntensity={0.3}
+                            transparent
+                            opacity={0.6}
+                        />
+                    </mesh>
+
+                    {/* Number label */}
+                    <Text
+                        position={[0, point.value / 50 + 0.5, 0]}
+                        fontSize={0.3}
+                        color="#00d4aa"
+                        anchorX="center"
+                    >
+                        {point.value}
+                    </Text>
+                </group>
+            ))}
+        </group>
     );
 }
 
 export function ResearchBackground() {
     return (
         <div className="fixed inset-0 z-[-1] pointer-events-none bg-[#020617]">
-            <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
-                {/* Deep blue/navy fog for depth */}
-                <color attach="background" args={["#020617"]} />
-                <fog attach="fog" args={["#020617", 5, 15]} />
-
-                <Particles count={3000} />
+            <Canvas camera={{ position: [0, 0, 15], fov: 60 }}>
+                <color attach="background" args={['#000000']} />
+                <ambientLight intensity={0.5} />
+                <pointLight position={[10, 10, 10]} intensity={1} color="#00d4aa" />
+                <FloatingData />
             </Canvas>
         </div>
     );

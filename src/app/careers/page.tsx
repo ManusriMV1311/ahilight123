@@ -1,16 +1,19 @@
 "use client";
 
+import { CareersBackground } from "@/components/backgrounds/CareersBackground";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
+import { Button as MovingBorderButton } from "@/components/ui/moving-border";
 import { ArrowRight, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 
 export default function CareersPage() {
     return (
-        <div className="flex flex-col gap-0">
+        <div className="flex flex-col gap-0 min-h-screen relative">
+            <CareersBackground />
             {/* Hero Section */}
-            <Section background="navy-gradient" className="pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20">
+            <Section background="transparent" className="pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20">
                 <div className="text-center max-w-4xl mx-auto">
                     <div className="mb-6">
                         <TypewriterEffect
@@ -38,32 +41,33 @@ export default function CareersPage() {
             <Section className="">
                 <div className="max-w-4xl mx-auto">
                     <h2 className="text-3xl font-bold text-white mb-8 border-b border-white/10 pb-4">Open Positions</h2>
-                    <div className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {[
                             { title: "Senior Systems Engineer", dept: "Engineering", loc: "Remote / New York" },
                             { title: "AI Research Scientist", dept: "Research", loc: "London, UK" },
                             { title: "Product Designer", dept: "Product", loc: "Remote" },
                             { title: "Frontend Developer (React/Next.js)", dept: "Engineering", loc: "Remote" }
                         ].map((job, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 10 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className="bg-slate-900 border border-slate-800 p-6 rounded-xl transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-electric-blue/20 hover:bg-electric-blue hover:border-electric-blue hover:text-white flex flex-col md:flex-row md:items-center justify-between gap-4 group"
-                            >
-                                <div>
-                                    <h3 className="text-xl font-bold text-white transition-colors">{job.title}</h3>
-                                    <div className="flex gap-4 text-slate-400 text-sm mt-1 group-hover:text-white/80">
-                                        <span>{job.dept}</span>
-                                        <span className="flex items-center gap-1"><MapPin className="w-3 h-3" /> {job.loc}</span>
+                            <div key={i} className="flex justify-center h-full">
+                                <MovingBorderButton
+                                    borderRadius="1rem"
+                                    className="bg-slate-900/60 backdrop-blur-md text-white border-slate-800 p-6 h-full flex-col items-start gap-4 hover:bg-slate-800/80 transition-colors duration-300"
+                                    containerClassName="w-full h-48"
+                                >
+                                    <div className="w-full">
+                                        <h3 className="text-xl font-bold text-white mb-2 text-left">{job.title}</h3>
+                                        <div className="flex flex-col gap-1 text-slate-400 text-sm text-left">
+                                            <span>{job.dept}</span>
+                                            <span className="flex items-center gap-1"><MapPin className="w-3 h-3" /> {job.loc}</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <Button className="shrink-0 bg-electric-blue text-deep-navy hover:bg-white hover:text-electric-blue transition-colors duration-300 group-hover:bg-white group-hover:text-deep-navy">
-                                    Apply Now <ArrowRight className="w-4 h-4 ml-2" />
-                                </Button>
-                            </motion.div>
+                                    <div className="mt-auto w-full flex justify-end">
+                                        <span className="text-electric-blue text-sm font-semibold flex items-center group-hover:text-white transition-colors">
+                                            Apply <ArrowRight className="w-4 h-4 ml-1" />
+                                        </span>
+                                    </div>
+                                </MovingBorderButton>
+                            </div>
                         ))}
                     </div>
                 </div>

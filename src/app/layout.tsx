@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   description: "AhiLight builds research-driven software systems to solve the most critical operational challenges in the enterprise.",
 };
 
-import { HomeBackground } from "@/components/backgrounds/HomeBackground";
+
 import { CursorGlow } from "@/components/ui/cursor-glow";
 import PageWrapper from "@/components/layout/page-wrapper";
 
@@ -36,7 +36,6 @@ export default function RootLayout({
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased text-foreground bg-background font-sans relative`}
       >
         <CursorGlow />
-        <HomeBackground />
         <Navbar />
         <PageWrapper>
           <main className="min-h-screen relative z-10">

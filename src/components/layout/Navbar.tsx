@@ -2,24 +2,24 @@
 import React from "react";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import {
-    IconHome,
-    IconInfoCircle,
-    IconBulb,
-    IconPackage,
-    IconCpu,
-    IconFileText,
-    IconBriefcase,
-} from "@tabler/icons-react";
+    Home,
+    Users,
+    Telescope,
+    Box,
+    Cpu,
+    FlaskConical,
+    Briefcase,
+} from "lucide-react";
 import Link from "next/link";
 
 const navItems = [
-    { title: "Home", icon: <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/" },
-    { title: "About", icon: <IconInfoCircle className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/about" },
-    { title: "Vision", icon: <IconBulb className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/vision" },
-    { title: "Products", icon: <IconPackage className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/products" },
-    { title: "Technology", icon: <IconCpu className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/technology" },
-    { title: "Research", icon: <IconFileText className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/research" },
-    { title: "Careers", icon: <IconBriefcase className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/careers" },
+    { title: "Home", icon: <Home className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/" },
+    { title: "About", icon: <Users className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/about" },
+    { title: "Vision", icon: <Telescope className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/vision" },
+    { title: "Products", icon: <Box className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/products" },
+    { title: "Technology", icon: <Cpu className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/technology" },
+    { title: "Research", icon: <FlaskConical className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/research" },
+    { title: "Careers", icon: <Briefcase className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/careers" },
 ];
 
 export function Navbar() {

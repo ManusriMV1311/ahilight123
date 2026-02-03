@@ -1,13 +1,16 @@
 "use client";
 
 
+import { VisionBackground } from "@/components/backgrounds/VisionBackground";
 import { Section } from "@/components/ui/section";
 import { motion } from "framer-motion";
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
+import { TracingBeam } from "@/components/ui/tracing-beam";
 
 export default function VisionPage() {
     return (
         <div className="flex flex-col gap-0">
+            <VisionBackground />
 
             {/* Hero Section */}
             <Section background="navy-gradient" className="min-h-[50vh] md:min-h-[60vh] flex items-center justify-center pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20">
@@ -35,33 +38,52 @@ export default function VisionPage() {
                 </div>
             </Section>
 
-            {/* Strategic Goals */}
-            <Section className="">
-                <div className="max-w-4xl mx-auto space-y-16">
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <h2 className="text-3xl font-bold text-white mb-4">Autonomous Enterprise</h2>
-                        <p className="text-lg text-slate-300 leading-relaxed">
-                            We foresee a shift from human-operated software to human-supervised autonomous systems. AhiLight is building the fundamental logic layers that will enable this transition, reducing operational overhead and eliminating human error in critical processes.
-                        </p>
-                    </motion.div>
+            {/* Strategic Goals - Wrapped in Tracing Beam */}
+            <Section className="relative z-10">
+                <TracingBeam className="px-6">
+                    <div className="max-w-4xl mx-auto space-y-24 pt-10 pb-24">
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className="bg-navy-card/50 backdrop-blur-sm p-8 rounded-2xl border border-white/10"
+                        >
+                            <h2 className="text-3xl font-bold text-white mb-4">Autonomous Enterprise</h2>
+                            <p className="text-lg text-slate-300 leading-relaxed">
+                                We foresee a shift from human-operated software to human-supervised autonomous systems. AhiLight is building the fundamental logic layers that will enable this transition, reducing operational overhead and eliminating human error in critical processes.
+                            </p>
+                            <div className="mt-8 h-40 bg-gradient-to-br from-electric-blue/20 to-transparent rounded-xl border border-electric-blue/20" />
+                        </motion.div>
 
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                    >
-                        <h2 className="text-3xl font-bold text-white mb-4">Intelligent Security</h2>
-                        <p className="text-lg text-slate-300 leading-relaxed">
-                            Security cannot be an afterthought. In our vision, security is woven into the fabric of every application and network, reacting in real-time to threats with biological-style immune responses.
-                        </p>
-                    </motion.div>
-                </div>
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className="bg-navy-card/50 backdrop-blur-sm p-8 rounded-2xl border border-white/10"
+                        >
+                            <h2 className="text-3xl font-bold text-white mb-4">Intelligent Security</h2>
+                            <p className="text-lg text-slate-300 leading-relaxed">
+                                Security cannot be an afterthought. In our vision, security is woven into the fabric of every application and network, reacting in real-time to threats with biological-style immune responses.
+                            </p>
+                            <div className="mt-8 h-40 bg-gradient-to-br from-cyan-accent/20 to-transparent rounded-xl border border-cyan-accent/20" />
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.4 }}
+                            className="bg-navy-card/50 backdrop-blur-sm p-8 rounded-2xl border border-white/10"
+                        >
+                            <h2 className="text-3xl font-bold text-white mb-4">Decentralized Trust</h2>
+                            <p className="text-lg text-slate-300 leading-relaxed">
+                                Future systems must operate without single points of failure. We are pioneering research into conflict-free replicated data types and decentralized consensus to build the unbreakable backbone of tomorrow's web.
+                            </p>
+                        </motion.div>
+                    </div>
+                </TracingBeam>
             </Section>
         </div>
     );
