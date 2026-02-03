@@ -12,7 +12,7 @@ const researchProofs = [
     {
         title: "Open Source",
         description: "Active open-source projects with contributions from enterprise security and infrastructure teams. We believe in transparent research — our tools are used by Fortune 500 teams.",
-        link: "https://github.com",
+        link: "https://github.com/ahilight", // Company GitHub placeholder
     },
     {
         title: "Standards Alignment",
