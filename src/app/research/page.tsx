@@ -4,25 +4,23 @@ import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { FileText, Download } from "lucide-react";
 import { motion } from "framer-motion";
-import { TypewriterText } from "@/components/ui/typewriter-text";
+import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 
 export default function ResearchPage() {
     return (
         <div className="flex flex-col gap-0">
             {/* Hero Section */}
-            <Section background="navy-gradient" className="pt-32 pb-20">
+            <Section background="navy-gradient" className="pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20">
                 <div className="text-center max-w-4xl mx-auto">
                     <div className="mb-6">
-                        <TypewriterText
-                            text="Pioneering "
-                            className="text-5xl md:text-7xl font-bold tracking-tight text-white inline-block mr-4"
-                            cursor={false}
-                        />
-                        <TypewriterText
-                            text="New Frontiers"
-                            delay={0.1}
-                            animation="clip"
-                            className="text-5xl md:text-7xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent pb-2"
+                        <TypewriterEffect
+                            words={[
+                                { text: "Pioneering", className: "text-white" },
+                                { text: "New", className: "text-electric-blue" },
+                                { text: "Frontiers", className: "text-electric-blue" },
+                            ]}
+                            className="text-5xl md:text-7xl font-bold tracking-tight"
+                            cursorClassName="bg-electric-blue"
                         />
                     </div>
                     <motion.p
@@ -73,7 +71,7 @@ export default function ResearchPage() {
                                     <p className="text-slate-400 mb-2 group-hover:text-white/90">{paper.abstract}</p>
                                     <span className="text-sm text-slate-500 font-mono group-hover:text-white/70">{paper.date} • Technical Whitepaper</span>
                                 </div>
-                                <Button variant="outline" size="sm" className="shrink-0">
+                                <Button variant="outline" size="sm" className="shrink-0 group-hover:bg-white group-hover:text-electric-blue group-hover:border-white transition-colors">
                                     <Download className="w-4 h-4 mr-2" /> PDF
                                 </Button>
                             </div>

@@ -2,29 +2,25 @@
 
 import { Section } from "@/components/ui/section";
 import { motion } from "framer-motion";
-import { TypewriterText } from "@/components/ui/typewriter-text";
+import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 
 export default function VisionPage() {
     return (
         <div className="flex flex-col gap-0">
             {/* Hero Section */}
-            <Section background="navy-gradient" className="min-h-[60vh] flex items-center justify-center pt-32 pb-20">
+            <Section background="navy-gradient" className="min-h-[50vh] md:min-h-[60vh] flex items-center justify-center pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20">
                 <div className="text-center max-w-4xl mx-auto">
                     <div className="mb-6">
-                        <TypewriterText
-                            text="Envisioning a "
-                            className="text-5xl md:text-7xl font-bold tracking-tight text-white inline-block mr-4"
-                            cursor={false}
+                        <TypewriterEffect
+                            words={[
+                                { text: "Envisioning", className: "text-white" },
+                                { text: "a", className: "text-white" },
+                                { text: "Smarter", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
+                                { text: "Future", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
+                            ]}
+                            className="text-5xl md:text-7xl font-bold tracking-tight inline-block"
+                            cursorClassName="bg-electric-blue"
                         />
-                        <div className="inline-block">
-                            <TypewriterText
-                                text="Smarter Future"
-                                delay={1}
-                                cursor={true}
-                                animation="clip"
-                                className="text-5xl md:text-7xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent"
-                            />
-                        </div>
                     </div>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}

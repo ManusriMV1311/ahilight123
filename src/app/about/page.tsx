@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2, Globe, Lightbulb, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import { FrameBackground } from "@/components/ui/frame-background";
-import { TypewriterText } from "@/components/ui/typewriter-text";
+import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 import { AboutTimeline } from "@/components/sections/about-timeline";
 import { AboutTeam } from "@/components/sections/about-team";
 import { AboutBacking } from "@/components/sections/about-backing";
@@ -34,7 +34,7 @@ export default function AboutPage() {
     return (
         <div className="flex flex-col gap-0">
             {/* Hero Section */}
-            <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20">
+            <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20">
                 {/* Background Video Frames */}
                 <FrameBackground
                     pathPrefix="/about-frames"
@@ -63,25 +63,18 @@ export default function AboutPage() {
                     </motion.div>
 
                     <div className="mb-8 max-w-5xl mx-auto leading-tight text-center">
-                        <TypewriterText
-                            text="Building the "
-                            className="text-4xl md:text-6xl font-bold tracking-tight text-white inline-block mr-3"
-                            cursor={false}
-                        />
-                        <div className="inline-block">
-                            <TypewriterText
-                                text="Intelligence"
-                                delay={1}
-                                cursor={false}
-                                animation="clip"
-                                className="text-4xl md:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent pb-2"
-                            />
-                        </div>
-                        <TypewriterText
-                            text=" that Powers the Future"
-                            delay={2}
-                            className="text-4xl md:text-6xl font-bold tracking-tight text-white inline-block ml-3"
-                            cursor={true}
+                        <TypewriterEffect
+                            words={[
+                                { text: "Building", className: "text-white" },
+                                { text: "the", className: "text-white" },
+                                { text: "Intelligence", className: "text-electric-blue" },
+                                { text: "that", className: "text-electric-blue" },
+                                { text: "Powers", className: "text-electric-blue" },
+                                { text: "the", className: "text-electric-blue" },
+                                { text: "Future", className: "text-electric-blue" },
+                            ]}
+                            className="text-4xl md:text-6xl font-bold tracking-tight"
+                            cursorClassName="bg-electric-blue"
                         />
                     </div>
 

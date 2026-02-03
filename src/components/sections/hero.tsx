@@ -19,10 +19,10 @@ export function Hero() {
     ];
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-neutral-950 antialiased">
+        <section className="relative min-h-[80vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-neutral-950 antialiased pt-20 pb-12 md:pt-0 md:pb-0">
             {/* Spotlight that follows content (or ambient) */}
             <Spotlight
-                className="-top-40 left-0 md:left-60 md:-top-20"
+                className="-top-20 left-0 md:left-60 md:-top-20"
                 fill="rgba(0, 212, 170, 0.3)" // Teal spotlight
             />
 
@@ -40,7 +40,13 @@ export function Hero() {
                     {/* Animated headline */}
                     <div className="mb-8">
                         <TypewriterEffect
-                            words={headlineWords}
+                            words={[
+                                { text: "Automating", className: "text-white" },
+                                { text: "the", className: "text-white" },
+                                { text: "Future", className: "text-teal-400 dark:text-teal-400" },
+                                { text: "of", className: "text-teal-400 dark:text-teal-400" },
+                                { text: "Enterprise", className: "text-teal-400 dark:text-teal-400" },
+                            ]}
                             className="text-4xl md:text-7xl font-bold"
                             cursorClassName="bg-teal-500"
                         />

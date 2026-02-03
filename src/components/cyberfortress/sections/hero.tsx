@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 
 export function Hero() {
     return (
-        <Section background="transparent" className="min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden relative">
+        <Section background="transparent" className="min-h-[80vh] md:min-h-screen flex items-center justify-center pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20 overflow-hidden relative">
             {/* Background Effects */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-electric-blue/5 rounded-full blur-3xl" />

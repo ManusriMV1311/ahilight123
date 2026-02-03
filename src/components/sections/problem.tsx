@@ -80,16 +80,18 @@ export function Problem() {
                         variants={itemVariants}
                         className="group"
                     >
-                        <GlareCard className="flex flex-col p-8 h-full min-h-[300px] justify-between bg-neutral-900 border-white/10">
-                            <div>
-                                <div className="mb-6 opacity-80">{problem.icon}</div>
-                                <h3 className="text-2xl font-bold mb-4 text-white">{problem.title}</h3>
-                                <p className="text-neutral-400 leading-relaxed text-base">{problem.description}</p>
-                            </div>
+                        <GlareCard className="bg-neutral-900 border-white/10">
+                            <div className="flex flex-col p-8 h-full justify-between">
+                                <div>
+                                    <div className="mb-6 opacity-80">{problem.icon}</div>
+                                    <h3 className="text-2xl font-bold mb-4 text-white">{problem.title}</h3>
+                                    <p className="text-neutral-400 leading-relaxed text-base">{problem.description}</p>
+                                </div>
 
-                            {/* Decorative element */}
-                            <div className="mt-8 pt-6 border-t border-white/10">
-                                <div className="h-1 w-16 bg-gradient-to-r from-teal-500 to-transparent rounded-full" />
+                                {/* Decorative element */}
+                                <div className="mt-8 pt-6 border-t border-white/10">
+                                    <div className="h-1 w-16 bg-gradient-to-r from-teal-500 to-transparent rounded-full" />
+                                </div>
                             </div>
                         </GlareCard>
                     </motion.div>

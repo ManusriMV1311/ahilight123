@@ -15,9 +15,9 @@ const sectionVariants = cva(
                 transparent: "bg-transparent text-foreground",
             },
             spacing: {
-                default: "py-16 md:py-24",
-                sm: "py-12 md:py-16",
-                lg: "py-24 md:py-32",
+                default: "py-12 md:py-16 lg:py-24",
+                sm: "py-8 md:py-12 lg:py-16",
+                lg: "py-16 md:py-24 lg:py-32",
                 none: "py-0",
             }
         },
