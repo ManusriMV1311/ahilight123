@@ -1,25 +1,15 @@
 "use client";
 import React from "react";
 import { FloatingDock } from "@/components/ui/floating-dock";
-import {
-    Home,
-    Users,
-    Telescope,
-    Box,
-    Cpu,
-    FlaskConical,
-    Briefcase,
-} from "lucide-react";
 import Link from "next/link";
 
 const navItems = [
-    { title: "Home", icon: <Home className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/" },
-    { title: "About", icon: <Users className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/about" },
-    { title: "Vision", icon: <Telescope className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/vision" },
-    { title: "Products", icon: <Box className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/products" },
-    { title: "Technology", icon: <Cpu className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/technology" },
-    { title: "Research", icon: <FlaskConical className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/research" },
-    { title: "Careers", icon: <Briefcase className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/careers" },
+    { title: "About", icon: <span className="text-sm font-medium text-neutral-500 dark:text-neutral-300">About</span>, href: "/about" },
+    { title: "Vision", icon: <span className="text-sm font-medium text-neutral-500 dark:text-neutral-300">Vision</span>, href: "/vision" },
+    { title: "Products", icon: <span className="text-sm font-medium text-neutral-500 dark:text-neutral-300">Products</span>, href: "/products" },
+    { title: "Technology", icon: <span className="text-sm font-medium text-neutral-500 dark:text-neutral-300">Technology</span>, href: "/technology" },
+    { title: "Research", icon: <span className="text-sm font-medium text-neutral-500 dark:text-neutral-300">Research</span>, href: "/research" },
+    { title: "Careers", icon: <span className="text-sm font-medium text-neutral-500 dark:text-neutral-300">Careers</span>, href: "/careers" },
 ];
 
 export function Navbar() {
@@ -71,7 +61,7 @@ export function Navbar() {
                 href="/contact"
                 className="fixed top-8 right-8 z-50 px-6 py-3 bg-teal-500 text-white rounded-full font-semibold hover:bg-teal-400 transition-all hover:scale-105 hover:shadow-lg hover:shadow-teal-500/50 hidden md:block" // Hidden on mobile to avoid clutter or overlapping
             >
-                Contact Us v3.0
+                Contact Us
             </Link>
             {/* Mobile Contact Button - positioned bottom right or integrated? keeping it hidden on mobile for now per design or maybe absolute top right works */}
             <Link
