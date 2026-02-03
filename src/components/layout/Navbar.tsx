@@ -28,7 +28,7 @@ export function Navbar() {
             {/* Brand Logo - Top Left */}
             <Link
                 href="/"
-                className="fixed top-8 left-8 z-50 flex items-center gap-2 group hidden md:flex"
+                className="fixed top-4 left-4 md:top-8 md:left-8 z-50 flex items-center gap-2 group"
             >
                 <div className="bg-gradient-to-br from-teal-500 to-teal-300 p-2 rounded-lg group-hover:scale-105 transition-transform shadow-lg shadow-teal-500/20">
                     <svg
@@ -58,12 +58,12 @@ export function Navbar() {
                 </span>
             </Link>
 
-            {/* Floating Dock - Centered */}
-            <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50">
+            {/* Floating Dock - Centered on Desktop, Bottom Right on Mobile */}
+            <div className="fixed z-50 bottom-6 right-6 md:top-8 md:bottom-auto md:left-1/2 md:right-auto md:-translate-x-1/2">
                 <FloatingDock
                     items={navItems}
                     desktopClassName="bg-black/40 backdrop-blur-xl border border-white/10"
-                    mobileClassName="bg-black/60 backdrop-blur-xl translate-y-20"
+                    mobileClassName="translate-y-0" // Removed translate-y-20 as we handle positioning in wrapper
                 />
             </div>
 

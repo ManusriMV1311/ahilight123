@@ -26,18 +26,7 @@ const team = [
     }
 ];
 
-const advisors = [
-    {
-        name: "Prof. David Lee",
-        role: "Scientific Advisor",
-        title: "Professor of CS, Stanford"
-    },
-    {
-        name: "Elena Rodriguez",
-        role: "Technical Advisor",
-        title: "CTO, Global Logistics Corp"
-    }
-];
+
 
 export function AboutTeam() {
     return (
@@ -89,29 +78,7 @@ export function AboutTeam() {
                     ))}
                 </div>
 
-                {/* Advisors */}
-                <div className="max-w-4xl mx-auto">
-                    <h3 className="text-xl font-bold text-white mb-8 text-center border-t border-slate-800 pt-16">Advisors</h3>
-                    <div className="grid md:grid-cols-2 gap-8">
-                        {advisors.map((advisor, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                                className="flex items-center gap-4 p-4 bg-white/5 rounded-lg border border-white/5"
-                            >
-                                <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-white font-bold">
-                                    {advisor.name.charAt(0)}
-                                </div>
-                                <div>
-                                    <h4 className="text-white font-semibold">{advisor.name}</h4>
-                                    <div className="text-sm text-slate-400">{advisor.role} • {advisor.title}</div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
+
             </div>
         </Section>
     )
