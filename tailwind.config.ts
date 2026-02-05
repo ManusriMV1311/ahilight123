@@ -25,6 +25,7 @@ const config: Config = {
                 mono: ["var(--font-jetbrains-mono)", "monospace"],
                 heading: ["var(--font-space-grotesk)", "sans-serif"],
                 ui: ["var(--font-ibm-plex)", "sans-serif"],
+                brand: ["-apple-system", "BlinkMacSystemFont", "SF Pro Display", "Segoe UI", "Roboto", "sans-serif"],
             },
             animation: {
                 "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",

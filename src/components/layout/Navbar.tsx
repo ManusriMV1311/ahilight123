@@ -99,7 +99,7 @@ export function Navbar() {
                         />
                     </svg>
                 </div>
-                <span className="text-xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+                <span className="text-xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 font-brand">
                     AhiLight
                 </span>
             </Link>

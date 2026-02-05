@@ -226,3 +226,8 @@ h6 {
 .font-heading {
   font-family: var(--font-space-grotesk), sans-serif !important;
 }
+
+/* Explicit override for Brand font to ensure application */
+.font-brand {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif !important;
+}

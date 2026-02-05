@@ -23,7 +23,7 @@ export function Footer() {
                             <div className="bg-gradient-to-br from-electric-blue to-cyan-accent p-1.5 rounded-lg">
                                 <Box className="w-6 h-6 text-white" />
                             </div>
-                            <span className="text-2xl font-bold text-white tracking-tight">AhiLight</span>
+                            <span className="text-2xl font-bold text-white tracking-tight font-brand">AhiLight</span>
                         </div>
                         <p className="text-slate-200 text-lg leading-relaxed mb-8">
                             We build software because we love stable systems. And because broken things keep us up at night.
