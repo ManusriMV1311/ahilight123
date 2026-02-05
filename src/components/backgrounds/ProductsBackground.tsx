@@ -94,7 +94,7 @@ function Scene() {
 
 export function ProductsBackground() {
     return (
-        <div className="fixed inset-0 z-[-1] bg-gradient-to-b from-black via-deep-navy/50 to-black">
+        <div className="fixed inset-0 z-0 bg-gradient-to-b from-black via-deep-navy/50 to-black">
             {/* Shadow overlay for depth */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/50 pointer-events-none" />
             <Canvas camera={{ position: [0, 0, 15], fov: 60 }}>

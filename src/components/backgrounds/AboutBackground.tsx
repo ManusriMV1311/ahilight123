@@ -48,7 +48,7 @@ function ConstellationDots() {
 
 export function AboutBackground() {
     return (
-        <div className="fixed inset-0 z-[-1] bg-black">
+        <div className="fixed inset-0 z-0 bg-black">
             {/* Shadow overlay for depth */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/50 pointer-events-none" />
             <Canvas camera={{ position: [0, 0, 12], fov: 50 }}>

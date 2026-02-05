@@ -11,12 +11,14 @@ export default function Home() {
   return (
     <div className="min-h-screen relative overflow-hidden">
       <HomeBackground />
-      <Hero />
-      <Problem />
-      <Principles />
-      <ResearchCredibility />
-      <CompanyRoadmap />
-      <FinalCTA />
+      <div className="relative z-10">
+        <Hero />
+        <Problem />
+        <Principles />
+        <ResearchCredibility />
+        <CompanyRoadmap />
+        <FinalCTA />
+      </div>
     </div>
   )
 }

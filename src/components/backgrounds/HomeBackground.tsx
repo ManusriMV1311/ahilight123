@@ -48,7 +48,7 @@ function Core() {
 
 export function HomeBackground() {
     return (
-        <div className="fixed inset-0 z-[-1] pointer-events-none">
+        <div className="fixed inset-0 z-0 pointer-events-none">
             <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
                 <color attach="background" args={["#000000"]} />
                 <ambientLight intensity={0.5} />
