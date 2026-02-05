@@ -12,26 +12,43 @@ export function Principles() {
                 </p>
             </div>
 
+            <div className="container mx-auto px-4 text-center mb-16">
+                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">We did the math.</h2>
+                <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+                    You can&apos;t patch your way to stability. You have to prove it.
+                </p>
+            </div>
+
             <div className="container mx-auto px-4">
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {[
-                        { title: "Research-First", desc: "We solve hard problems through fundamental research, not by assembling off-the-shelf components.", badge: "Deep Tech" },
-                        { title: "Domain Agnostic", desc: "Building scalable architectures that apply across security, infrastructure, and logistics.", badge: "Universal Core" },
-                        { title: "First-Principles", desc: "Engineered from the ground up for performance, resilience, and absolute correctness.", badge: "High Performance" },
-                        { title: "Mission Critical", desc: "Designed for environments where failure is not an option and trust is non-negotiable.", badge: "Enterprise Grade" }
-                    ].map((p, i) => (
-                        <div key={i} className="bg-navy-card p-8 rounded-2xl border border-white/5 hover:border-electric-blue/50 transition-colors group text-left">
-                            <div className="mb-6">
-                                <span className="text-xs font-bold text-electric-blue uppercase tracking-widest bg-electric-blue/10 px-2 py-1 rounded inline-block mb-4">
-                                    {p.badge}
-                                </span>
-                                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-electric-blue transition-colors">{p.title}</h3>
-                            </div>
+                {/* Irregular grid: 1 large on left, 2 stacked on right */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+
+                    {/* Large Card */}
+                    <div className="md:col-span-2 bg-navy-card p-10 rounded-2xl border border-white/5 hover:border-electric-blue/50 transition-colors group text-left flex flex-col justify-center">
+                        <span className="text-xs font-bold text-electric-blue uppercase tracking-widest bg-electric-blue/10 px-2 py-1 rounded inline-block mb-6 w-fit">
+                            First Principles
+                        </span>
+                        <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-electric-blue transition-colors">Resilience isn&apos;t a feature.</h3>
+                        <p className="text-slate-400 text-lg leading-relaxed">
+                            It&apos;s a mathematical property of correct systems. We don&apos;t build by assembling off-the-shelf components and hoping they hold together. We engineer from the ground up for absolute correctness.
+                        </p>
+                    </div>
+
+                    {/* Stacked Cards */}
+                    <div className="flex flex-col gap-6">
+                        <div className="bg-navy-card p-8 rounded-2xl border border-white/5 hover:border-electric-blue/50 transition-colors group text-left flex-1">
+                            <h3 className="text-xl font-bold text-white mb-2 group-hover:text-electric-blue transition-colors">Research First</h3>
                             <p className="text-slate-400 text-sm leading-relaxed">
-                                {p.desc}
+                                We solve hard problems through fundamental research. If the answer doesn&apos;t exist, we write the paper.
                             </p>
                         </div>
-                    ))}
+                        <div className="bg-navy-card p-8 rounded-2xl border border-white/5 hover:border-electric-blue/50 transition-colors group text-left flex-1">
+                            <h3 className="text-xl font-bold text-white mb-2 group-hover:text-electric-blue transition-colors">Domain Agnostic</h3>
+                            <p className="text-slate-400 text-sm leading-relaxed">
+                                Good architecture applies everywhere. From security to logistics.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </Section>

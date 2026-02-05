@@ -19,7 +19,7 @@ export function DomainApproach() {
                                 { text: "Complex", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
                                 { text: "Challenges", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
                             ]}
-                            className="text-3xl md:text-5xl font-bold"
+                            className="text-3xl md:text-5xl font-bold py-6 leading-normal"
                             cursorClassName="bg-electric-blue"
                         />
                     </div>

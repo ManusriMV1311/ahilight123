@@ -9,19 +9,19 @@ const team = [
     {
         name: "Dr. Alex Thorne",
         role: "Founder & CEO",
-        bio: "Previously led AI infrastructure at CyberDyne Systems. PhD in Distributed Systems from MIT. Focused on the intersection of autonomy and security.",
+        bio: "Built the AI infrastructure at CyberDyne. Now solving the same problems here, but without the legacy code.",
         image: null // Placeholder for real image
     },
     {
         name: "Sarah Chen",
         role: "Head of Research",
-        bio: "Former Principal Researcher at DeepMind. Specialist in Reinforcement Learning and Multi-Agent Systems.",
+        bio: "Former Principal Researcher at DeepMind. She makes sure our math is actually right.",
         image: null
     },
     {
         name: "James Voss",
         role: "VP of Engineering",
-        bio: "20 years of experience scaling enterprise software. Built critical infrastructure for Fortune 500 financial institutions.",
+        bio: "20 years of experience. He's seen every way a system can fail, and helps us avoid most of them.",
         image: null
     }
 ];

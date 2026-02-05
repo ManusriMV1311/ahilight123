@@ -22,7 +22,7 @@ export default function ResearchPage() {
                                     { text: "New", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
                                     { text: "Frontiers", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
                                 ]}
-                                className="text-5xl md:text-7xl font-bold tracking-tight"
+                                className="text-5xl md:text-7xl font-bold tracking-tight py-4 leading-tight"
                                 cursorClassName="bg-electric-blue"
                             />
                         </div>

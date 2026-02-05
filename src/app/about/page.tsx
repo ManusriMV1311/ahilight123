@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2, Globe, Lightbulb, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import { FrameBackground } from "@/components/ui/frame-background";
+import Link from "next/link";
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 import { AboutTimeline } from "@/components/sections/about-timeline";
 import { AboutTeam } from "@/components/sections/about-team";
@@ -39,6 +40,7 @@ export default function AboutPage() {
             <AboutBackground />
 
             {/* Hero Section */}
+            {/* Hero Section */}
             <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20">
                 {/* Background Video Frames */}
                 <FrameBackground
@@ -54,31 +56,19 @@ export default function AboutPage() {
                 </div>
 
                 <div className="container relative z-10 mx-auto px-4 text-center flex flex-col items-center">
-                    <motion.div
-                        variants={scaleIn}
-                        initial="initial"
-                        animate="animate"
-                        className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-electric-blue text-sm font-medium mb-8 border border-white/10"
-                    >
-                        <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-electric-blue opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-electric-blue"></span>
-                        </span>
-                        Our Story
-                    </motion.div>
+                    {/* Removed "Our Story" badge for cleaner look */}
 
                     <div className="mb-8 max-w-5xl mx-auto leading-tight text-center">
                         <TypewriterEffect
                             words={[
-                                { text: "Building", className: "text-white" },
-                                { text: "the", className: "text-white" },
-                                { text: "Intelligence", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
-                                { text: "that", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
-                                { text: "Powers", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
-                                { text: "the", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
-                                { text: "Future", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
+                                { text: "We", className: "text-white" },
+                                { text: "started", className: "text-white" },
+                                { text: "as", className: "text-white" },
+                                { text: "a", className: "text-white" },
+                                { text: "research", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
+                                { text: "lab.", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
                             ]}
-                            className="text-4xl md:text-6xl font-bold tracking-tight"
+                            className="text-4xl md:text-6xl font-bold tracking-tight py-4 leading-tight"
                             cursorClassName="bg-electric-blue"
                         />
                     </div>
@@ -89,7 +79,7 @@ export default function AboutPage() {
                         transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
                         className="text-xl text-slate-300 font-medium max-w-2xl mx-auto leading-relaxed"
                     >
-                        AhiLight is a research driven technology company dedicated to solving the most critical operational challenges in the modern enterprise through advanced software systems.
+                        We realized the world didn&apos;t need another dashboard. It needed systems that understand the world as well as we do.
                     </motion.p>
                 </div>
             </section>
@@ -104,7 +94,7 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         className="text-3xl md:text-5xl font-bold text-white mb-6"
                     >
-                        Our Mission
+                        Why we are here
                     </motion.h2>
                     <motion.p
                         variants={fadeIn}
@@ -113,7 +103,7 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         className="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto"
                     >
-                        To empower organizations with the clarity and control they need to thrive. We believe true intelligence comes from interconnected systems working in harmony.
+                        We want to see how far we can push these systems before they break. And then build them so they don&apos;t.
                     </motion.p>
                 </div>
 
@@ -121,27 +111,27 @@ export default function AboutPage() {
                     <HoverEffect items={[
                         {
                             title: "Innovation First",
-                            description: "We push the boundaries of what's possible with software, researching new paradigms in distributed systems.",
+                            description: "We don't solve easy problems. We pick the ones that keep other engineers awake at night.",
                             link: "/technology",
                         },
                         {
                             title: "Global Impact",
-                            description: "Our solutions are designed to scale and serve enterprises worldwide, from startups to Fortune 500.",
+                            description: "Code runs the world. We make sure it doesn't crash.",
                             link: "/vision",
                         },
                         {
                             title: "Research Backed",
-                            description: "Methodologies grounded in academic and industrial research ensure robustness and correctness.",
+                            description: "We trust proofs, not pitches.",
                             link: "/research",
                         },
                         {
-                            title: "Enterprise Reliability",
-                            description: "Systems built for 99.999% uptime and fault tolerance in critical environments.",
+                            title: "Reliability",
+                            description: "99.9% uptime isn't a goal. It's a minimum requirement.",
                             link: "/products",
                         },
                         {
-                            title: "User Centric",
-                            description: "Complex power made accessible through intuitive, human-centered design interfaces.",
+                            title: "For Humans",
+                            description: "Complex systems should feel simple. If it's hard to use, it's broken.",
                             link: "/careers",
                         },
                     ]} />
@@ -161,7 +151,7 @@ export default function AboutPage() {
                         transition={{ duration: 0.6 }}
                         className="text-3xl font-bold text-white mb-4"
                     >
-                        Our Culture
+                        How we work
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, y: 30 }}
@@ -170,15 +160,15 @@ export default function AboutPage() {
                         transition={{ delay: 0.2, duration: 0.6 }}
                         className="text-lg text-slate-300"
                     >
-                        We are a diverse team of engineers, researchers, and designers passionate about building software that matters.
+                        Last Tuesday, we scrapped a feature we spent two weeks on because it felt clunky. That&apos;s who we are.
                     </motion.p>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-8 mb-20">
                     {[
-                        { title: "Excellence", description: "We hold ourselves to the highest standards in code quality and product design.", icon: Users },
-                        { title: "Curiosity", description: "We never stop asking questions and exploring new technologies.", icon: Lightbulb },
-                        { title: "Integrity", description: "We build trust through transparency and honest communication.", icon: CheckCircle2 },
+                        { title: "Excellence", description: "We write code we are proud to sign our names to.", icon: Users },
+                        { title: "Curiosity", description: "We ask 'why' until it gets annoying. Then we ask it one more time.", icon: Lightbulb },
+                        { title: "Integrity", description: "We tell the truth about what our software can do. And what it can't.", icon: CheckCircle2 },
                     ].map((value, i) => (
                         <motion.div
                             key={i}
@@ -227,10 +217,12 @@ export default function AboutPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                <Button size="lg" className="min-w-[160px] h-12 text-lg shadow-[0_0_20px_rgba(125,95,255,0.3)]">
-                                    Contact Us
-                                    <ArrowRight className="ml-2 w-5 h-5" />
-                                </Button>
+                                <Link href="/contact">
+                                    <Button size="lg" className="min-w-[160px] h-12 text-lg shadow-[0_0_20px_rgba(125,95,255,0.3)]">
+                                        Talk to us
+                                        <ArrowRight className="ml-2 w-5 h-5" />
+                                    </Button>
+                                </Link>
                             </motion.div>
                         </div>
                     </motion.div>

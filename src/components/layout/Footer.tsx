@@ -26,7 +26,7 @@ export function Footer() {
                             <span className="text-2xl font-bold text-white tracking-tight">AhiLight</span>
                         </div>
                         <p className="text-slate-200 text-lg leading-relaxed mb-8">
-                            Building the foundational software systems that power the next generation of enterprise autonomy.
+                            We build software because we love stable systems. And because broken things keep us up at night.
                         </p>
                         <div className="flex gap-4">
                             {/* Social Placeholders */}
@@ -39,18 +39,18 @@ export function Footer() {
                     </div>
 
                     <div className="w-full max-w-sm">
-                        <h4 className="text-white font-bold mb-4">Stay Updated</h4>
+                        <h4 className="text-white font-bold mb-4">Read what we write</h4>
                         <div className="relative group">
                             <input
                                 type="email"
-                                placeholder="Your email address"
+                                placeholder="alice@example.com"
                                 className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-electric-blue/50 focus:ring-2 focus:ring-electric-blue/20 transition-all backdrop-blur-sm"
                             />
                             <button className="absolute right-2 top-1/2 -translate-y-1/2 px-6 py-2 bg-gradient-to-r from-electric-blue to-cyan-accent text-white rounded-full font-semibold hover:opacity-90 transition-all hover:scale-105">
-                                Subscribe
+                                Join in
                             </button>
                         </div>
-                        <p className="text-xs text-slate-400 mt-3 pl-4">Research updates and product announcements.</p>
+                        <p className="text-xs text-slate-400 mt-3 pl-4">We only send emails when we have something to say.</p>
                     </div>
                 </div>
 
@@ -71,18 +71,18 @@ export function Footer() {
 
                     {/* Column 2: Products */}
                     <div>
-                        <h4 className="text-white font-bold mb-6">Products</h4>
+                        <h4 className="text-white font-bold mb-6">Work</h4>
                         <ul className="space-y-4 text-sm text-slate-300">
                             <li><Link href="/cyberfortress" className="hover:text-electric-blue transition-colors">CyberFortress</Link></li>
-                            <li><Link href="/products" className="hover:text-electric-blue transition-colors">Product Roadmap</Link></li>
+                            <li><Link href="/products" className="hover:text-electric-blue transition-colors">Roadmap</Link></li>
                         </ul>
                     </div>
 
                     {/* Column 3: Resources */}
                     <div>
-                        <h4 className="text-white font-bold mb-6">Resources</h4>
+                        <h4 className="text-white font-bold mb-6">Thinking</h4>
                         <ul className="space-y-4 text-sm text-slate-300">
-                            <li><Link href="/research" className="hover:text-electric-blue transition-colors">Research Papers</Link></li>
+                            <li><Link href="/research" className="hover:text-electric-blue transition-colors">Papers</Link></li>
                             <li><Link href="/blog" className="hover:text-electric-blue transition-colors">Blog</Link></li>
                             <li><Link href="/docs" className="hover:text-electric-blue transition-colors">Documentation</Link></li>
                             <li><Link href="/contact" className="hover:text-electric-blue transition-colors">Contact</Link></li>
@@ -93,22 +93,19 @@ export function Footer() {
                     <div>
                         <h4 className="text-white font-bold mb-6">Legal</h4>
                         <ul className="space-y-4 text-sm text-slate-300">
-                            <li><Link href="/privacy" className="hover:text-electric-blue transition-colors">Privacy Policy</Link></li>
-                            <li><Link href="/terms" className="hover:text-electric-blue transition-colors">Terms of Service</Link></li>
-                            <li><Link href="/security" className="hover:text-electric-blue transition-colors">Security Disclosure</Link></li>
+                            <li><Link href="/privacy" className="hover:text-electric-blue transition-colors">Privacy</Link></li>
+                            <li><Link href="/terms" className="hover:text-electric-blue transition-colors">Terms</Link></li>
+                            <li><Link href="/security" className="hover:text-electric-blue transition-colors">Security</Link></li>
                         </ul>
                     </div>
                 </div>
 
                 {/* Bottom Bar */}
                 <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
-                    <div>&copy; 2026 AhiLight Inc. All rights reserved. v2.1</div>
+                    <div>&copy; 2026 AhiLight Inc. Crafted by humans.</div>
                     <div className="flex items-center gap-6">
-                        <span className="flex items-center gap-2">
-                            <div className="w-2 h-2 rounded-full bg-success-green animate-pulse" />
-                            All systems operational
-                        </span>
-                        <a href="mailto:security@ahilight.com" className="hover:text-slate-200 transition-colors">security@ahilight.com</a>
+
+
 
                     </div>
                 </div>

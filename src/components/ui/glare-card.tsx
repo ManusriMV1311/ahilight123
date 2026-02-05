@@ -87,7 +87,7 @@ export const GlareCard = ({
             style={{
                 perspective: "1000px",
             }}
-            className={cn("relative isolate transition-all duration-200 ease-linear w-full", className)}
+            className={cn("relative isolate transition-all duration-200 ease-linear w-full rounded-2xl", className)}
         >
             <div
                 ref={refElement}

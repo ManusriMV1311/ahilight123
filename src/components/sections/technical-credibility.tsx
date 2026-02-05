@@ -5,18 +5,18 @@ import { motion } from "framer-motion"
 import { Section } from "@/components/ui/section"
 
 const capabilities = [
-    "Behavioral correlation across network, endpoint, and identity",
-    "Graph neural network-based attack chain detection",
-    "<1% false positive rate on MITRE ATT&CK test datasets",
-    "MTTD target: under 5 minutes",
-    "MTTR target: under 15 minutes",
-    "100K+ events processed per second per instance",
-    "Post-quantum key exchange (ML-KEM) for all data in transit",
-    "Blockchain-backed immutable audit (Hyperledger Fabric)",
-    "Generative AI honeypots with LLM-powered deception",
-    "Human-in-the-loop response with automatic rollback",
-    "Supports 10,000+ devices per deployment",
-    "Agent-based and agentless device discovery",
+    "We watch behavior, not just signatures",
+    "We use graphs, because bad guys don't move in straight lines",
+    "We hate false positives as much as you do (<1%)",
+    "We target 5-minute detection times",
+    "We target 15-minute resolution times",
+    "We process 100K+ events/sec because we have to",
+    "We encrypt everything. No exceptions.",
+    "We use immutable ledgers for audit trails",
+    "We use AI to catch AI, but humans to verify",
+    "We offer automatic rollback because mistakes happen",
+    "We scale to 10,000+ devices",
+    "We find devices you didn't know you had",
 ]
 
 export function TechnicalCredibility() {
@@ -24,8 +24,11 @@ export function TechnicalCredibility() {
         <Section background="navy-gradient" className="py-32">
             <div className="text-center mb-20">
                 <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                    Built for the threat landscape that&apos;s coming.
+                    Built for the world as it is.
                 </h2>
+                <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+                    We prefer boring code. Boring code works. Boring code doesn&apos;t wake you up at night.
+                </p>
             </div>
 
             <div className="grid lg:grid-cols-2 gap-16 items-center">

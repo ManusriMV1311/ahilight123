@@ -18,9 +18,9 @@ export function AboutBacking() {
                         <div className="w-12 h-12 mx-auto rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
                             <Building2 className="w-6 h-6" />
                         </div>
-                        <h3 className="text-lg font-semibold text-white">Backed by Industry Leaders</h3>
+                        <h3 className="text-lg font-semibold text-white">Who stands with us</h3>
                         <p className="text-slate-400 text-sm">
-                            Supported by visionary investors in deep tech and enterprise infrastructure.
+                            Supported by investors who understand that deep tech takes time.
                         </p>
                     </motion.div>
 
@@ -34,9 +34,9 @@ export function AboutBacking() {
                         <div className="w-12 h-12 mx-auto rounded-lg bg-electric-blue/10 text-electric-blue flex items-center justify-center">
                             <GraduationCap className="w-6 h-6" />
                         </div>
-                        <h3 className="text-lg font-semibold text-white">Academic Roots</h3>
+                        <h3 className="text-lg font-semibold text-white">We write code & papers</h3>
                         <p className="text-slate-400 text-sm">
-                            Collaborating with research labs at top universities to advance autonomous systems theory.
+                            We collaborate with labs because we like staying close to the metal.
                         </p>
                     </motion.div>
 

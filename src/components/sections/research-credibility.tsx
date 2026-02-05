@@ -27,13 +27,29 @@ export function ResearchCredibility() {
             <div className="max-w-5xl mx-auto px-8">
                 <div className="max-w-3xl mb-16 text-center mx-auto">
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                        Built on Research, Not Marketing
+                        We don&apos;t guess.
                     </h2>
                     <p className="text-xl text-slate-400 leading-relaxed">
-                        Every AhiLight platform is grounded in peer-reviewed research, open-source contributions, and transparent validation.
+                        Every platform we build is grounded in peer-reviewed research. If we can&apos;t prove it works, we don&apos;t ship it.
                     </p>
                 </div>
-                <HoverEffect items={researchProofs} className="grid md:grid-cols-3 gap-8" />
+                <HoverEffect items={[
+                    {
+                        title: "We wrote the papers",
+                        description: "Peer-reviewed work across machine learning and distributed systems. We had to write them because the existing answers weren't good enough.",
+                        link: "/research",
+                    },
+                    {
+                        title: "Open Source",
+                        description: "We work in the open where possible. Transparent research builds better security.",
+                        link: "https://github.com/ahilight",
+                    },
+                    {
+                        title: "Standards",
+                        description: "We respect MITRE ATT&CK and NIST, but we don't treat them as checklists. We treat them as baselines.",
+                        link: "/research",
+                    },
+                ]} className="grid md:grid-cols-3 gap-8" />
             </div>
         </Section>
     );

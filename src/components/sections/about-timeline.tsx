@@ -7,26 +7,26 @@ import { Flag, Microscope, Rocket, Target } from "lucide-react";
 const milestones = [
     {
         year: "2023",
-        title: "Founding & Research",
-        description: "AhiLight is founded with a mission to solve the 'Fragmented Intelligence' problem. Initial research focuses on autonomous data unification algorithms.",
+        title: "Starting Up",
+        description: "We started AhiLight because we were tired of gluing APIs together. We spent the first year just reading papers and writing expected behavior specs.",
         icon: Microscope,
     },
     {
         year: "2024",
-        title: "The Core Engine",
-        description: "Development of the proprietary 'NeuroLink' protocol (internal codename), enabling real-time semantic understanding of disparate systems.",
+        title: "The Engine",
+        description: "We built the core data engine. It wasn't pretty, but it was fast, and it was correct.",
         icon: Target,
     },
     {
         year: "2025",
-        title: "Stealth Pilot",
-        description: "Deploying alpha versions with select enterprise partners in manufacturing and logistics. Validating the 'Reactive to Proactive' shift.",
+        title: "First Customers",
+        description: "We deployed with our first partners. We broke a few things, fixed them, and learned more in a month than we did in the previous year.",
         icon: Rocket,
     },
     {
         year: "Future",
-        title: "Global Autonomy",
-        description: "Expanding to full-scale autonomous enterprise management, where software self-optimizes without human intervention.",
+        title: "Scale",
+        description: "Now we scale up. But we keep the same manual for quality we wrote on day one.",
         icon: Flag,
     },
 ];

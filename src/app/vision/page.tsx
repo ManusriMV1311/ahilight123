@@ -23,7 +23,7 @@ export default function VisionPage() {
                                 { text: "Smarter", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
                                 { text: "Future", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
                             ]}
-                            className="text-5xl md:text-7xl font-bold tracking-tight inline-block"
+                            className="text-5xl md:text-7xl font-bold tracking-tight inline-block py-4 leading-tight"
                             cursorClassName="bg-electric-blue"
                         />
                     </div>

@@ -22,7 +22,7 @@ export default function TechnologyPage() {
                                 { text: "Advanced", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent pb-2" },
                                 { text: "Research", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent pb-2" },
                             ]}
-                            className="text-5xl md:text-7xl font-bold tracking-tight inline-block"
+                            className="text-5xl md:text-7xl font-bold tracking-tight inline-block py-4 leading-tight"
                             cursorClassName="bg-electric-blue"
                         />
                     </div>

@@ -40,20 +40,19 @@ export function Hero() {
                     <div className="mb-8">
                         <TypewriterEffect
                             words={[
-                                { text: "Automating", className: "text-white" },
-                                { text: "the", className: "text-white" },
-                                { text: "Future", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
-                                { text: "of", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
-                                { text: "Enterprise", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
+                                { text: "Systems", className: "text-white" },
+                                { text: "that", className: "text-white" },
+                                { text: "actually", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
+                                { text: "think.", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
                             ]}
-                            className="text-4xl md:text-5xl lg:text-7xl font-bold text-center tracking-tight font-heading leading-tight"
+                            className="text-4xl md:text-5xl lg:text-7xl font-bold text-center tracking-tight font-heading leading-tight py-4"
                             cursorClassName="bg-electric-blue"
                         />
                     </div>
 
                     {/* Subheadline with fade-in */}
                     <TextGenerateEffect
-                        words="AhiLight builds research driven autonomous software systems for the world's most critical operations, from security to supply chain."
+                        words="We got tired of fixing broken pipelines at 3 AM. So we built software that fixes itself."
                         className="text-xl md:text-2xl text-neutral-300 mb-12 max-w-4xl mx-auto leading-relaxed"
                         duration={1}
                         filter={false} // clean fade
@@ -71,7 +70,7 @@ export function Hero() {
                             onClick={() => window.location.href = '/research'}
                         >
                             <span className="flex items-center gap-2">
-                                Explore Our Research
+                                How it works
                                 <ArrowRight className="w-5 h-5" />
                             </span>
                         </Button>
@@ -79,7 +78,7 @@ export function Hero() {
                         {/* Secondary CTA */}
                         <Link href="/technology">
                             <button className="px-8 py-4 text-lg font-semibold border-2 border-electric-blue/50 rounded-full bg-gradient-to-r from-electric-blue/10 to-cyan-accent/10 hover:from-electric-blue/20 hover:to-cyan-accent/20 hover:border-electric-blue transition-all backdrop-blur-sm text-white flex items-center gap-2 hover:shadow-lg hover:shadow-electric-blue/30">
-                                View Technologies
+                                The tech
                             </button>
                         </Link>
                     </div>

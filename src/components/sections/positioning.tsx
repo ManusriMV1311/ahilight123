@@ -11,10 +11,10 @@ export function Positioning() {
             <div className="container mx-auto px-4">
                 <div className="max-w-3xl mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                        Solving Problems That Matter
+                        Building things people actually use.
                     </h2>
                     <p className="text-xl text-slate-400 leading-relaxed">
-                        AhiLight builds software for enterprises facing challenges where existing tools fall short starting with security, expanding to infrastructure, logistics, and compliance automation.
+                        We don&apos;t chase trends. We start with the problem.
                     </p>
                 </div>
 
@@ -30,15 +30,15 @@ export function Positioning() {
                             <h3 className="text-xl font-bold text-white mb-2">Security Operations</h3>
                             <div className="space-y-4 mb-6">
                                 <div>
-                                    <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">The Challenge</div>
+                                    <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">The Problem</div>
                                     <p className="text-sm text-slate-300 leading-relaxed">
-                                        Enterprise security stacks contain 30–50 fragmented tools. Alert fatigue is structural. Attacks move at machine speed while human teams respond in hours.
+                                        You have 50 tools and they don&apos;t talk to each other. Alerts pile up. Attackers move fast, and your team is stuck copying JSON between tabs.
                                     </p>
                                 </div>
                                 <div>
-                                    <div className="text-xs font-bold text-electric-blue uppercase tracking-wider mb-1">AhiLight&apos;s Approach</div>
+                                    <div className="text-xs font-bold text-electric-blue uppercase tracking-wider mb-1">How we fix it</div>
                                     <p className="text-sm text-slate-300 leading-relaxed">
-                                        CyberFortress unifies detection, deception, response, and audit into a single autonomous platform built from first principles.
+                                        CyberFortress connects the dots. It&apos;s a single brain that sits on top of your existing stack and thinks for itself.
                                     </p>
                                 </div>
                             </div>

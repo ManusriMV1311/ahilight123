@@ -8,17 +8,17 @@ const faqs = [
     {
         icon: HelpCircle,
         question: "Is this a black box?",
-        answer: "No. Every detection includes an explainability breakdown — the specific behaviors, correlated events, and confidence scores that triggered the alert. Analysts see exactly why CyberFortress flagged something, not just that it did. Every action is logged to an immutable blockchain audit trail."
+        answer: "No. We show our work. Every detection comes with a map of exactly why we think it's bad. If we can't explain it, we don't flag it."
     },
     {
         icon: AlertCircle,
         question: "What about false positives?",
-        answer: "CyberFortress uses a confidence scoring system that assigns a maliciousness rating (0–100) to each indicator based on source reliability, external enrichment, and behavioral pattern matching. High-confidence alerts trigger automated response. Lower-confidence alerts route to human review. The system is designed to reduce alert fatigue, not create it."
+        answer: "If we wake you up at 3 AM, it better be real. We tune our systems to be quiet until they have something important to say."
     },
     {
         icon: ShieldQuestion,
-        question: "Is autonomous response safe?",
-        answer: "Automation has guardrails. Response actions escalate through configurable approval tiers — block a malicious IP automatically, but isolating a device requires analyst confirmation. Every automated action has a one-click rollback. A safe mode (detection only, zero automated response) is always available."
+        question: "Is it safe?",
+        answer: "We put guardrails on everything. We decided early on that critical actions always need a human in the loop unless you explicitly tell us otherwise. And every action has an undo button."
     }
 ]
 
@@ -28,7 +28,7 @@ export function AISkepticism() {
             <div className="container mx-auto px-4 max-w-5xl">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                        Questions enterprise security teams ask. <br />
+                        Questions we get asked. <br />
                         <span className="text-electric-blue">Honest answers.</span>
                     </h2>
                 </div>

@@ -19,11 +19,13 @@ export default function CareersPage() {
                         <div className="mb-6">
                             <TypewriterEffect
                                 words={[
-                                    { text: "Join", className: "text-white" },
-                                    { text: "Our", className: "text-white" },
-                                    { text: "Team", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
+                                    { text: "We", className: "text-white" },
+                                    { text: "are", className: "text-white" },
+                                    { text: "looking", className: "text-white" },
+                                    { text: "for", className: "text-white" },
+                                    { text: "builders.", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
                                 ]}
-                                className="text-5xl md:text-7xl font-bold tracking-tight"
+                                className="text-5xl md:text-7xl font-bold tracking-tight py-4 leading-tight"
                                 cursorClassName="bg-electric-blue"
                             />
                         </div>
@@ -33,7 +35,7 @@ export default function CareersPage() {
                             transition={{ duration: 0.8, delay: 0.2 }}
                             className="text-xl text-slate-300"
                         >
-                            Help us build the next generation of intelligent enterprise software.
+                            We work on hard problems. If you like easy ones, you will hate it here.
                         </motion.p>
                     </div>
                 </Section>
@@ -70,7 +72,7 @@ export default function CareersPage() {
                                                     window.location.href = `mailto:careers@ahilight.com?subject=Application for ${job.title}`;
                                                 }}
                                             >
-                                                Apply <ArrowRight className="w-4 h-4" />
+                                                Let&apos;s talk <ArrowRight className="w-4 h-4" />
                                             </div>
                                         </div>
                                     </MovingBorderButton>

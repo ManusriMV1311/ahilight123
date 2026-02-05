@@ -8,18 +8,18 @@ import { Card } from "@/components/ui/card"
 const problems = [
     {
         icon: Clock,
-        title: "Human Response Speed",
-        description: "Attacks move at machine speed. MTTR gaps are structural, not a training problem. By the time an analyst triages an alert, the lateral movement has already happened.",
+        title: "Machines are faster",
+        description: "By the time you see the alert, the data is already gone. Machine speed attacks require machine speed defense.",
     },
     {
         icon: Layers,
-        title: "Tool Fragmentation",
-        description: "Enterprise security stacks contain 30 to 50 point solutions that don't communicate. Alert fatigue is inevitable. Critical signals get buried in noise.",
+        title: "Your tools don't talk",
+        description: "You have 30 point solutions. You are the glue. That's why you're burnout.",
     },
     {
         icon: ShieldAlert,
-        title: "Reactive Posture",
-        description: "Defenders wait. Adversaries probe continuously, learn from failures, and adapt. The asymmetry is baked into the model.",
+        title: "Waiting to get hit",
+        description: "Most defenses wait for a signature. Adversaries don't wait for permission.",
     },
 ]
 
@@ -32,8 +32,8 @@ export function ProblemStatement() {
             <div className="container mx-auto px-4">
                 <div className="max-w-3xl mb-20 text-center md:text-left">
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                        Security teams are drowning. <br />
-                        <span className="text-electric-blue">The tools aren&apos;t the problem, the architecture is.</span>
+                        It&apos;s not a skills gap. <br />
+                        <span className="text-electric-blue">It&apos;s a noise gap.</span>
                     </h2>
                 </div>
 
