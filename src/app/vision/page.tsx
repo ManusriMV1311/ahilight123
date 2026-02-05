@@ -18,12 +18,12 @@ export default function VisionPage() {
                     <div className="mb-6">
                         <TypewriterEffect
                             words={[
-                                { text: "Envisioning", className: "text-white" },
-                                { text: "a", className: "text-white" },
-                                { text: "Smarter", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
-                                { text: "Future", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
+                                { text: "Envisioning", className: "text-white font-heading" },
+                                { text: "a", className: "text-white font-heading" },
+                                { text: "Smarter", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-heading" },
+                                { text: "Future", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-heading" },
                             ]}
-                            className="text-5xl md:text-7xl font-bold tracking-tight inline-block py-4 leading-tight"
+                            className="text-5xl md:text-7xl font-bold tracking-tight inline-block py-4 leading-tight font-heading"
                             cursorClassName="bg-electric-blue"
                         />
                     </div>

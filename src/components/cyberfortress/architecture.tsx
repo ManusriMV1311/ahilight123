@@ -44,7 +44,7 @@ export function ArchitectureDiagram() {
         <Section background="navy-gradient" className="py-24 border-y border-white/10">
             <div className="container mx-auto px-4">
                 <div className="mb-16 text-center">
-                    <h2 className="text-3xl font-bold text-white mb-4">Platform Architecture</h2>
+                    <h2 className="text-3xl font-bold text-white mb-4 font-heading">Platform Architecture</h2>
                     <p className="text-slate-400">Zero-Trust. Post-Quantum Ready. Fully Autonomous.</p>
                 </div>
 
@@ -99,7 +99,7 @@ export function ArchitectureDiagram() {
                                             <span className="font-mono text-sm uppercase tracking-wider font-bold">{layer.id.toUpperCase()} LAYER</span>
                                         </div>
 
-                                        <h3 className="text-3xl font-bold text-white mb-6">{layer.title}</h3>
+                                        <h3 className="text-3xl font-bold text-white mb-6 font-heading">{layer.title}</h3>
                                         <p className="text-xl text-slate-300 leading-relaxed mb-8">
                                             {layer.description}
                                         </p>

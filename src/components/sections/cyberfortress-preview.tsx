@@ -10,7 +10,7 @@ export function CyberFortressPreview() {
         <Section background="navy-gradient" className="py-24 border-t border-white/5">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl font-bold text-white mb-3">CyberFortress: Autonomous Security, Unified Platform</h2>
+                    <h2 className="text-3xl font-bold text-white mb-3 font-heading">CyberFortress: Autonomous Security, Unified Platform</h2>
                     <p className="text-slate-400">From detection to response to forensics in a single system, not a patchwork of tools.</p>
                 </div>
 

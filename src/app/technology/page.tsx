@@ -17,12 +17,12 @@ export default function TechnologyPage() {
                     <div className="mb-6">
                         <TypewriterEffect
                             words={[
-                                { text: "Powered", className: "text-white" },
-                                { text: "by", className: "text-white" },
-                                { text: "Advanced", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent pb-2" },
-                                { text: "Research", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent pb-2" },
+                                { text: "Powered", className: "text-white font-heading" },
+                                { text: "by", className: "text-white font-heading" },
+                                { text: "Advanced", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent pb-2 font-heading" },
+                                { text: "Research", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent pb-2 font-heading" },
                             ]}
-                            className="text-5xl md:text-7xl font-bold tracking-tight inline-block py-4 leading-tight"
+                            className="text-5xl md:text-7xl font-bold tracking-tight inline-block py-4 leading-tight font-heading"
                             cursorClassName="bg-electric-blue"
                         />
                     </div>

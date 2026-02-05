@@ -40,10 +40,10 @@ export function Hero() {
                     <div className="mb-8">
                         <TypewriterEffect
                             words={[
-                                { text: "Systems", className: "text-white" },
-                                { text: "that", className: "text-white" },
-                                { text: "actually", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
-                                { text: "think.", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
+                                { text: "Systems", className: "text-white font-heading" },
+                                { text: "that", className: "text-white font-heading" },
+                                { text: "actually", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-heading" },
+                                { text: "think.", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-heading" },
                             ]}
                             className="text-4xl md:text-5xl lg:text-7xl font-bold text-center tracking-tight font-heading leading-tight py-4"
                             cursorClassName="bg-electric-blue"

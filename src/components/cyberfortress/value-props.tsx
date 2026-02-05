@@ -37,7 +37,7 @@ export function CyberFortressValueProps() {
         <Section background="default" className="py-24">
             <div className="container mx-auto px-4">
                 <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 font-heading">
                         The World's Most Advanced <br />
                         <span className="text-cyan-accent">Defensive Architecture</span>
                     </h2>

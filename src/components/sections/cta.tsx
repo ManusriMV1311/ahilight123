@@ -15,7 +15,7 @@ export function CTA() {
                 transition={{ duration: 0.5 }}
                 className="max-w-4xl mx-auto"
             >
-                <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight">
+                <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight font-heading">
                     Solve the Unsolvable
                 </h2>
                 <p className="text-white/80 text-xl mb-12 max-w-2xl mx-auto">

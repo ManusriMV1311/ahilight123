@@ -10,7 +10,7 @@ export function ProductShowcase() {
         <Section background="transparent" className="py-32">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Our Products</h2>
+                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 font-heading">Our Products</h2>
                     <p className="text-slate-400">Enterprise-grade software platforms, built to solve problems where failure is not an option.</p>
                 </div>
 
@@ -27,7 +27,7 @@ export function ProductShowcase() {
                                 <Shield className="w-6 h-6" />
                             </div>
                             <div>
-                                <h3 className="text-3xl font-bold text-white">CyberFortress</h3>
+                                <h3 className="text-3xl font-bold text-white font-heading">CyberFortress</h3>
                                 <div className="text-electric-blue text-sm font-medium">Autonomous Security for Enterprise Operations</div>
                             </div>
                         </div>

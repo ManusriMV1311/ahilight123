@@ -35,13 +35,13 @@ export default function ContactPage() {
                 <div className="text-center mb-16">
                     <TypewriterEffect
                         words={[
-                            { text: "Let's", className: "text-white" },
-                            { text: "Build", className: "text-white" },
-                            { text: "the", className: "text-white" },
-                            { text: "Future", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
-                            { text: "Together", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
+                            { text: "Let's", className: "text-white font-heading" },
+                            { text: "Build", className: "text-white font-heading" },
+                            { text: "the", className: "text-white font-heading" },
+                            { text: "Future", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-heading" },
+                            { text: "Together", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-heading" },
                         ]}
-                        className="text-4xl md:text-6xl font-bold tracking-tight mb-6 py-6 leading-normal"
+                        className="text-4xl md:text-6xl font-bold tracking-tight mb-6 py-6 leading-normal font-heading"
                         cursorClassName="bg-electric-blue"
                     />
                     <motion.p

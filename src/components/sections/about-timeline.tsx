@@ -41,7 +41,7 @@ export function AboutTimeline() {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-3xl font-bold text-white mb-4">Our Journey</h2>
+                    <h2 className="text-3xl font-bold text-white mb-4 font-heading">Our Journey</h2>
                     <p className="text-lg text-slate-400">From theoretical research to applied enterprise intelligence.</p>
                 </motion.div>
 

@@ -37,7 +37,7 @@ export function Roadmap() {
             {/* Grid Background */}
             <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:30px_30px] pointer-events-none" />
 
-            <h2 className="text-3xl md:text-5xl font-bold text-center text-white mb-20 relative z-10">
+            <h2 className="text-3xl md:text-5xl font-bold text-center text-white mb-20 relative z-10 font-heading">
                 Where We're <span className="text-electric-blue">Going</span>
             </h2>
 

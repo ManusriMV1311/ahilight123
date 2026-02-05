@@ -6,14 +6,14 @@ export function Principles() {
     return (
         <Section background="transparent" className="py-24">
             <div className="container mx-auto px-4 text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Research-Backed. Engineering-Driven.</h2>
+                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-heading">Research-Backed. Engineering-Driven.</h2>
                 <p className="text-xl text-slate-400 max-w-2xl mx-auto">
                     We build the foundational software systems that power the next generation of enterprise autonomy.
                 </p>
             </div>
 
             <div className="container mx-auto px-4 text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">We did the math.</h2>
+                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-heading">We did the math.</h2>
                 <p className="text-xl text-slate-400 max-w-2xl mx-auto">
                     You can&apos;t patch your way to stability. You have to prove it.
                 </p>

@@ -11,7 +11,7 @@ const navItems = [
         icon: (
             <div className="flex items-center gap-2">
                 <Info className="h-5 w-5 text-electric-blue" />
-                <span className="text-sm font-medium text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent">About</span>
+                <span className="text-sm font-medium text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-ui">About</span>
             </div>
         ),
         href: "/about"
@@ -21,7 +21,7 @@ const navItems = [
         icon: (
             <div className="flex items-center gap-2">
                 <Eye className="h-5 w-5 text-electric-blue" />
-                <span className="text-sm font-medium text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent">Vision</span>
+                <span className="text-sm font-medium text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-ui">Vision</span>
             </div>
         ),
         href: "/vision"
@@ -31,7 +31,7 @@ const navItems = [
         icon: (
             <div className="flex items-center gap-2">
                 <Package className="h-5 w-5 text-electric-blue" />
-                <span className="text-sm font-medium text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent">Products</span>
+                <span className="text-sm font-medium text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-ui">Products</span>
             </div>
         ),
         href: "/products"
@@ -41,7 +41,7 @@ const navItems = [
         icon: (
             <div className="flex items-center gap-2">
                 <Cpu className="h-5 w-5 text-electric-blue" />
-                <span className="text-sm font-medium text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent">Technology</span>
+                <span className="text-sm font-medium text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-ui">Technology</span>
             </div>
         ),
         href: "/technology"
@@ -51,7 +51,7 @@ const navItems = [
         icon: (
             <div className="flex items-center gap-2">
                 <FlaskConical className="h-5 w-5 text-electric-blue" />
-                <span className="text-sm font-medium text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent">Research</span>
+                <span className="text-sm font-medium text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-ui">Research</span>
             </div>
         ),
         href: "/research"
@@ -61,7 +61,7 @@ const navItems = [
         icon: (
             <div className="flex items-center gap-2">
                 <Briefcase className="h-5 w-5 text-electric-blue" />
-                <span className="text-sm font-medium text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent">Careers</span>
+                <span className="text-sm font-medium text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-ui">Careers</span>
             </div>
         ),
         href: "/careers"
@@ -115,14 +115,14 @@ export function Navbar() {
 
             <Link
                 href="/contact"
-                className="fixed top-8 right-8 z-50 px-6 py-3 bg-gradient-to-r from-electric-blue to-cyan-accent text-white rounded-full font-semibold hover:opacity-90 transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(168,85,247,0.5)] hidden md:block" // Hidden on mobile to avoid clutter or overlapping
+                className="fixed top-8 right-8 z-50 px-6 py-3 bg-gradient-to-r from-electric-blue to-cyan-accent text-white rounded-full font-semibold font-ui hover:opacity-90 transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(168,85,247,0.5)] hidden md:block" // Hidden on mobile to avoid clutter or overlapping
             >
                 Talk to us
             </Link>
             {/* Mobile Contact Button - positioned bottom right or integrated? keeping it hidden on mobile for now per design or maybe absolute top right works */}
             <Link
                 href="/contact"
-                className="fixed top-4 right-4 z-50 px-4 py-2 bg-gradient-to-r from-electric-blue to-cyan-accent text-white text-sm rounded-full font-semibold md:hidden hover:shadow-[0_0_20px_rgba(125,95,255,0.5)] transition-all"
+                className="fixed top-4 right-4 z-50 px-4 py-2 bg-gradient-to-r from-electric-blue to-cyan-accent text-white text-sm rounded-full font-semibold font-ui md:hidden hover:shadow-[0_0_20px_rgba(125,95,255,0.5)] transition-all"
             >
                 Talk to us
             </Link>

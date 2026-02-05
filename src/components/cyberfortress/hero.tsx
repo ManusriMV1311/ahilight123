@@ -24,7 +24,7 @@ export function CyberFortressHero() {
                         <Shield className="w-4 h-4" /> CyberFortress Platform
                     </div>
 
-                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight font-heading">
                         Autonomous Security for the <br />
                         <span className="text-electric-blue">Modern Enterprise</span>
                     </h1>

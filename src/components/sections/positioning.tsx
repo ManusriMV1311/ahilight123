@@ -10,7 +10,7 @@ export function Positioning() {
         <Section background="transparent" className="py-24">
             <div className="container mx-auto px-4">
                 <div className="max-w-3xl mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-heading">
                         Building things people actually use.
                     </h2>
                     <p className="text-xl text-slate-400 leading-relaxed">

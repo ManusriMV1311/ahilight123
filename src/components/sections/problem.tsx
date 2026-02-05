@@ -59,7 +59,7 @@ export function Problem() {
             {/* Section headline */}
             <motion.h2
                 variants={itemVariants}
-                className="text-4xl md:text-5xl font-bold text-center mb-6 text-white"
+                className="text-4xl md:text-5xl font-bold text-center mb-6 text-white font-heading"
             >
                 The problem isn&apos;t scale. It&apos;s{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent">complexity</span>.

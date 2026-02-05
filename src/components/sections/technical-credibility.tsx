@@ -23,7 +23,7 @@ export function TechnicalCredibility() {
     return (
         <Section background="navy-gradient" className="py-32">
             <div className="text-center mb-20">
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-heading">
                     Built for the world as it is.
                 </h2>
                 <p className="text-lg text-slate-400 max-w-2xl mx-auto">

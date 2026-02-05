@@ -64,7 +64,7 @@ export function ValuePillars() {
                             {/* Title */}
                             <CardItem
                                 translateZ="60"
-                                className="text-xl font-bold text-white mb-3"
+                                className="text-xl font-bold text-white mb-3 font-heading"
                             >
                                 {pillar.title}
                             </CardItem>

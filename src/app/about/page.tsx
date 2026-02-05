@@ -61,14 +61,14 @@ export default function AboutPage() {
                     <div className="mb-8 max-w-5xl mx-auto leading-tight text-center">
                         <TypewriterEffect
                             words={[
-                                { text: "We", className: "text-white" },
-                                { text: "started", className: "text-white" },
-                                { text: "as", className: "text-white" },
-                                { text: "a", className: "text-white" },
-                                { text: "research", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
-                                { text: "lab.", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
+                                { text: "We", className: "text-white font-heading" },
+                                { text: "started", className: "text-white font-heading" },
+                                { text: "as", className: "text-white font-heading" },
+                                { text: "a", className: "text-white font-heading" },
+                                { text: "research", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-heading" },
+                                { text: "lab.", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-heading" },
                             ]}
-                            className="text-4xl md:text-6xl font-bold tracking-tight py-4 leading-tight"
+                            className="text-4xl md:text-6xl font-bold tracking-tight py-4 leading-tight font-heading"
                             cursorClassName="bg-electric-blue"
                         />
                     </div>
@@ -92,7 +92,7 @@ export default function AboutPage() {
                         initial="initial"
                         whileInView="animate"
                         viewport={{ once: true }}
-                        className="text-3xl md:text-5xl font-bold text-white mb-6"
+                        className="text-3xl md:text-5xl font-bold text-white mb-6 font-heading"
                     >
                         Why we are here
                     </motion.h2>
@@ -149,7 +149,7 @@ export default function AboutPage() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="text-3xl font-bold text-white mb-4"
+                        className="text-3xl font-bold text-white mb-4 font-heading"
                     >
                         How we work
                     </motion.h2>
@@ -209,7 +209,7 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 font-heading">
                             Join the <span className="text-electric-blue">Revolution</span>
                         </h2>
                         <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-10">

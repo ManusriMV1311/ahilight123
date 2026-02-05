@@ -11,7 +11,7 @@ export function CompanyRoadmap() {
             <TracingBeam className="px-6">
                 <div className="container mx-auto px-4">
                     <div className="text-center md:text-left mb-16">
-                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Where We&apos;re Going</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-heading">Where We&apos;re Going</h2>
                         <p className="text-xl text-slate-400 max-w-3xl">
                             We&apos;re building across domains where autonomous intelligence and research driven engineering create measurable enterprise value.
                         </p>

@@ -19,13 +19,13 @@ export default function CareersPage() {
                         <div className="mb-6">
                             <TypewriterEffect
                                 words={[
-                                    { text: "We", className: "text-white" },
-                                    { text: "are", className: "text-white" },
-                                    { text: "looking", className: "text-white" },
-                                    { text: "for", className: "text-white" },
-                                    { text: "builders.", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
+                                    { text: "We", className: "text-white font-heading" },
+                                    { text: "are", className: "text-white font-heading" },
+                                    { text: "looking", className: "text-white font-heading" },
+                                    { text: "for", className: "text-white font-heading" },
+                                    { text: "builders.", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-heading" },
                                 ]}
-                                className="text-5xl md:text-7xl font-bold tracking-tight py-4 leading-tight"
+                                className="text-5xl md:text-7xl font-bold tracking-tight py-4 leading-tight font-heading"
                                 cursorClassName="bg-electric-blue"
                             />
                         </div>
@@ -43,7 +43,7 @@ export default function CareersPage() {
                 {/* Open Positions */}
                 <Section className="">
                     <div className="max-w-4xl mx-auto">
-                        <h2 className="text-3xl font-bold text-white mb-8 border-b border-white/10 pb-4">Open Positions</h2>
+                        <h2 className="text-3xl font-bold text-white mb-8 border-b border-white/10 pb-4 font-heading">Open Positions</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {[
                                 { title: "Senior Systems Engineer", dept: "Engineering", loc: "Remote / New York" },

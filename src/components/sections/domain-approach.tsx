@@ -15,11 +15,11 @@ export function DomainApproach() {
                     <div className="mb-6 flex justify-center">
                         <TypewriterEffect
                             words={[
-                                { text: "Solving", className: "text-white" },
-                                { text: "Complex", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
-                                { text: "Challenges", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
+                                { text: "Solving", className: "text-white font-heading" },
+                                { text: "Complex", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-heading" },
+                                { text: "Challenges", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-heading" },
                             ]}
-                            className="text-3xl md:text-5xl font-bold py-6 leading-normal"
+                            className="text-3xl md:text-5xl font-bold py-6 leading-normal font-heading"
                             cursorClassName="bg-electric-blue"
                         />
                     </div>

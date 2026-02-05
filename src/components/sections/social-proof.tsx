@@ -111,7 +111,7 @@ function Counter({ label, value, suffix = "", prefix = "", duration }: { label: 
 
     return (
         <div ref={ref} className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-white mb-2 font-display">
+            <div className="text-4xl md:text-5xl font-bold text-white mb-2 font-heading">
                 {prefix}{Math.floor(count).toLocaleString()}{suffix}
             </div>
             <div className="text-slate-500 uppercase tracking-widest text-xs font-semibold">

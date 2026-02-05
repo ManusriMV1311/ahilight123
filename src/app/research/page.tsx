@@ -18,11 +18,11 @@ export default function ResearchPage() {
                         <div className="mb-6">
                             <TypewriterEffect
                                 words={[
-                                    { text: "Pioneering", className: "text-white" },
-                                    { text: "New", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
-                                    { text: "Frontiers", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent" },
+                                    { text: "Pioneering", className: "text-white font-heading" },
+                                    { text: "New", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-heading" },
+                                    { text: "Frontiers", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-heading" },
                                 ]}
-                                className="text-5xl md:text-7xl font-bold tracking-tight py-4 leading-tight"
+                                className="text-5xl md:text-7xl font-bold tracking-tight py-4 leading-tight font-heading"
                                 cursorClassName="bg-electric-blue"
                             />
                         </div>

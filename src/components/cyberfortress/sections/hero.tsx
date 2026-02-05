@@ -41,7 +41,7 @@ export function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.1 }}
-                    className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-tight max-w-5xl mx-auto"
+                    className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-tight max-w-5xl mx-auto font-heading"
                 >
                     Autonomous security that thinks like <span className="text-electric-blue">attackers</span>, responds like <span className="text-success-green">defenders</span>.
                 </motion.h1>

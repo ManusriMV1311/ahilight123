@@ -7,7 +7,7 @@ export function FinalCTA() {
     return (
         <Section background="transparent" className="py-32 text-center">
             <div className="container mx-auto px-4 max-w-4xl">
-                <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight">
+                <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight font-heading">
                     Let&apos;s build something real.
                 </h2>
                 <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">

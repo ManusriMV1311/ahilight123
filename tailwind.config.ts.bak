@@ -24,7 +24,6 @@ const config: Config = {
                 sans: ["var(--font-inter)", "sans-serif"],
                 mono: ["var(--font-jetbrains-mono)", "monospace"],
                 heading: ["var(--font-space-grotesk)", "sans-serif"],
-                ui: ["var(--font-ibm-plex)", "sans-serif"],
             },
             animation: {
                 "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",

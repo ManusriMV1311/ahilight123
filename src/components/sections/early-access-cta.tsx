@@ -13,7 +13,7 @@ export function EarlyAccessCTA() {
 
             <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight font-heading">
                         See CyberFortress <br />in action.
                     </h2>
                     <p className="text-xl text-blue-100 mb-8 max-w-md">

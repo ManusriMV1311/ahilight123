@@ -8,7 +8,7 @@ export function ProductDemo() {
     return (
         <Section background="transparent" className="relative overflow-hidden py-32">
             <div className="text-center mb-20">
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-heading">
                     Inside CyberFortress
                 </h2>
                 <p className="text-slate-400 max-w-2xl mx-auto">

@@ -31,7 +31,7 @@ export function ProblemStatement() {
 
             <div className="container mx-auto px-4">
                 <div className="max-w-3xl mb-20 text-center md:text-left">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight font-heading">
                         It&apos;s not a skills gap. <br />
                         <span className="text-electric-blue">It&apos;s a noise gap.</span>
                     </h2>

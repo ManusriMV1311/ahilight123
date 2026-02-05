@@ -36,7 +36,7 @@ export function SolutionOverview() {
     return (
         <Section background="default" className="pt-0">
             <div className="text-center max-w-3xl mx-auto mb-20">
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-heading">
                     Research-Backed. <br />
                     <span className="text-cyan-accent">Engineering-Driven.</span>
                 </h2>

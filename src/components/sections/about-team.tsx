@@ -38,7 +38,7 @@ export function AboutTeam() {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-3xl font-bold text-white mb-4">Leadership</h2>
+                    <h2 className="text-3xl font-bold text-white mb-4 font-heading">Leadership</h2>
                     <p className="text-lg text-slate-400 max-w-2xl mx-auto">
                         A multidisciplinary team combining deep academic research with battle tested enterprise engineering.
                     </p>
