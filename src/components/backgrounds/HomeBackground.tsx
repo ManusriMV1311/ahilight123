@@ -181,9 +181,8 @@ function LivingCore() {
 
 function PopOutDomains() {
     const domains = [
-        "Cyber", "AI", "Blockchain", "AR/VR",
-        "IoT", "Cloud", "Quantum", "Data",
-        "BioTech", "Robotics", "Space", "Energy"
+        "ML", "AI", "CYBER", "IT",
+        "SOFTWARE", "CLOUD", "DEVOPS", "AUTOMATION"
     ];
 
     const domainObjects = useMemo(() => {
@@ -197,20 +196,26 @@ function PopOutDomains() {
             // Y: -3 to 3 (spread vertically)
             // Z: -2 to 2 (depth)
 
-            // Use deterministic randomness based on index for stability
-            const r1 = (Math.sin(i * 12.9898) * 43758.5453) % 1;
-            const r2 = (Math.sin(i * 78.233) * 43758.5453) % 1;
-            const r3 = (Math.sin(i * 23.123) * 43758.5453) % 1;
+            // Adjusted for "Vertical Columns Side-Upside"
+            // Deterministic placement: Two vertical columns on edges.
 
-            const x = (3.2 + r1 * 2.2) * sideMultiplier; // Brought tighter: 3.2 to 5.4
-            const y = (r2 * 5) - 2.5; // Slightly reduced vertical spread
-            const z = (r3 * 3) - 1.5; // Reduced depth spread
+            // 4 items per side (since we have 8 total)
+            // itemIndexInCol goes 0, 1, 2, 3
+            const itemIndexInCol = Math.floor(i / 2);
+
+            const x = 12.0 * sideMultiplier; // Fixed X at edge
+
+            // Spread vertically in upper section. Start high, go down.
+            // Shifted down: 4.0, 2.5, 1.0, -0.5
+            const y = 4.0 - (itemIndexInCol * 1.5);
+
+            const z = -8.0; // Fixed deep Z depth for consistency
 
             return {
                 text: domain,
                 targetPosition: [x, y, z] as [number, number, number],
-                delay: i * 0.15 + 0.5, // Staggered delays
-                color: isLeft ? "#00d4ff" : "#6366f1" // Restored Blue/Purple
+                delay: i * 0.15 + 0.5,
+                color: isLeft ? "#00d4ff" : "#6366f1"
             };
         });
     }, []);
