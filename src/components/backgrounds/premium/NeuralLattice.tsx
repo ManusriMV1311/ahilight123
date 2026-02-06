@@ -1,7 +1,7 @@
 "use client";
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Sphere, Line } from '@react-three/drei';
-import { useRef, useMemo, useState } from 'react';
+import { useRef, useMemo, useState, useEffect } from 'react';
 import * as THREE from 'three';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 
@@ -65,7 +65,10 @@ function NetworkNode({
             {/* Connection lines to other nodes */}
             {connections.map((targetIdx, idx) => {
                 const targetPos = allNodes[targetIdx];
-                const isConnectionActive = isActive || Math.random() > 0.7;
+                // Refactor to use deterministic seeded random or just random from node data.
+                // Actually, let's use a simple hash of indices to be deterministic.
+                const randomSeed = Math.sin(idx * 123.45 + targetIdx * 678.90);
+                const isConnectionActive = isActive || (randomSeed > -0.2); // Adjusted threshold for sin wave distribution
 
                 return (
                     <Line
@@ -94,7 +97,9 @@ function NeuralLatticeContent({
     activeNodePercentage?: number;
 }) {
     // Generate network topology
-    const networkData = useMemo(() => {
+    const [networkData, setNetworkData] = useState<{ nodes: NodeData[], positions: [number, number, number][] }>({ nodes: [], positions: [] });
+
+    useEffect(() => {
         const nodes: NodeData[] = [];
         const positions: [number, number, number][] = [];
 
@@ -134,7 +139,7 @@ function NeuralLatticeContent({
             });
         });
 
-        return { nodes, positions };
+        setNetworkData({ nodes, positions });
     }, [nodeCount, connectionRadius, latticeSize, activeNodePercentage]);
 
     return (

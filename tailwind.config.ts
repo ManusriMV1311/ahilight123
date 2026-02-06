@@ -1,8 +1,7 @@
 import type { Config } from "tailwindcss";
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const {
-    default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
+import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
+
+import tailwindcssAnimate from "tailwindcss-animate";
 
 const config: Config = {
     content: [
@@ -52,8 +51,7 @@ const config: Config = {
         },
     },
     plugins: [
-        // eslint-disable-next-line @typescript-eslint/no-require-imports
-        require("tailwindcss-animate"),
+        tailwindcssAnimate,
         addVariablesForColors,
     ],
 };
