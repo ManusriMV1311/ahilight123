@@ -1,11 +1,104 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, MeshDistortMaterial, Trail, Text } from "@react-three/drei";
+import { Float, MeshDistortMaterial, Text, Line } from "@react-three/drei";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import { SharedUniverse } from "./common/SharedUniverse";
-import { useRef } from "react";
+import { useRef, useState, useMemo } from "react";
 import * as THREE from "three";
+
+interface DomainProps {
+    text: string;
+    targetPosition: [number, number, number];
+    delay: number;
+    color: string;
+}
+
+function KiteDomain({ text, targetPosition, delay, color }: DomainProps) {
+    const groupRef = useRef<THREE.Group>(null);
+    const [startAnim] = useState(() => Math.random() * 100);
+    const [currentPos, setCurrentPos] = useState<[number, number, number]>([0, 0, 0]);
+
+    useFrame((state) => {
+        if (!groupRef.current) return;
+
+        const time = state.clock.elapsedTime;
+        // Pop out animation
+        const progress = Math.min(Math.max((time - delay) * 0.5, 0), 1);
+        const eased = 1 - Math.pow(1 - progress, 3); // Cubic ease out
+
+        // Orbit animation
+        const orbitSpeed = 0.2;
+        const angle = time * orbitSpeed + startAnim;
+        const radius = 4.5 * eased;
+
+        // Combine orbit with initial position direction
+        const finalX = Math.sin(angle) * radius * targetPosition[0];
+        const finalZ = Math.cos(angle) * radius * targetPosition[2];
+        const finalY = (Math.sin(angle * 0.5) * 2 + targetPosition[1]) * eased;
+
+        groupRef.current.position.set(finalX, finalY, finalZ);
+        groupRef.current.scale.setScalar(eased);
+        groupRef.current.lookAt(0, 0, 0);
+
+        // Update current position state for line
+        setCurrentPos([finalX, finalY, finalZ]);
+    });
+
+    return (
+        <>
+            <group ref={groupRef} scale={0}>
+                {/* Kite Shape (Rotated Octahedron/Plane) */}
+                <group rotation={[Math.PI / 4, 0, Math.PI / 4]}>
+                    <mesh>
+                        <octahedronGeometry args={[0.3, 0]} />
+                        <meshStandardMaterial
+                            color={color}
+                            emissive={color}
+                            emissiveIntensity={0.5}
+                            roughness={0.2}
+                            metalness={0.8}
+                        />
+                    </mesh>
+                    {/* Wireframe overlay */}
+                    <mesh scale={1.05}>
+                        <octahedronGeometry args={[0.3, 0]} />
+                        <meshBasicMaterial
+                            color="#ffffff"
+                            wireframe
+                            transparent
+                            opacity={0.3}
+                        />
+                    </mesh>
+                </group>
+
+                {/* Text Label */}
+                <Text
+                    position={[0, -0.5, 0]}
+                    font="/fonts/SpaceGrotesk-Bold.ttf"
+                    fontSize={0.3}
+                    color="#ffffff"
+                    anchorX="center"
+                    anchorY="top"
+                    outlineWidth={0.02}
+                    outlineColor={color}
+                    outlineOpacity={0.2}
+                >
+                    {text}
+                </Text>
+            </group>
+
+            {/* Connectivity Line */}
+            <Line
+                points={[[0, 0, 0], currentPos]}
+                color={color}
+                lineWidth={1}
+                transparent
+                opacity={0.3}
+            />
+        </>
+    );
+}
 
 function LivingCore() {
     const meshRef = useRef<THREE.Mesh>(null);
@@ -18,14 +111,12 @@ function LivingCore() {
             meshRef.current.rotation.y = time * 0.3;
         }
         if (materialRef.current) {
-            // Animate distortion speed and scale for "breathing" effect
             materialRef.current.distort = 0.4 + Math.sin(time) * 0.1;
         }
     });
 
     return (
         <group position={[0, 1.5, 0]}>
-            {/* The rotating liquid core */}
             <mesh ref={meshRef} scale={1.8}>
                 <icosahedronGeometry args={[1, 6]} />
                 <MeshDistortMaterial
@@ -39,9 +130,8 @@ function LivingCore() {
                 />
             </mesh>
 
-            {/* 3D Depth Layer (Shadow/Extrusion Fake) */}
             <Text
-                position={[0.02, -0.02, -0.05]} // Slight offset for "depth"
+                position={[0.02, -0.02, -0.05]}
                 fontSize={0.5}
                 anchorX="center"
                 anchorY="middle"
@@ -59,7 +149,6 @@ function LivingCore() {
                 />
             </Text>
 
-            {/* Main Text */}
             <Text
                 position={[0, 0, 0]}
                 fontSize={0.5}
@@ -84,52 +173,39 @@ function LivingCore() {
     );
 }
 
-function OrbitingShards() {
+function PopOutDomains() {
     const domains = [
-        { label: "AI", color: "#22d3ee" },      // Cyan-400
-        { label: "VISION", color: "#c084fc" },  // Purple-400
-        { label: "DATA", color: "#60a5fa" },    // Blue-400
-        { label: "COMPUTE", color: "#2dd4bf" }, // Teal-400
-        { label: "CYBER", color: "#e879f9" }    // Fuchsia-400
+        "Cyber", "AI", "Blockchain", "AR/VR",
+        "IoT", "Cloud", "Quantum", "Data",
+        "BioTech", "Robotics", "Space", "Energy"
     ];
+
+    const domainObjects = useMemo(() => {
+        return domains.map((domain, i) => {
+            const phi = Math.acos(-1 + (2 * i) / domains.length);
+            const theta = Math.sqrt(domains.length * Math.PI) * phi;
+
+            return {
+                text: domain,
+                targetPosition: [
+                    Math.cos(theta) * Math.sin(phi),
+                    Math.sin(theta) * Math.sin(phi),
+                    Math.cos(phi)
+                ] as [number, number, number],
+                delay: i * 0.2 + 1,
+                color: i % 2 === 0 ? "#00d4ff" : "#6366f1"
+            };
+        });
+    }, []);
 
     return (
         <group>
-            {domains.map((domain, i) => (
-                <Float key={i} speed={2} rotationIntensity={2} floatIntensity={1}>
-                    <group rotation={[Math.random() * Math.PI, Math.random() * Math.PI, 0]}>
-                        <Trail
-                            width={1}
-                            length={4} // Shorter trail for text
-                            color={new THREE.Color(domain.color)}
-                            attenuation={(width) => width}
-                        >
-                            <group position={[3 + Math.random() * 2, 0, 0]}>
-                                {/* Domain Label */}
-                                <Text
-                                    fontSize={0.25}
-                                    font="/fonts/SpaceGrotesk-Bold.ttf"
-                                    characters={domain.label}
-                                    anchorX="center"
-                                    anchorY="middle"
-                                    color={domain.color}
-                                >
-                                    {domain.label}
-                                </Text>
-                                {/* Small marker icon */}
-                                <mesh position={[0, 0.2, 0]}>
-                                    <octahedronGeometry args={[0.05]} />
-                                    <meshBasicMaterial color={domain.color} />
-                                </mesh>
-                            </group>
-                        </Trail>
-                    </group>
-                </Float>
+            {domainObjects.map((props, i) => (
+                <KiteDomain key={i} {...props} />
             ))}
         </group>
-    )
+    );
 }
-
 
 export function HomeBackground() {
     return (
@@ -141,7 +217,7 @@ export function HomeBackground() {
                     <LivingCore />
                 </Float>
 
-                <OrbitingShards />
+                <PopOutDomains />
 
                 <EffectComposer>
                     <Bloom
@@ -153,7 +229,6 @@ export function HomeBackground() {
                 </EffectComposer>
             </Canvas>
 
-            {/* Vignette & Gradient Overlay for Text Readability */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#030014] via-transparent to-[#030014]/50" />
         </div>
     );

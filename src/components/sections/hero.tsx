@@ -27,15 +27,13 @@ export function Hero() {
                 fill="rgba(125, 95, 255, 0.3)" // Cyber Purple spotlight
             />
 
-            {/* Animated grid background */}
-            <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px] pointer-events-none" />
+
 
             {/* Gradient overlay for depth */}
             {/* Gradient overlay REMOVED for transparency */}
             <div className="hidden absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-deep-navy/40 pointer-events-none" />
 
-            {/* Premium 3D Background: Neural Lattice */}
-            <NeuralLattice />
+            {/* Premium 3D Background: Neural Lattice REMOVED */}
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
                 <div className="max-w-5xl mx-auto">
@@ -44,8 +42,8 @@ export function Hero() {
                             words={[
                                 { text: "Systems", className: "text-white font-heading" },
                                 { text: "that", className: "text-white font-heading" },
-                                { text: "actually", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-heading" },
-                                { text: "think.", className: "text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent font-heading" },
+                                { text: "actually", className: "text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-400 font-heading" },
+                                { text: "think.", className: "text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-400 font-heading" },
                             ]}
                             className="text-4xl md:text-5xl lg:text-7xl font-bold text-center tracking-tight font-heading leading-tight py-4"
                             cursorClassName="bg-electric-blue"
