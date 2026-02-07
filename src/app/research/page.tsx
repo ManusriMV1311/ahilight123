@@ -82,10 +82,7 @@ export default function ResearchPage() {
                             className="h-full"
                         >
                             <GlareCard className="flex flex-col h-full bg-navy-card/40 backdrop-blur-xl border border-white/10 p-1 relative overflow-hidden group">
-                                {/* Scientific Corner Decals */}
-                                <div className="absolute top-4 right-4 text-xs font-mono text-white/40 border border-white/10 px-2 py-1 rounded">
-                                    RES-{1000 + i}
-                                </div>
+
                                 <div className={`absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr ${paper.color} opacity-10 blur-2xl group-hover:opacity-30 transition-opacity duration-500`} />
 
                                 <div className="h-full w-full bg-deep-navy/60 p-8 rounded-[14px] flex flex-col relative z-10">
@@ -95,9 +92,7 @@ export default function ResearchPage() {
                                                 <paper.icon className="w-6 h-6 text-white" />
                                             </div>
                                         </div>
-                                        <span className="text-xs font-mono text-electric-blue bg-electric-blue/10 px-3 py-1 rounded-full border border-electric-blue/20">
-                                            {paper.readTime}
-                                        </span>
+
                                     </div>
 
                                     <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-2">{paper.category}</h4>
