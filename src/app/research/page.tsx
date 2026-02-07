@@ -25,10 +25,8 @@ export default function ResearchPage() {
                         <TypewriterEffect
                             words={[
                                 { text: "Pioneering", className: "text-white font-heading" },
-                                { text: "the", className: "text-white font-heading" },
-                                { text: "Future", className: "text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 pb-2 font-heading" },
-                                { text: "of", className: "text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 pb-2 font-heading" },
-                                { text: "Compute", className: "text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 pb-2 font-heading" },
+                                { text: "New", className: "text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 pb-2 font-heading" },
+                                { text: "Frontiers", className: "text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 pb-2 font-heading" },
                             ]}
                             className="text-5xl md:text-7xl font-bold tracking-tight inline-block py-4 leading-tight font-heading"
                             cursorClassName="bg-purple-500"
@@ -41,7 +39,7 @@ export default function ResearchPage() {
                         transition={{ duration: 0.8, delay: 0.4 }}
                         className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed"
                     >
-                        We don't just use algorithms; we invent them. Our research lab pushes the boundaries of distributed systems and cryptography.
+                        We share our findings to advance the state of enterprise software engineering.
                     </motion.p>
                 </div>
             </Section>
@@ -121,7 +119,7 @@ export default function ResearchPage() {
                         </motion.div>
                     ))}
                 </div>
-            </Section >
-        </div >
+            </Section>
+        </div>
     );
 }

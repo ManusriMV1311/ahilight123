@@ -25,8 +25,8 @@ export default function TechnologyPage() {
                             words={[
                                 { text: "Powered", className: "text-white font-heading" },
                                 { text: "by", className: "text-white font-heading" },
-                                { text: "Neural", className: "text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-electric-blue pb-2 font-heading" },
-                                { text: "Architecture", className: "text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-electric-blue pb-2 font-heading" },
+                                { text: "Advanced", className: "text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-electric-blue pb-2 font-heading" },
+                                { text: "Research", className: "text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-electric-blue pb-2 font-heading" },
                             ]}
                             className="text-5xl md:text-7xl font-bold tracking-tight inline-block py-4 leading-tight font-heading"
                             cursorClassName="bg-electric-blue"
@@ -39,7 +39,7 @@ export default function TechnologyPage() {
                         transition={{ duration: 0.8, delay: 0.4 }}
                         className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed"
                     >
-                        Our systems mimic biological intelligence, processing millions of signals through a decentralized neural mesh.
+                        Our software is built upon proprietary algorithms in distributed computing and artificial intelligence.
                     </motion.p>
                 </div>
             </Section>
