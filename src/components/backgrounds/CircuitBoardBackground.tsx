@@ -56,8 +56,8 @@ export function CircuitBoardBackground() {
                 node.connections.forEach(connectionIndex => {
                     const target = nodes[connectionIndex];
 
-                    // Circuit trace
-                    ctx.strokeStyle = 'rgba(0, 242, 255, 0.2)';
+                    // Circuit trace - purple theme
+                    ctx.strokeStyle = 'rgba(125, 95, 255, 0.15)';
                     ctx.lineWidth = 1;
                     ctx.beginPath();
                     ctx.moveTo(node.x, node.y);
@@ -73,25 +73,25 @@ export function CircuitBoardBackground() {
                     const pulseX = node.x + dx * pulsePos;
                     const pulseY = node.y + dy * pulsePos;
 
-                    // Glow effect
-                    const gradient = ctx.createRadialGradient(pulseX, pulseY, 0, pulseX, pulseY, 8);
-                    gradient.addColorStop(0, 'rgba(0, 242, 255, 0.8)');
-                    gradient.addColorStop(1, 'rgba(0, 242, 255, 0)');
+                    // Glow effect - reduced brightness
+                    const gradient = ctx.createRadialGradient(pulseX, pulseY, 0, pulseX, pulseY, 6);
+                    gradient.addColorStop(0, 'rgba(125, 95, 255, 0.4)');
+                    gradient.addColorStop(1, 'rgba(125, 95, 255, 0)');
 
                     ctx.fillStyle = gradient;
                     ctx.beginPath();
-                    ctx.arc(pulseX, pulseY, 8, 0, Math.PI * 2);
+                    ctx.arc(pulseX, pulseY, 6, 0, Math.PI * 2);
                     ctx.fill();
                 });
 
                 // Draw node
-                ctx.fillStyle = 'rgba(0, 242, 255, 0.6)';
+                ctx.fillStyle = 'rgba(125, 95, 255, 0.5)';
                 ctx.beginPath();
                 ctx.arc(node.x, node.y, 3, 0, Math.PI * 2);
                 ctx.fill();
 
                 // Node glow
-                ctx.strokeStyle = 'rgba(0, 242, 255, 0.3)';
+                ctx.strokeStyle = 'rgba(125, 95, 255, 0.2)';
                 ctx.lineWidth = 1;
                 ctx.beginPath();
                 ctx.arc(node.x, node.y, 5, 0, Math.PI * 2);

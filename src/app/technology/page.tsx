@@ -89,7 +89,7 @@ function CircuitCard({ tech, index }: { tech: any; index: number }) {
             className="group relative"
         >
             {/* Main Card */}
-            <div className="relative bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-md rounded-xl p-8 overflow-hidden border border-cyan-500/20 shadow-[0_0_30px_rgba(0,242,255,0.1)] hover:shadow-[0_0_50px_rgba(0,242,255,0.3)] transition-all duration-300">
+            <div className="relative bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-md rounded-xl p-8 overflow-hidden border border-electric-blue/20 shadow-[0_0_15px_rgba(125,95,255,0.08)] hover:shadow-[0_0_25px_rgba(125,95,255,0.15)] transition-all duration-300">
 
                 {/* Circuit trace decoration */}
                 <svg className="absolute inset-0 w-full h-full opacity-30 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
@@ -102,13 +102,13 @@ function CircuitCard({ tech, index }: { tech: any; index: number }) {
                     {/* Border traces */}
                     <rect x="2" y="2" width="calc(100% - 4px)" height="calc(100% - 4px)" fill="none" stroke={`url(#gradient-${index})`} strokeWidth="1" rx="10" />
                     {/* Inner circuit paths */}
-                    <path d="M 20 20 L 60 20 L 60 40 M 60 20 L 100 20" stroke="#00F2FF" strokeWidth="1" fill="none" opacity="0.3" />
-                    <path d="M 20 60 L 40 60 L 40 80 L 70 80" stroke="#00F2FF" strokeWidth="1" fill="none" opacity="0.3" />
+                    <path d="M 20 20 L 60 20 L 60 40 M 60 20 L 100 20" stroke="#7D5FFF" strokeWidth="1" fill="none" opacity="0.2" />
+                    <path d="M 20 60 L 40 60 L 40 80 L 70 80" stroke="#7D5FFF" strokeWidth="1" fill="none" opacity="0.2" />
                 </svg>
 
                 {/* Animated electricity flow */}
                 <motion.div
-                    className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-transparent via-cyan-400 to-transparent"
+                    className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-transparent via-electric-blue to-transparent opacity-60"
                     animate={{
                         y: ['-100%', '200%'],
                     }}
@@ -121,22 +121,22 @@ function CircuitCard({ tech, index }: { tech: any; index: number }) {
                 />
 
                 {/* Corner circuit nodes */}
-                <div className="absolute top-3 left-3 w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(0,242,255,0.8)]"></div>
-                <div className="absolute top-3 right-3 w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(0,242,255,0.8)]"></div>
-                <div className="absolute bottom-3 left-3 w-2 h-2 rounded-full bg-purple-400 shadow-[0_0_8px_rgba(125,95,255,0.8)]"></div>
-                <div className="absolute bottom-3 right-3 w-2 h-2 rounded-full bg-purple-400 shadow-[0_0_8px_rgba(125,95,255,0.8)]"></div>
+                <div className="absolute top-3 left-3 w-2 h-2 rounded-full bg-electric-blue shadow-[0_0_6px_rgba(125,95,255,0.5)]"></div>
+                <div className="absolute top-3 right-3 w-2 h-2 rounded-full bg-electric-blue shadow-[0_0_6px_rgba(125,95,255,0.5)]"></div>
+                <div className="absolute bottom-3 left-3 w-2 h-2 rounded-full bg-electric-blue shadow-[0_0_6px_rgba(125,95,255,0.5)]"></div>
+                <div className="absolute bottom-3 right-3 w-2 h-2 rounded-full bg-electric-blue shadow-[0_0_6px_rgba(125,95,255,0.5)]"></div>
 
                 {/* Content */}
                 <div className="relative z-10">
                     <div className="flex items-center gap-4 mb-4">
                         <motion.div
-                            className="w-14 h-14 rounded-lg bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center border border-cyan-500/40 shadow-[0_0_15px_rgba(0,242,255,0.3)]"
+                            className="w-14 h-14 rounded-lg bg-gradient-to-br from-electric-blue/10 to-purple-500/10 flex items-center justify-center border border-electric-blue/30 shadow-[0_0_10px_rgba(125,95,255,0.2)]"
                             whileHover={{
                                 rotate: 360,
                                 transition: { duration: 0.6 }
                             }}
                         >
-                            <tech.icon className="w-7 h-7 text-cyan-400" />
+                            <tech.icon className="w-7 h-7 text-electric-blue" />
                         </motion.div>
                         <h3 className="text-2xl font-bold text-white">{tech.title}</h3>
                     </div>
@@ -147,7 +147,7 @@ function CircuitCard({ tech, index }: { tech: any; index: number }) {
                 </div>
 
                 {/* Hover glow overlay */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/0 via-cyan-500/0 to-purple-500/0 group-hover:from-cyan-500/5 group-hover:via-purple-500/5 group-hover:to-cyan-500/5 transition-all duration-500 pointer-events-none rounded-xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-electric-blue/0 via-electric-blue/0 to-purple-500/0 group-hover:from-electric-blue/3 group-hover:via-purple-500/3 group-hover:to-electric-blue/3 transition-all duration-500 pointer-events-none rounded-xl"></div>
             </div>
         </motion.div>
     );
