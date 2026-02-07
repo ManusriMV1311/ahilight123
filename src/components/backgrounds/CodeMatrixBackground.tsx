@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-export function CodeMatrixBackground() {
+export const CodeMatrixBackground = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
@@ -12,78 +12,81 @@ export function CodeMatrixBackground() {
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
-        let animationFrameId: number;
-        let w = (canvas.width = window.innerWidth);
-        let h = (canvas.height = window.innerHeight);
+        // Set canvas size
+        const setCanvasSize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
+        setCanvasSize();
+        window.addEventListener("resize", setCanvasSize);
 
-        // Characters to use (mix of code symbols, numbers, and katakana for Matrix feel)
-        const chars = "XYZ0123456789<>[]{}/*-+=@#$%&";
+        // Matrix characters (Katala, binary, and alphanumeric mixed)
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@%&<>[]{}|=+*/XYZ";
         const charArray = chars.split("");
 
-        const fontSize = 14;
-        const columns = w / fontSize;
-        const drops: number[] = [];
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
 
-        // Initialize drops
+        // Array of drops - one per column
+        const drops: number[] = [];
         for (let i = 0; i < columns; i++) {
-            drops[i] = 1;
+            drops[i] = Math.random() * -100; // Start at random negative heights
         }
 
-        const draw = () => {
-            // Semi-transparent black to create trailing effect
-            // Using deep-navy tint instead of pure black for brand consistency
-            ctx.fillStyle = "rgba(2, 6, 23, 0.05)";
-            ctx.fillRect(0, 0, w, h);
+        // Brand colors
+        const colors = [
+            "#00f2ff", // Cyan
+            "#a855f7", // Purple
+            "#3b82f6", // Blue
+            "#ffffff"  // White head
+        ];
 
-            ctx.fillStyle = "#0f0"; // Green text
+        const draw = () => {
+            // Semi-transparent black to create trail effect
+            ctx.fillStyle = "rgba(10, 10, 26, 0.1)"; // Dark Navy tint
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
             ctx.font = `${fontSize}px monospace`;
 
             for (let i = 0; i < drops.length; i++) {
                 // Random character
                 const text = charArray[Math.floor(Math.random() * charArray.length)];
 
-                // Varied colors: Mostly Matrix Green, but some Cyan/Blue for Research theme
-                const isCyan = Math.random() > 0.9;
-                ctx.fillStyle = isCyan ? "#06b6d4" : "#22c55e"; // Cyan-500 or Green-500
+                // Color logic: Head of the drop is white/bright, tail fades
+                const isHead = Math.random() > 0.95;
+                if (isHead) {
+                    ctx.fillStyle = "#ffffff";
+                    ctx.shadowBlur = 8;
+                    ctx.shadowColor = "#ffffff";
+                } else {
+                    // Random brand color
+                    ctx.fillStyle = colors[Math.floor(Math.random() * (colors.length - 1))];
+                    ctx.shadowBlur = 0;
+                }
 
-                const x = i * fontSize;
-                const y = drops[i] * fontSize;
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-                ctx.fillText(text, x, y);
-
-                // Reset drop or increment y
-                if (y > h && Math.random() > 0.975) {
+                // Reset drop or move it down
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
                     drops[i] = 0;
                 }
                 drops[i]++;
             }
-
-            animationFrameId = requestAnimationFrame(draw);
+            requestAnimationFrame(draw);
         };
 
-        draw();
-
-        const handleResize = () => {
-            w = canvas.width = window.innerWidth;
-            h = canvas.height = window.innerHeight;
-            // Re-init drops on resize to avoid gaps
-            const newColumns = w / fontSize;
-            drops.length = 0;
-            for (let i = 0; i < newColumns; i++) drops[i] = 1;
-        };
-
-        window.addEventListener("resize", handleResize);
+        const animationId = requestAnimationFrame(draw);
 
         return () => {
-            cancelAnimationFrame(animationFrameId);
-            window.removeEventListener("resize", handleResize);
+            window.removeEventListener("resize", setCanvasSize);
+            cancelAnimationFrame(animationId);
         };
     }, []);
 
     return (
         <canvas
             ref={canvasRef}
-            className="fixed inset-0 z-0 bg-deep-navy pointer-events-none opacity-40"
+            className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-40 mix-blend-screen"
         />
     );
-}
+};
