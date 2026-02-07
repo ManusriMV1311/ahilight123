@@ -19,7 +19,7 @@ function FusionExplosion() {
     const particlesRef = useRef<THREE.Points>(null);
 
     const particleCount = 300;
-    const animationDuration = 7;
+    const animationDuration = 5;
 
     // Initial blob positions from all sides of screen
     const blobStartPositions = useMemo(() => [
