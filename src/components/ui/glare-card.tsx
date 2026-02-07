@@ -94,7 +94,7 @@ export const GlareCard = ({
                 onPointerMove={handlePointerMove}
                 onPointerEnter={handlePointerEnter}
                 onPointerLeave={handlePointerLeave}
-                className="h-full w-full bg-navy-card relative [transform-style:preserve-3d] rounded-2xl border border-white/10 overflow-hidden"
+                className="h-full w-full bg-transparent relative [transform-style:preserve-3d] rounded-2xl border border-white/10 overflow-hidden"
                 style={{
                     transform: `rotateY(${state.rotate.x}deg) rotateX(${state.rotate.y}deg)`,
                     transition: "transform 0.1s ease-out",
