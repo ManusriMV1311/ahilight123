@@ -1,86 +1,111 @@
 "use client";
 
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useLayoutEffect } from 'react';
 import * as THREE from 'three';
 import { SharedUniverse } from "./common/SharedUniverse";
-import { OrbitControls, Sphere } from '@react-three/drei';
 
-function Satellite({ radius, speed, angle, color, size }: { radius: number, speed: number, angle: number, color: string, size: number }) {
-    const meshRef = useRef<THREE.Mesh>(null);
+function FloatingCubes({ count = 100 }: { count?: number }) {
+    const meshRef = useRef<THREE.InstancedMesh>(null);
+    const lightRef = useRef<THREE.PointLight>(null);
+
+    // Generate random data for cubes
+    const { positions, rotations, scales, speeds, colors } = useMemo(() => {
+        const positions = new Float32Array(count * 3);
+        const rotations = new Float32Array(count * 3);
+        const scales = new Float32Array(count);
+        const speeds = new Float32Array(count);
+        const colorArray = new Float32Array(count * 3);
+
+        const palette = [
+            new THREE.Color('#06b6d4'), // Cyan
+            new THREE.Color('#3b82f6'), // Blue
+            new THREE.Color('#a855f7'), // Purple
+            new THREE.Color('#ffffff')  // White
+        ];
+
+        for (let i = 0; i < count; i++) {
+            // Spread widely
+            positions[i * 3] = (Math.random() - 0.5) * 20;     // x
+            positions[i * 3 + 1] = (Math.random() - 0.5) * 20; // y
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 10; // z
+
+            rotations[i * 3] = Math.random() * Math.PI;
+            rotations[i * 3 + 1] = Math.random() * Math.PI;
+            rotations[i * 3 + 2] = Math.random() * Math.PI;
+
+            scales[i] = 0.2 + Math.random() * 0.5;
+            speeds[i] = 0.2 + Math.random() * 0.5;
+
+            const color = palette[Math.floor(Math.random() * palette.length)];
+            color.toArray(colorArray, i * 3);
+        }
+
+        return { positions, rotations, scales, speeds, colors: colorArray };
+    }, [count]);
+
+    // Apply initial colors
+    useLayoutEffect(() => {
+        if (!meshRef.current) return;
+        for (let i = 0; i < count; i++) {
+            const color = new THREE.Color().fromArray(colors, i * 3);
+            meshRef.current.setColorAt(i, color);
+        }
+        meshRef.current.instanceColor!.needsUpdate = true;
+    }, [count, colors]);
+
+    const tempObject = new THREE.Object3D();
 
     useFrame((state) => {
         if (!meshRef.current) return;
-        const t = state.clock.getElapsedTime() * speed;
-        // Orbit logic
-        meshRef.current.position.x = Math.cos(t + angle) * radius;
-        meshRef.current.position.z = Math.sin(t + angle) * radius;
-        // Include some bobbing
-        meshRef.current.position.y = Math.sin(t * 2 + angle) * 0.5;
 
-        meshRef.current.rotation.y += 0.02;
+        const time = state.clock.elapsedTime;
+
+        // Move light
+        if (lightRef.current) {
+            lightRef.current.position.x = Math.sin(time * 0.5) * 5;
+            lightRef.current.position.y = Math.cos(time * 0.3) * 5;
+        }
+
+        for (let i = 0; i < count; i++) {
+            // Get current values
+            let y = positions[i * 3 + 1];
+
+            // Rise up logic
+            y += speeds[i] * 0.01;
+            // Reset if too high
+            if (y > 10) y = -10;
+            positions[i * 3 + 1] = y;
+
+            const x = positions[i * 3];
+            const z = positions[i * 3 + 2];
+
+            const rotX = rotations[i * 3] + time * speeds[i] * 0.5;
+            const rotY = rotations[i * 3 + 1] + time * speeds[i] * 0.3;
+
+            // Apply transform
+            tempObject.position.set(x, y, z);
+            tempObject.rotation.set(rotX, rotY, 0);
+            tempObject.scale.setScalar(scales[i]);
+
+            tempObject.updateMatrix();
+            meshRef.current.setMatrixAt(i, tempObject.matrix);
+        }
+        meshRef.current.instanceMatrix.needsUpdate = true;
     });
 
     return (
-        <mesh ref={meshRef}>
-            <sphereGeometry args={[size, 16, 16]} />
-            <meshStandardMaterial color={color} emissive={color} emissiveIntensity={2} roughness={0.1} />
-        </mesh>
-    );
-}
-
-function OrbitPath({ radius, color }: { radius: number, color: string }) {
-    return (
-        <mesh rotation={[-Math.PI / 2, 0, 0]}>
-            <ringGeometry args={[radius - 0.02, radius + 0.02, 64]} />
-            <meshBasicMaterial color={color} transparent opacity={0.1} side={THREE.DoubleSide} />
-        </mesh>
-    );
-}
-
-function CentralCore() {
-    return (
         <group>
-            {/* Core Sphere */}
-            <Sphere args={[1.5, 32, 32]}>
+            <pointLight ref={lightRef} intensity={2} distance={20} color="#06b6d4" />
+            <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
+                <boxGeometry args={[1, 1, 1]} />
                 <meshStandardMaterial
-                    color="#000000"
-                    emissive="#3b82f6" // Electric Blue
-                    emissiveIntensity={0.5}
-                    wireframe
+                    roughness={0.1}
+                    metalness={0.8}
                     transparent
-                    opacity={0.3}
+                    opacity={0.8}
                 />
-            </Sphere>
-            {/* Inner Glow */}
-            <Sphere args={[1.2, 32, 32]}>
-                <meshBasicMaterial color="#06b6d4" transparent opacity={0.1} />
-            </Sphere>
-        </group>
-    );
-}
-
-function SatellitesGroup() {
-    // Generate random satellites
-    const satellites = useMemo(() => {
-        return new Array(8).fill(0).map((_, i) => ({
-            radius: 3 + Math.random() * 4,
-            speed: 0.2 + Math.random() * 0.3,
-            angle: Math.random() * Math.PI * 2,
-            color: Math.random() > 0.5 ? '#06b6d4' : '#a855f7', // Cyan or Purple
-            size: 0.08 + Math.random() * 0.1
-        }));
-    }, []);
-
-    return (
-        <group rotation={[0.2, 0, 0.1]}>
-            <CentralCore />
-            {satellites.map((sat, i) => (
-                <group key={i}>
-                    <OrbitPath radius={sat.radius} color={sat.color} />
-                    <Satellite {...sat} />
-                </group>
-            ))}
+            </instancedMesh>
         </group>
     );
 }
@@ -88,15 +113,12 @@ function SatellitesGroup() {
 export function CareersBackground() {
     return (
         <div className="fixed inset-0 z-0 bg-deep-navy">
-            <Canvas camera={{ position: [0, 5, 12], fov: 45 }}>
-                <ambientLight intensity={0.5} />
-                <pointLight position={[10, 10, 10]} intensity={1} color="#ffffff" />
+            <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
+                <ambientLight intensity={0.2} />
                 <SharedUniverse />
-                <SatellitesGroup />
-                <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
+                <FloatingCubes />
             </Canvas>
-            <div className="absolute inset-0 bg-gradient-to-b from-deep-navy via-transparent to-deep-navy opacity-80" />
-            <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-deep-navy via-transparent to-deep-navy opacity-90" />
         </div>
     );
 }
