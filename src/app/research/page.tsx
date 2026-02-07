@@ -51,36 +51,28 @@ export default function ResearchPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto px-4">
                     {[
                         {
-                            title: "Byzantine General Solutions",
-                            category: "Consensus Algorithms",
-                            desc: "A novel approach to fault tolerance in asynchronous networks with <10ms latency.",
-                            readTime: "15 min read",
+                            title: "Optimizing Event Sourcing at Scale",
+                            category: "Technical Whitepaper",
+                            desc: "A deep dive into reducing latency in event-driven architectures using optimistic concurrency controls.",
+                            readTime: "Jan 2026",
                             icon: Atom,
                             color: "from-purple-500 to-indigo-600"
                         },
                         {
-                            title: "Homomorphic Encryption",
-                            category: "Cryptography",
-                            desc: "Processing encrypted data without decryption, enabling privacy-preserving analytics.",
-                            readTime: "22 min read",
+                            title: "The Future of Autonomous Cyber-Defense",
+                            category: "Technical Whitepaper",
+                            desc: "Exploring the role of generative agents in identifying and neutralizing zero-day exploits.",
+                            readTime: "Nov 2025",
                             icon: LockKeyhole,
                             color: "from-cyan-500 to-blue-600"
                         },
                         {
-                            title: "Self-Healing Meshes",
-                            category: "Distributed Systems",
-                            desc: "Biological-inspired protocols for network recovery and automated rerouting.",
-                            readTime: "18 min read",
+                            title: "Data Sovereignty in Multi-Cloud",
+                            category: "Technical Whitepaper",
+                            desc: "Strategies for maintaining compliance and control over data resident in disparate public cloud infrastructures.",
+                            readTime: "Sep 2025",
                             icon: Microscope,
                             color: "from-emerald-500 to-teal-600"
-                        },
-                        {
-                            title: "Quantum-Resistant Ledger",
-                            category: "Security",
-                            desc: "Preparing for the post-quantum era with lattice-based cryptographic signatures.",
-                            readTime: "25 min read",
-                            icon: FlaskConical,
-                            color: "from-pink-500 to-rose-600"
                         }
                     ].map((paper, i) => (
                         <motion.div
