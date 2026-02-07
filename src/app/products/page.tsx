@@ -1,6 +1,5 @@
 "use client"
 
-import { ProductsBackground } from "@/components/backgrounds/ProductsBackground";
 import { DomainApproach } from "@/components/sections/domain-approach"
 import { useState, useEffect } from "react";
 
