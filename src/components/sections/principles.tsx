@@ -1,6 +1,7 @@
 "use client"
 
 import { Section } from "@/components/ui/section"
+import { motion } from "framer-motion"
 
 export function Principles() {
     return (
@@ -24,7 +25,13 @@ export function Principles() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
 
                     {/* Large Card */}
-                    <div className="md:col-span-2 bg-navy-card p-10 rounded-2xl border border-white/5 hover:border-electric-blue/50 transition-colors group text-left flex flex-col justify-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: false }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
+                        className="md:col-span-2 bg-navy-card p-10 rounded-2xl border border-white/5 hover:border-electric-blue/50 transition-colors group text-left flex flex-col justify-center"
+                    >
                         <span className="text-xs font-bold text-electric-blue uppercase tracking-widest bg-electric-blue/10 px-2 py-1 rounded inline-block mb-6 w-fit">
                             First Principles
                         </span>
@@ -32,22 +39,34 @@ export function Principles() {
                         <p className="text-slate-400 text-lg leading-relaxed">
                             It&apos;s a mathematical property of correct systems. We don&apos;t build by assembling off-the-shelf components and hoping they hold together. We engineer from the ground up for absolute correctness.
                         </p>
-                    </div>
+                    </motion.div>
 
                     {/* Stacked Cards */}
                     <div className="flex flex-col gap-6">
-                        <div className="bg-navy-card p-8 rounded-2xl border border-white/5 hover:border-electric-blue/50 transition-colors group text-left flex-1">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: false }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            className="bg-navy-card p-8 rounded-2xl border border-white/5 hover:border-electric-blue/50 transition-colors group text-left flex-1"
+                        >
                             <h3 className="text-xl font-bold text-white mb-2 group-hover:text-electric-blue transition-colors">Research First</h3>
                             <p className="text-slate-400 text-sm leading-relaxed">
                                 We solve hard problems through fundamental research. If the answer doesn&apos;t exist, we write the paper.
                             </p>
-                        </div>
-                        <div className="bg-navy-card p-8 rounded-2xl border border-white/5 hover:border-electric-blue/50 transition-colors group text-left flex-1">
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: false }}
+                            transition={{ duration: 0.5, delay: 0.3 }}
+                            className="bg-navy-card p-8 rounded-2xl border border-white/5 hover:border-electric-blue/50 transition-colors group text-left flex-1"
+                        >
                             <h3 className="text-xl font-bold text-white mb-2 group-hover:text-electric-blue transition-colors">Domain Agnostic</h3>
                             <p className="text-slate-400 text-sm leading-relaxed">
                                 Good architecture applies everywhere. From security to logistics.
                             </p>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>

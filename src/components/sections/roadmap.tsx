@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Section } from "@/components/ui/section";
-import { TracingBeam } from "@/components/ui/tracing-beam";
+import { HorizontalTracingBeam } from "@/components/ui/horizontal-tracing-beam";
 import { motion } from "framer-motion";
 
 const quarters = [
@@ -33,7 +33,7 @@ const quarters = [
 
 export function Roadmap() {
     return (
-        <Section background="navy-gradient" className="py-24 relative overflow-hidden">
+        <Section background="navy-gradient" className="py-24 relative overflow-visible">
             {/* Grid Background */}
             <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:30px_30px] pointer-events-none" />
 
@@ -41,7 +41,7 @@ export function Roadmap() {
                 Where We're <span className="text-electric-blue">Going</span>
             </h2>
 
-            <TracingBeam className="px-6">
+            <HorizontalTracingBeam className="px-6">
                 <div className="max-w-2xl mx-auto antialiased pt-4 pb-20 relative">
                     {quarters.map((q, idx) => (
                         <div key={idx} className="mb-12 relative group">
@@ -64,7 +64,7 @@ export function Roadmap() {
                         </div>
                     ))}
                 </div>
-            </TracingBeam>
+            </HorizontalTracingBeam>
         </Section>
     );
 }
