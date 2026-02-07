@@ -135,29 +135,27 @@ function FloatingLetter({
     const textRef = useRef<any>(null);
     const noise3D = useMemo(() => createNoise3D(), []); // Independent noise for each letter
     const [hasConverged, setHasConverged] = useState(false);
-    const [shouldReset, setShouldReset] = useState(false);
+    const [isFirstCycle, setIsFirstCycle] = useState(true);
 
     // Spring animation for convergence with looping
     const { position } = useSpring({
         from: { position: startPosition },
         to: { position: endPosition },
-        delay: delay,
+        delay: isFirstCycle ? delay : 0, // Only stagger on first cycle, simultaneous departure on loops
         config: {
             ...config.molasses, // Very slow, organic feel
             tension: 20,
-            friction: 60, // Slight higher friction to avoid too much overshoot
-            duration: 5000 // Explicit duration fallback
+            friction: 60,
+            duration: 5000
         },
-        reset: shouldReset,
+        reset: !isFirstCycle && !hasConverged,
         onRest: () => {
             setHasConverged(true);
-            // Wait 3 seconds at final position, then reset to start looping again
+            // Wait 8 seconds at final position before looping
             setTimeout(() => {
                 setHasConverged(false);
-                setShouldReset(true);
-                // Clear reset flag after triggering
-                setTimeout(() => setShouldReset(false), 50);
-            }, 3000);
+                setIsFirstCycle(false); // Mark that we're now looping
+            }, 8000);
         }
     });
 
