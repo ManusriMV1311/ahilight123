@@ -10,7 +10,7 @@ function FlowingParticles() {
     const particleCount = 3000;
 
     // Generate random positions in a sphere
-    const positions = random.inSphere(new Float32Array(particleCount * 3), { radius: 15 });
+    const positions = random.inSphere(new Float32Array(particleCount * 3), { radius: 15 }) as Float32Array;
 
     useFrame((state) => {
         if (!particlesRef.current) return;
