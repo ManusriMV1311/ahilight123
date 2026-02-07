@@ -225,17 +225,15 @@ export function DomainApproach({ onAnimationComplete }: { onAnimationComplete?: 
                                 <motion.div
                                     key={i}
                                     animate={{
-                                        x: ['50vw', `${endX}vw`, '50vw'], // Return to center
-                                        y: ['50vh', `${endY}vh`, '50vh'],
-                                        opacity: [0, 1, 0.9, 0],
-                                        scale: [0, 1.5, 1.2, 0]
+                                        x: ['50vw', `${endX}vw`],
+                                        y: ['50vh', `${endY}vh`],
+                                        opacity: [0, 1, 0],
+                                        scale: [0, 1.5, 0]
                                     }}
                                     transition={{
                                         duration: duration,
                                         delay: delay,
-                                        repeat: Infinity,
-                                        repeatDelay: 2,
-                                        ease: [0.34, 1.56, 0.64, 1] // Bouncy easing
+                                        ease: "easeOut"
                                     }}
                                     className={`absolute rounded-full ${color}`}
                                     style={{
