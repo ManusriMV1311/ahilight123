@@ -1,4 +1,5 @@
 "use client";
+// Force rebuild: Research Page Fix
 
 import { CodeMatrixBackground } from "@/components/backgrounds/CodeMatrixBackground";
 import { Section } from "@/components/ui/section";
