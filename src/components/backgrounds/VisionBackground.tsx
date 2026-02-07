@@ -135,8 +135,9 @@ function FloatingLetter({
     const textRef = useRef<any>(null);
     const noise3D = useMemo(() => createNoise3D(), []); // Independent noise for each letter
     const [hasConverged, setHasConverged] = useState(false);
+    const [shouldReset, setShouldReset] = useState(false);
 
-    // Spring animation for convergence
+    // Spring animation for convergence with looping
     const { position } = useSpring({
         from: { position: startPosition },
         to: { position: endPosition },
@@ -147,7 +148,17 @@ function FloatingLetter({
             friction: 60, // Slight higher friction to avoid too much overshoot
             duration: 5000 // Explicit duration fallback
         },
-        onRest: () => setHasConverged(true)
+        reset: shouldReset,
+        onRest: () => {
+            setHasConverged(true);
+            // Wait 3 seconds at final position, then reset to start looping again
+            setTimeout(() => {
+                setHasConverged(false);
+                setShouldReset(true);
+                // Clear reset flag after triggering
+                setTimeout(() => setShouldReset(false), 50);
+            }, 3000);
+        }
     });
 
     // Continuous floating motion logic
