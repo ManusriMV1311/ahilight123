@@ -5,17 +5,68 @@ import { useEffect, useRef, useState, useMemo } from "react";
 import { Text } from "@react-three/drei";
 import * as THREE from "three";
 
-// Flowing data streams component
-function DataStreams() {
-    const groupRef = useRef<THREE.Group>(null);
-    const streamCount = 15;
+interface Equation {
+    text: string;
+    position: [number, number, number];
+    rotation: [number, number, number];
+    velocity: { x: number; y: number; z: number };
+    rotationSpeed: { x: number; y: number; z: number };
+    scale: number;
+    highlighted: boolean;
+}
 
-    const streams = useMemo(() => {
-        return Array.from({ length: streamCount }, (_, i) => ({
-            x: (Math.random() - 0.5) * 30,
-            z: (Math.random() - 0.5) * 20,
-            speed: 0.05 + Math.random() * 0.1,
-            offset: Math.random() * 100,
+function FloatingEquations() {
+    const groupRef = useRef<THREE.Group>(null);
+    const equationCount = 40;
+
+    const equations = useMemo<Equation[]>(() => {
+        const formulas = [
+            "E = mc²",
+            "∂u/∂t = ∇²u",
+            "∫∫∫ f(x,y,z) dV",
+            "∇·E = ρ/ε₀",
+            "H(x) = -Σ p(x)log p(x)",
+            "f(x) = σ(Wx + b)",
+            "||x||₂ = √(Σxᵢ²)",
+            "∇f(x) = ∂f/∂x",
+            "P(A|B) = P(B|A)P(A)/P(B)",
+            "L = -Σ yᵢlog(ŷᵢ)",
+            "det(A) = Σ aᵢⱼCᵢⱼ",
+            "∇×B = μ₀J",
+            "ℏω = E₂ - E₁",
+            "ψ(x,t) = Ae^i(kx-ωt)",
+            "∂²ψ/∂x² + k²ψ = 0",
+            "F = ma",
+            "Tr(AB) = Σ aᵢⱼbⱼᵢ",
+            "∇·(∇f) = ∇²f",
+            "δ(x) = ∫ e^(ikx)dk/2π",
+            "λ = h/p",
+        ];
+
+        return Array.from({ length: equationCount }, (_, i) => ({
+            text: formulas[i % formulas.length],
+            position: [
+                (Math.random() - 0.5) * 30,
+                (Math.random() - 0.5) * 20,
+                (Math.random() - 0.5) * 25 - 5,
+            ] as [number, number, number],
+            rotation: [
+                Math.random() * Math.PI,
+                Math.random() * Math.PI,
+                Math.random() * Math.PI,
+            ] as [number, number, number],
+            velocity: {
+                x: (Math.random() - 0.5) * 0.01,
+                y: (Math.random() - 0.5) * 0.01,
+                z: (Math.random() - 0.5) * 0.005,
+            },
+            rotationSpeed: {
+                x: (Math.random() - 0.5) * 0.002,
+                y: (Math.random() - 0.5) * 0.002,
+                z: (Math.random() - 0.5) * 0.002,
+            },
+            scale: 0.8 + Math.random() * 0.6,
+            highlighted: Math.random() > 0.85,
         }));
     }, []);
 
@@ -24,180 +75,105 @@ function DataStreams() {
         const time = state.clock.getElapsedTime();
 
         groupRef.current.children.forEach((child, i) => {
-            const stream = streams[i];
-            child.position.y = ((time * stream.speed + stream.offset) % 20) - 10;
-            child.rotation.y = time * 0.2;
+            const eq = equations[i];
+
+            // Update position
+            child.position.x += eq.velocity.x;
+            child.position.y += eq.velocity.y;
+            child.position.z += eq.velocity.z;
+
+            // Update rotation
+            child.rotation.x += eq.rotationSpeed.x;
+            child.rotation.y += eq.rotationSpeed.y;
+            child.rotation.z += eq.rotationSpeed.z;
+
+            // Add gentle wave motion
+            child.position.y += Math.sin(time * 0.5 + i * 0.3) * 0.002;
+
+            // Boundary wrapping
+            if (Math.abs(child.position.x) > 20) eq.velocity.x *= -1;
+            if (Math.abs(child.position.y) > 12) eq.velocity.y *= -1;
+            if (child.position.z > 10) eq.velocity.z = -Math.abs(eq.velocity.z);
+            if (child.position.z < -20) eq.velocity.z = Math.abs(eq.velocity.z);
+
+            // Occasional highlight toggle
+            if (Math.random() > 0.998) {
+                eq.highlighted = !eq.highlighted;
+            }
         });
     });
 
     return (
         <group ref={groupRef}>
-            {streams.map((stream, i) => (
+            {equations.map((eq, i) => (
                 <Text
                     key={i}
-                    position={[stream.x, 0, stream.z]}
-                    fontSize={0.3}
-                    color="#00F2FF"
+                    position={eq.position}
+                    rotation={eq.rotation}
+                    fontSize={0.5 * eq.scale}
+                    color={eq.highlighted ? "#00F2FF" : "#E0E0E0"}
                     anchorX="center"
                     anchorY="middle"
-                    opacity={0.4}
+                    outlineWidth={eq.highlighted ? 0.02 : 0}
+                    outlineColor={eq.highlighted ? "#7D5FFF" : "#000000"}
+                    fillOpacity={eq.highlighted ? 0.9 : 0.4}
+                    font="/fonts/FiraMono-Regular.ttf"
                 >
-                    {Math.random() > 0.5 ? "01010101" : "AI//SYS"}
+                    {eq.text}
                 </Text>
             ))}
         </group>
     );
 }
 
-// Morphing geometric wireframes
-function GeometricStructures() {
-    const meshRefs = useRef<THREE.Mesh[]>([]);
+// Connection lines between related equations
+function EquationConnections() {
+    const linesRef = useRef<THREE.Group>(null);
+    const connectionCount = 8;
 
-    const structures = useMemo(() => [
-        { geometry: new THREE.IcosahedronGeometry(2, 0), position: [-8, 2, -5] },
-        { geometry: new THREE.OctahedronGeometry(1.5), position: [8, -3, -8] },
-        { geometry: new THREE.TetrahedronGeometry(1.8), position: [0, 4, -10] },
-        { geometry: new THREE.TorusGeometry(1.5, 0.3, 16, 32), position: [-5, -4, -6] },
-    ], []);
+    const connections = useMemo(() => {
+        return Array.from({ length: connectionCount }, () => ({
+            start: [
+                (Math.random() - 0.5) * 20,
+                (Math.random() - 0.5) * 15,
+                (Math.random() - 0.5) * 20,
+            ],
+            end: [
+                (Math.random() - 0.5) * 20,
+                (Math.random() - 0.5) * 15,
+                (Math.random() - 0.5) * 20,
+            ],
+            phase: Math.random() * Math.PI * 2,
+        }));
+    }, []);
 
     useFrame((state) => {
+        if (!linesRef.current) return;
         const time = state.clock.getElapsedTime();
 
-        meshRefs.current.forEach((mesh, i) => {
-            if (!mesh) return;
-            mesh.rotation.x = time * 0.3 * (i % 2 === 0 ? 1 : -1);
-            mesh.rotation.y = time * 0.2;
-            mesh.position.y += Math.sin(time + i) * 0.003;
+        linesRef.current.children.forEach((child, i) => {
+            const material = (child as THREE.Line).material as THREE.LineBasicMaterial;
+            const conn = connections[i];
+            material.opacity = 0.1 + Math.sin(time + conn.phase) * 0.1;
         });
     });
 
     return (
-        <>
-            {structures.map((struct, i) => (
-                <mesh
-                    key={i}
-                    ref={(el) => {
-                        if (el) meshRefs.current[i] = el;
-                    }}
-                    geometry={struct.geometry}
-                    position={struct.position as [number, number, number]}
-                >
-                    <meshBasicMaterial color="#7D5FFF" wireframe opacity={0.3} transparent />
-                </mesh>
-            ))}
-        </>
-    );
-}
+        <group ref={linesRef}>
+            {connections.map((conn, i) => {
+                const points = [
+                    new THREE.Vector3(...conn.start),
+                    new THREE.Vector3(...conn.end),
+                ];
+                const geometry = new THREE.BufferGeometry().setFromPoints(points);
 
-// Pulsing energy pathways
-function EnergyPathways() {
-    const linesRef = useRef<THREE.Line[]>([]);
-
-    const pathways = useMemo(() => {
-        const paths = [];
-        for (let i = 0; i < 20; i++) {
-            const points = [];
-            const startX = (Math.random() - 0.5) * 20;
-            const startY = (Math.random() - 0.5) * 10;
-            const startZ = (Math.random() - 0.5) * 15;
-
-            for (let j = 0; j < 10; j++) {
-                points.push(
-                    new THREE.Vector3(
-                        startX + Math.sin(j * 0.5) * 2,
-                        startY + j * 0.5,
-                        startZ + Math.cos(j * 0.5) * 2
-                    )
+                return (
+                    <line key={i} geometry={geometry}>
+                        <lineBasicMaterial color="#7D5FFF" transparent opacity={0.15} />
+                    </line>
                 );
-            }
-
-            const geometry = new THREE.BufferGeometry().setFromPoints(points);
-            paths.push({ geometry, phase: Math.random() * Math.PI * 2 });
-        }
-        return paths;
-    }, []);
-
-    useFrame((state) => {
-        const time = state.clock.getElapsedTime();
-
-        linesRef.current.forEach((line, i) => {
-            if (!line) return;
-            const material = line.material as THREE.LineBasicMaterial;
-            const pathway = pathways[i];
-            material.opacity = 0.2 + Math.sin(time * 2 + pathway.phase) * 0.2;
-        });
-    });
-
-    return (
-        <>
-            {pathways.map((pathway, i) => (
-                <line key={i} geometry={pathway.geometry} ref={(el) => { if (el) linesRef.current[i] = el; }}>
-                    <lineBasicMaterial color="#00F2FF" transparent opacity={0.3} />
-                </line>
-            ))}
-        </>
-    );
-}
-
-// Particle field with connections
-function ParticleField() {
-    const particlesRef = useRef<THREE.Points>(null);
-    const connectionLinesRef = useRef<THREE.LineSegments>(null);
-    const particleCount = 200;
-
-    const particles = useMemo(() => {
-        const positions = new Float32Array(particleCount * 3);
-        const velocities = [];
-
-        for (let i = 0; i < particleCount; i++) {
-            positions[i * 3] = (Math.random() - 0.5) * 25;
-            positions[i * 3 + 1] = (Math.random() - 0.5) * 15;
-            positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
-
-            velocities.push({
-                x: (Math.random() - 0.5) * 0.02,
-                y: (Math.random() - 0.5) * 0.02,
-                z: (Math.random() - 0.5) * 0.02,
-            });
-        }
-
-        return { positions, velocities };
-    }, []);
-
-    useFrame(() => {
-        if (!particlesRef.current) return;
-
-        const positions = particlesRef.current.geometry.attributes.position.array as Float32Array;
-
-        for (let i = 0; i < particleCount; i++) {
-            const i3 = i * 3;
-            const vel = particles.velocities[i];
-
-            positions[i3] += vel.x;
-            positions[i3 + 1] += vel.y;
-            positions[i3 + 2] += vel.z;
-
-            // Boundary check - wrap around
-            if (Math.abs(positions[i3]) > 15) vel.x *= -1;
-            if (Math.abs(positions[i3 + 1]) > 10) vel.y *= -1;
-            if (Math.abs(positions[i3 + 2]) > 12) vel.z *= -1;
-        }
-
-        particlesRef.current.geometry.attributes.position.needsUpdate = true;
-    });
-
-    return (
-        <points ref={particlesRef}>
-            <bufferGeometry>
-                <bufferAttribute
-                    attach="attributes-position"
-                    count={particleCount}
-                    array={particles.positions}
-                    itemSize={3}
-                />
-            </bufferGeometry>
-            <pointsMaterial size={0.08} color="#7D5FFF" transparent opacity={0.6} sizeAttenuation />
-        </points>
+            })}
+        </group>
     );
 }
 
@@ -213,14 +189,12 @@ export function AboutFlowingBackground() {
     return (
         <div className="fixed inset-0 -z-10">
             <Canvas
-                camera={{ position: [0, 0, 15], fov: 75 }}
+                camera={{ position: [0, 0, 12], fov: 75 }}
                 style={{ background: 'transparent' }}
             >
-                <ambientLight intensity={0.2} />
-                <DataStreams />
-                <GeometricStructures />
-                <EnergyPathways />
-                <ParticleField />
+                <ambientLight intensity={0.3} />
+                <FloatingEquations />
+                <EquationConnections />
             </Canvas>
         </div>
     );
