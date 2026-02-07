@@ -8,6 +8,7 @@ import { TypewriterEffect } from "@/components/ui/typewriter-effect"
 import { Button } from "@/components/ui/button"
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { DigitalGridBackground } from "@/components/backgrounds/DigitalGridBackground"
 
 export function DomainApproach({ onAnimationComplete }: { onAnimationComplete?: (complete: boolean) => void }) {
     const [showAhiLight, setShowAhiLight] = useState(false);
