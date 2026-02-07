@@ -2,33 +2,11 @@
 
 import { NeuralNetworkBackground } from "@/components/backgrounds/NeuralNetworkBackground";
 import { Section } from "@/components/ui/section";
-import { FileText, Microscope, FlaskConical, Atom, Download } from "lucide-react";
+import { FileText, Microscope, FlaskConical, Atom, Download, LockKeyhole } from "lucide-react";
 import { motion } from "framer-motion";
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 import { GlareCard } from "@/components/ui/glare-card";
 import { Button } from "@/components/ui/button";
-
-// Helper component for Lock icon to fix import error
-function LockKeyhole(props: any) {
-    return (
-        <svg
-            {...props}
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        >
-            <circle cx="12" cy="16" r="1" />
-            <rect x="3" y="10" width="18" height="12" rx="2" />
-            <path d="M7 10V7a5 5 0 0 1 10 0v3" />
-        </svg>
-    )
-}
 
 export default function ResearchPage() {
     return (
@@ -68,56 +46,90 @@ export default function ResearchPage() {
                 </div>
             </Section>
 
-            {/* Publications List */}
-            <Section className="">
-                <div className="max-w-4xl mx-auto space-y-6">
+            {/* Research Papers Grid */}
+            <Section className="relative z-10 pb-32">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto px-4">
                     {[
                         {
-                            title: "Optimizing Event Sourcing at Scale",
-                            date: "Jan 2026",
-                            abstract: "A deep dive into reducing latency in event-driven architectures using optimistic concurrency controls."
+                            title: "Byzantine General Solutions",
+                            category: "Consensus Algorithms",
+                            desc: "A novel approach to fault tolerance in asynchronous networks with <10ms latency.",
+                            readTime: "15 min read",
+                            icon: Atom,
+                            color: "from-purple-500 to-indigo-600"
                         },
                         {
-                            title: "The Future of Autonomous Cyber-Defense",
-                            date: "Nov 2025",
-                            abstract: "Exploring the role of generative agents in identifying and neutralizing zero-day exploits."
+                            title: "Homomorphic Encryption",
+                            category: "Cryptography",
+                            desc: "Processing encrypted data without decryption, enabling privacy-preserving analytics.",
+                            readTime: "22 min read",
+                            icon: LockKeyhole,
+                            color: "from-cyan-500 to-blue-600"
                         },
                         {
-                            title: "Data Sovereignty in Multi-Cloud Environments",
-                            date: "Sep 2025",
-                            abstract: "Strategies for maintaining compliance and control over data resident in disparate public cloud infrastructures."
+                            title: "Self-Healing Meshes",
+                            category: "Distributed Systems",
+                            desc: "Biological-inspired protocols for network recovery and automated rerouting.",
+                            readTime: "18 min read",
+                            icon: Microscope,
+                            color: "from-emerald-500 to-teal-600"
+                        },
+                        {
+                            title: "Quantum-Resistant Ledger",
+                            category: "Security",
+                            desc: "Preparing for the post-quantum era with lattice-based cryptographic signatures.",
+                            readTime: "25 min read",
+                            icon: FlaskConical,
+                            color: "from-pink-500 to-rose-600"
                         }
                     ].map((paper, i) => (
                         <motion.div
                             key={i}
-                            initial={{ opacity: 0, x: -10 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: i * 0.1 }}
-                            className="bg-slate-900 border border-slate-800 p-6 rounded-xl transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-electric-blue/20 hover:bg-electric-blue hover:border-electric-blue hover:text-white group"
+                            transition={{ delay: i * 0.1, duration: 0.6 }}
+                            className="h-full"
                         >
-                            <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
-                                <div>
-                                    <div className="flex items-center gap-2 mb-2">
-                                        <FileText className="w-5 h-5 text-electric-blue" />
-                                        <h3 className="text-xl font-bold text-white">{paper.title}</h3>
-                                    </div>
-                                    <p className="text-slate-400 mb-2 group-hover:text-white/90">{paper.abstract}</p>
-                                    <span className="text-sm text-slate-500 font-mono group-hover:text-white/70">{paper.date} • Technical Whitepaper</span>
+                            <GlareCard className="flex flex-col h-full bg-navy-card/40 backdrop-blur-xl border border-white/10 p-1 relative overflow-hidden group">
+                                {/* Scientific Corner Decals */}
+                                <div className="absolute top-4 right-4 text-xs font-mono text-white/40 border border-white/10 px-2 py-1 rounded">
+                                    RES-{1000 + i}
                                 </div>
-                                <Button
-                                    size="sm"
-                                    className="shrink-0 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold hover:shadow-lg hover:shadow-electric-blue/50 transition-all border-none"
-                                    onClick={() => window.open(`/research/${paper.title.toLowerCase().replace(/\s+/g, '-')}.pdf`, '_blank')}
-                                >
-                                    <Download className="w-4 h-4 mr-2" /> PDF
-                                </Button>
-                            </div>
+                                <div className={`absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr ${paper.color} opacity-10 blur-2xl group-hover:opacity-30 transition-opacity duration-500`} />
+
+                                <div className="h-full w-full bg-deep-navy/60 p-8 rounded-[14px] flex flex-col relative z-10">
+                                    <div className="flex items-start justify-between mb-6">
+                                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${paper.color} p-[1px] shadow-lg`}>
+                                            <div className="w-full h-full bg-deep-navy rounded-xl flex items-center justify-center">
+                                                <paper.icon className="w-6 h-6 text-white" />
+                                            </div>
+                                        </div>
+                                        <span className="text-xs font-mono text-electric-blue bg-electric-blue/10 px-3 py-1 rounded-full border border-electric-blue/20">
+                                            {paper.readTime}
+                                        </span>
+                                    </div>
+
+                                    <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-2">{paper.category}</h4>
+
+                                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-300 transition-all">
+                                        {paper.title}
+                                    </h3>
+
+                                    <p className="text-slate-300 leading-relaxed text-base mb-8 flex-grow">
+                                        {paper.desc}
+                                    </p>
+
+                                    <Button variant="outline" className="w-full border-white/10 hover:bg-white/5 hover:text-white group-hover:border-white/30 transition-all">
+                                        <FileText className="w-4 h-4 mr-2" />
+                                        Read Paper
+                                    </Button>
+                                </div>
+                            </GlareCard>
                         </motion.div>
                     ))}
                 </div>
             </Section>
         </div>
-        </div >
     );
 }
