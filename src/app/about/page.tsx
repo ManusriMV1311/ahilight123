@@ -1,6 +1,11 @@
 "use client";
 
-import { AboutFlowingBackground } from "@/components/backgrounds/AboutFlowingBackground";
+import dynamic from "next/dynamic";
+
+const AboutFlowingBackground = dynamic(
+    () => import("@/components/backgrounds/AboutFlowingBackground").then(mod => ({ default: mod.AboutFlowingBackground })),
+    { ssr: false }
+);
 
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 import { Section } from "@/components/ui/section";
