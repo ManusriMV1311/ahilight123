@@ -57,6 +57,18 @@ function FusionExplosion() {
         });
     }, []);
 
+    const particlePositions = useMemo(() =>
+        new Float32Array(particleCount * 3).fill(0),
+        []);
+
+    const particleColors = useMemo(() =>
+        new Float32Array(particles.flatMap(p => [p.color.r, p.color.g, p.color.b])),
+        [particles]);
+
+    const particleSizes = useMemo(() =>
+        new Float32Array(particles.map(p => p.size)),
+        [particles]);
+
     // Initialize particle geometry attributes
     useEffect(() => {
         if (particlesRef.current) {
@@ -213,18 +225,6 @@ function FusionExplosion() {
             });
         }
     });
-
-    const particlePositions = useMemo(() =>
-        new Float32Array(particleCount * 3).fill(0),
-        []);
-
-    const particleColors = useMemo(() =>
-        new Float32Array(particles.flatMap(p => [p.color.r, p.color.g, p.color.b])),
-        [particles]);
-
-    const particleSizes = useMemo(() =>
-        new Float32Array(particles.map(p => p.size)),
-        [particles]);
 
     return (
         <>
