@@ -39,15 +39,15 @@ export function DomainApproach({ onAnimationComplete }: { onAnimationComplete?: 
             setShowAhiLight(false); // Hide text
         }, 3800);
 
+        // Start floating balls AFTER cards - emanating from center
+        setTimeout(() => {
+            setShowFloatingBalls(true);
+        }, 4200);
+
         // Animation complete - show rest of page
         setTimeout(() => {
             onAnimationComplete?.(true);
         }, 5000);
-
-        // Start floating balls loop
-        setTimeout(() => {
-            setShowFloatingBalls(true);
-        }, 5500);
     }, []);
 
     return (
@@ -204,14 +204,15 @@ export function DomainApproach({ onAnimationComplete }: { onAnimationComplete?: 
             <AnimatePresence>
                 {showFloatingBalls && (
                     <div className="fixed inset-0 pointer-events-none z-40 overflow-hidden">
-                        {Array.from({ length: 12 }).map((_, i) => {
-                            const startX = Math.random() * 100;
-                            const startY = 100 + Math.random() * 20;
-                            const endX = startX + (Math.random() - 0.5) * 40;
-                            const endY = -10 - Math.random() * 10;
-                            const delay = i * 0.8;
-                            const duration = 4 + Math.random() * 2;
-                            const size = 8 + Math.random() * 12;
+                        {Array.from({ length: 15 }).map((_, i) => {
+                            // Burst outward from center in all directions
+                            const angle = (i / 15) * Math.PI * 2 + Math.random() * 0.2;
+                            const distance = 35 + Math.random() * 15; // Farther distance
+                            const endX = 50 + Math.cos(angle) * distance;
+                            const endY = 50 + Math.sin(angle) * distance;
+                            const delay = i * 0.08; // Faster stagger
+                            const duration = 2 + Math.random() * 1; // Faster animation
+                            const size = 6 + Math.random() * 10;
                             const colors = [
                                 'bg-gradient-to-br from-purple-500 to-blue-500',
                                 'bg-gradient-to-br from-cyan-400 to-blue-600',
@@ -223,31 +224,25 @@ export function DomainApproach({ onAnimationComplete }: { onAnimationComplete?: 
                             return (
                                 <motion.div
                                     key={i}
-                                    initial={{
-                                        x: `${startX}vw`,
-                                        y: `${startY}vh`,
-                                        opacity: 0,
-                                        scale: 0
-                                    }}
                                     animate={{
-                                        x: [`${startX}vw`, `${endX}vw`],
-                                        y: [`${startY}vh`, `${endY}vh`],
-                                        opacity: [0, 0.8, 0.6, 0],
-                                        scale: [0, 1, 1, 0.5]
+                                        x: ['50vw', `${endX}vw`, '50vw'], // Return to center
+                                        y: ['50vh', `${endY}vh`, '50vh'],
+                                        opacity: [0, 1, 0.9, 0],
+                                        scale: [0, 1.5, 1.2, 0]
                                     }}
                                     transition={{
                                         duration: duration,
                                         delay: delay,
                                         repeat: Infinity,
-                                        repeatDelay: 1,
-                                        ease: "easeOut"
+                                        repeatDelay: 2,
+                                        ease: [0.34, 1.56, 0.64, 1] // Bouncy easing
                                     }}
                                     className={`absolute rounded-full ${color}`}
                                     style={{
                                         width: `${size}px`,
                                         height: `${size}px`,
-                                        boxShadow: `0 0 ${size * 2}px rgba(125, 95, 255, 0.5)`,
-                                        filter: 'blur(1px)'
+                                        boxShadow: `0 0 ${size * 3}px rgba(125, 95, 255, 0.6)`,
+                                        filter: 'blur(0.5px)'
                                     }}
                                 />
                             );
