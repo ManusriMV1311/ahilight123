@@ -13,6 +13,8 @@ export default function ProductsPage() {
             if (animationComplete) {
                 footer.style.opacity = '1';
                 footer.style.transform = 'translateY(0)';
+                footer.style.position = 'relative';
+                footer.style.zIndex = '50';
                 footer.style.transition = 'all 0.6s ease';
             } else {
                 footer.style.opacity = '0';
