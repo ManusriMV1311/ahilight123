@@ -152,17 +152,7 @@ function CausticParticle({ position, index }: { position: [number, number, numbe
 export function ProductsBackground() {
     const [mounted, setMounted] = useState(false);
 
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    if (!mounted) return (
-        <div className="fixed inset-0 z-0 bg-black">
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50" />
-        </div>
-    );
-
-    // Generate caustic particles
+    // Generate caustic particles - must be before any conditional returns
     const causticParticles = useMemo(() => {
         const particles = [];
         for (let i = 0; i < 30; i++) {
@@ -179,12 +169,22 @@ export function ProductsBackground() {
     }, []);
 
     // Ripple source positions
-    const rippleSources: [number, number, number][] = [
+    const rippleSources: [number, number, number][] = useMemo(() => [
         [5, 0.5, -3],
         [-7, 0.5, 5],
         [3, 0.5, 8],
         [-8, 0.5, -6],
-    ];
+    ], []);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted) return (
+        <div className="fixed inset-0 z-0 bg-black">
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50" />
+        </div>
+    );
 
     return (
         <div className="fixed inset-0 z-0 bg-black">
