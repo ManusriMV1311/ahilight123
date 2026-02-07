@@ -5,15 +5,7 @@ import { Box } from "lucide-react"
 
 export function Footer() {
     return (
-        <footer className="relative bg-deep-navy border-t border-white/10 pt-20 pb-10 overflow-hidden">
-            {/* Subtle radial glow background */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-electric-blue/5 blur-[120px] rounded-full" />
-            </div>
-
-            {/* Subtle dotted grid background */}
-            <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px] opacity-[0.03] pointer-events-none" />
-
+        <footer className="relative bg-transparent border-t border-white/10 pt-20 pb-10 overflow-hidden">
             <div className="container mx-auto px-4 relative z-10">
 
                 {/* Top Section: Brand & Newsletter */}
