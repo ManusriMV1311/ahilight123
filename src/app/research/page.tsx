@@ -129,7 +129,7 @@ export default function ResearchPage() {
                         </motion.div>
                     ))}
                 </div>
-            </Section>
-        </div>
+            </Section >
+        </div >
     );
 }
