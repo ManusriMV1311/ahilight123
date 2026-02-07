@@ -4,155 +4,148 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { useRef, useMemo, useEffect, useState } from 'react';
 import * as THREE from 'three';
 import { createNoise3D } from 'simplex-noise';
+import { MeshReflectorMaterial } from '@react-three/drei';
 
-// Neural node component
-function NeuralNode({ position, index }: { position: [number, number, number], index: number }) {
+// Ripple source component
+function RippleSource({ position, startDelay }: { position: [number, number, number], startDelay: number }) {
     const meshRef = useRef<THREE.Mesh>(null);
-    const lightRef = useRef<THREE.PointLight>(null);
-    const [energy, setEnergy] = useState(0);
+
+    useFrame((state) => {
+        if (!meshRef.current) return;
+        const t = state.clock.elapsedTime - startDelay;
+
+        if (t < 0) return;
+
+        // Pulsing ripple source
+        const pulse = Math.sin(t * 2) * 0.5 + 0.5;
+        meshRef.current.scale.setScalar(0.2 + pulse * 0.3);
+
+        const material = meshRef.current.material as THREE.MeshStandardMaterial;
+        material.emissiveIntensity = pulse * 3;
+    });
+
+    return (
+        <mesh ref={meshRef} position={position}>
+            <sphereGeometry args={[0.2, 16, 16]} />
+            <meshStandardMaterial
+                color="#00F2FF"
+                emissive="#00F2FF"
+                emissiveIntensity={2}
+                toneMapped={false}
+                transparent
+                opacity={0.8}
+            />
+        </mesh>
+    );
+}
+
+// Liquid mirror surface with ripples
+function LiquidMirror() {
+    const meshRef = useRef<THREE.Mesh>(null);
+    const noise3D = useMemo(() => createNoise3D(), []);
+
+    const geometry = useMemo(() => {
+        return new THREE.PlaneGeometry(40, 40, 120, 120);
+    }, []);
+
+    useFrame((state) => {
+        if (!meshRef.current) return;
+
+        const positions = meshRef.current.geometry.attributes.position;
+        const time = state.clock.elapsedTime;
+
+        // Create multiple ripple points
+        const ripplePoints = [
+            { x: 5, z: -3, phase: 0 },
+            { x: -7, z: 5, phase: 1.5 },
+            { x: 3, z: 8, phase: 3 },
+            { x: -8, z: -6, phase: 4.5 },
+        ];
+
+        for (let i = 0; i < positions.count; i++) {
+            const x = positions.getX(i);
+            const z = positions.getY(i);
+
+            let y = 0;
+
+            // Add ripples from multiple sources
+            ripplePoints.forEach(ripple => {
+                const dx = x - ripple.x;
+                const dz = z - ripple.z;
+                const dist = Math.sqrt(dx * dx + dz * dz);
+                const rippleSpeed = 2;
+                const rippleFreq = 0.5;
+
+                // Expanding ripple waves
+                const wave = Math.sin(dist * rippleFreq - time * rippleSpeed + ripple.phase) / (1 + dist * 0.3);
+                y += wave * 0.5;
+            });
+
+            // Add subtle noise for organic feel
+            const noiseValue = noise3D(x * 0.1, z * 0.1, time * 0.2) * 0.1;
+            y += noiseValue;
+
+            positions.setZ(i, y);
+        }
+
+        positions.needsUpdate = true;
+        meshRef.current.geometry.computeVertexNormals();
+    });
+
+    return (
+        <mesh
+            ref={meshRef}
+            geometry={geometry}
+            rotation={[-Math.PI / 2, 0, 0]}
+            position={[0, -2, 0]}
+        >
+            <MeshReflectorMaterial
+                blur={[400, 100]}
+                resolution={512}
+                mixBlur={1}
+                mixStrength={50}
+                roughness={0.1}
+                depthScale={1.2}
+                minDepthThreshold={0.4}
+                maxDepthThreshold={1.4}
+                color="#1a0a2e"
+                metalness={0.8}
+                mirror={0.8}
+            />
+        </mesh>
+    );
+}
+
+// Floating caustic light particles
+function CausticParticle({ position, index }: { position: [number, number, number], index: number }) {
+    const meshRef = useRef<THREE.Mesh>(null);
 
     useFrame((state) => {
         if (!meshRef.current) return;
         const t = state.clock.elapsedTime;
 
-        // Pulsing energy based on sine wave
+        // Floating motion
+        meshRef.current.position.y = position[1] + Math.sin(t * 0.5 + index) * 0.5;
+        meshRef.current.position.x = position[0] + Math.cos(t * 0.3 + index) * 0.3;
+
+        // Pulsing glow
         const pulse = Math.sin(t * 2 + index * 0.5) * 0.5 + 0.5;
-        setEnergy(pulse);
-
-        // Gentle floating motion
-        meshRef.current.position.y = position[1] + Math.sin(t * 0.5 + index) * 0.1;
-
-        // Update light intensity
-        if (lightRef.current) {
-            lightRef.current.intensity = pulse * 2;
-        }
+        const material = meshRef.current.material as THREE.MeshStandardMaterial;
+        material.emissiveIntensity = pulse * 2;
     });
 
     return (
-        <group position={position}>
-            <mesh ref={meshRef}>
-                <sphereGeometry args={[0.15, 16, 16]} />
-                <meshStandardMaterial
-                    color={energy > 0.5 ? "#00F2FF" : "#7D5FFF"}
-                    emissive={energy > 0.5 ? "#00F2FF" : "#7D5FFF"}
-                    emissiveIntensity={energy * 2}
-                    toneMapped={false}
-                />
-            </mesh>
-            <pointLight
-                ref={lightRef}
-                color={energy > 0.5 ? "#00F2FF" : "#7D5FFF"}
-                intensity={energy * 2}
-                distance={3}
-            />
-        </group>
-    );
-}
-
-// Neural pathway connection
-function NeuralPathway({ start, end, index }: { start: [number, number, number], end: [number, number, number], index: number }) {
-    const lineRef = useRef<THREE.Line>(null);
-    const materialRef = useRef<THREE.LineBasicMaterial>(null);
-
-    useFrame((state) => {
-        if (!materialRef.current) return;
-        const t = state.clock.elapsedTime;
-
-        // Pulsing opacity for energy flow effect
-        const pulse = Math.sin(t * 3 + index * 0.3) * 0.3 + 0.5;
-        materialRef.current.opacity = pulse * 0.6;
-    });
-
-    const points = useMemo(() => {
-        // Create curved path between nodes
-        const curve = new THREE.QuadraticBezierCurve3(
-            new THREE.Vector3(...start),
-            new THREE.Vector3(
-                (start[0] + end[0]) / 2 + (Math.random() - 0.5) * 2,
-                (start[1] + end[1]) / 2 + (Math.random() - 0.5) * 2,
-                (start[2] + end[2]) / 2 + (Math.random() - 0.5) * 2
-            ),
-            new THREE.Vector3(...end)
-        );
-        return curve.getPoints(20);
-    }, [start, end]);
-
-    const geometry = useMemo(() => {
-        const geom = new THREE.BufferGeometry().setFromPoints(points);
-        return geom;
-    }, [points]);
-
-    return (
-        <line ref={lineRef} geometry={geometry}>
-            <lineBasicMaterial
-                ref={materialRef}
-                color="#7D5FFF"
+        <mesh ref={meshRef} position={position}>
+            <sphereGeometry args={[0.08, 8, 8]} />
+            <meshStandardMaterial
+                color={index % 2 === 0 ? "#7D5FFF" : "#00F2FF"}
+                emissive={index % 2 === 0 ? "#7D5FFF" : "#00F2FF"}
+                emissiveIntensity={1.5}
+                toneMapped={false}
                 transparent
-                opacity={0.4}
-                linewidth={2}
+                opacity={0.6}
             />
-        </line>
-    );
-}
-
-// Main neural network scene
-function NeuralNetwork() {
-    const nodeCount = 25;
-
-    const nodes = useMemo(() => {
-        const positions: [number, number, number][] = [];
-        for (let i = 0; i < nodeCount; i++) {
-            positions.push([
-                (Math.random() - 0.5) * 20,
-                (Math.random() - 0.5) * 12,
-                (Math.random() - 0.5) * 15 - 5
-            ]);
-        }
-        return positions;
-    }, []);
-
-    const connections = useMemo(() => {
-        const conns: { start: [number, number, number], end: [number, number, number] }[] = [];
-        // Connect each node to 2-3 nearby nodes
-        for (let i = 0; i < nodes.length; i++) {
-            const distances = nodes.map((node, j) => ({
-                index: j,
-                dist: Math.sqrt(
-                    Math.pow(node[0] - nodes[i][0], 2) +
-                    Math.pow(node[1] - nodes[i][1], 2) +
-                    Math.pow(node[2] - nodes[i][2], 2)
-                )
-            }))
-                .filter(d => d.index !== i)
-                .sort((a, b) => a.dist - b.dist)
-                .slice(0, 3);
-
-            distances.forEach(d => {
-                if (Math.random() > 0.3) {
-                    conns.push({ start: nodes[i], end: nodes[d.index] });
-                }
-            });
-        }
-        return conns;
-    }, [nodes]);
-
-    return (
-        <>
-            {/* Render pathways */}
-            {connections.map((conn, i) => (
-                <NeuralPathway
-                    key={`path-${i}`}
-                    start={conn.start}
-                    end={conn.end}
-                    index={i}
-                />
-            ))}
-
-            {/* Render nodes */}
-            {nodes.map((pos, i) => (
-                <NeuralNode key={`node-${i}`} position={pos} index={i} />
-            ))}
-        </>
+        </mesh>
     );
 }
 
@@ -169,28 +162,67 @@ export function ProductsBackground() {
         </div>
     );
 
+    // Generate caustic particles
+    const causticParticles = useMemo(() => {
+        const particles = [];
+        for (let i = 0; i < 30; i++) {
+            particles.push({
+                position: [
+                    (Math.random() - 0.5) * 15,
+                    Math.random() * 8 - 1,
+                    (Math.random() - 0.5) * 15
+                ] as [number, number, number],
+                index: i
+            });
+        }
+        return particles;
+    }, []);
+
+    // Ripple source positions
+    const rippleSources: [number, number, number][] = [
+        [5, 0.5, -3],
+        [-7, 0.5, 5],
+        [3, 0.5, 8],
+        [-8, 0.5, -6],
+    ];
+
     return (
         <div className="fixed inset-0 z-0 bg-black">
             <Canvas
-                camera={{ position: [0, 0, 12], fov: 60 }}
+                camera={{ position: [0, 5, 12], fov: 50 }}
                 style={{ background: 'transparent' }}
             >
                 <color attach="background" args={['#0a0118']} />
 
-                {/* Ambient lighting */}
-                <ambientLight intensity={0.2} />
-                <pointLight position={[10, 10, 10]} intensity={0.5} color="#7D5FFF" />
-                <pointLight position={[-10, -10, -10]} intensity={0.3} color="#00F2FF" />
+                {/* Cinematic lighting */}
+                <ambientLight intensity={0.3} />
+                <pointLight position={[0, 10, 0]} intensity={1} color="#ffffff" />
+                <pointLight position={[10, 5, 5]} intensity={0.8} color="#7D5FFF" />
+                <pointLight position={[-10, 5, -5]} intensity={0.6} color="#00F2FF" />
 
-                {/* Neural network */}
-                <NeuralNetwork />
+                {/* Liquid mirror surface */}
+                <LiquidMirror />
 
-                {/* Fog for depth */}
-                <fog attach="fog" args={['#0a0118', 8, 25]} />
+                {/* Ripple sources */}
+                {rippleSources.map((pos, i) => (
+                    <RippleSource key={`ripple-${i}`} position={pos} startDelay={i * 0.5} />
+                ))}
+
+                {/* Caustic particles */}
+                {causticParticles.map((particle) => (
+                    <CausticParticle
+                        key={`particle-${particle.index}`}
+                        position={particle.position}
+                        index={particle.index}
+                    />
+                ))}
+
+                {/* Fog for atmosphere */}
+                <fog attach="fog" args={['#0a0118', 10, 30]} />
             </Canvas>
 
             {/* Overlay gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 pointer-events-none" />
         </div>
     );
 }
