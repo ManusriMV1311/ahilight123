@@ -20,7 +20,7 @@ export function Hero() {
     ];
 
     return (
-        <section className="relative min-h-[80vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-transparent antialiased pt-20 pb-12 md:pt-0 md:pb-0">
+        <section className="relative min-h-[80vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-transparent antialiased pt-16 pb-8 md:pt-0 md:pb-0">
             {/* Spotlight that follows content (or ambient) */}
             <Spotlight
                 className="-top-20 left-0 md:left-60 md:-top-20"

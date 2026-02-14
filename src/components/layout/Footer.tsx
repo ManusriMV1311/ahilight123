@@ -9,7 +9,7 @@ export function Footer() {
             <div className="container mx-auto px-4 relative z-10">
 
                 {/* Top Section: Brand & Newsletter */}
-                <div className="flex flex-col lg:flex-row justify-between gap-12 mb-20">
+                <div className="flex flex-col lg:flex-row justify-between gap-12 mb-12 md:mb-20">
                     <div className="max-w-md">
                         <div className="flex items-center gap-2 mb-6">
                             <div className="bg-gradient-to-br from-electric-blue to-cyan-accent p-1.5 rounded-lg">
@@ -47,7 +47,7 @@ export function Footer() {
                 </div>
 
                 {/* Columns */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-12 md:mb-20">
 
                     {/* Column 1: Company */}
                     <div>

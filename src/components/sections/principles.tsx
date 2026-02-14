@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 
 export function Principles() {
     return (
-        <Section background="transparent" className="py-24">
+        <Section background="transparent" className="py-12 md:py-24">
             <div className="container mx-auto px-4 text-center mb-16">
                 <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-heading">Research-Backed. Engineering-Driven.</h2>
                 <p className="text-xl text-slate-400 max-w-2xl mx-auto">
@@ -30,7 +30,7 @@ export function Principles() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false }}
                         transition={{ duration: 0.5, delay: 0.1 }}
-                        className="md:col-span-2 bg-navy-card p-10 rounded-2xl border border-white/5 hover:border-electric-blue/50 transition-colors group text-left flex flex-col justify-center"
+                        className="md:col-span-2 bg-navy-card p-6 md:p-10 rounded-2xl border border-white/5 hover:border-electric-blue/50 transition-colors group text-left flex flex-col justify-center"
                     >
                         <span className="text-xs font-bold text-electric-blue uppercase tracking-widest bg-electric-blue/10 px-2 py-1 rounded inline-block mb-6 w-fit">
                             First Principles
@@ -48,7 +48,7 @@ export function Principles() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="bg-navy-card p-8 rounded-2xl border border-white/5 hover:border-electric-blue/50 transition-colors group text-left flex-1"
+                            className="bg-navy-card p-6 md:p-8 rounded-2xl border border-white/5 hover:border-electric-blue/50 transition-colors group text-left flex-1"
                         >
                             <h3 className="text-xl font-bold text-white mb-2 group-hover:text-electric-blue transition-colors">Research First</h3>
                             <p className="text-slate-400 text-sm leading-relaxed">
@@ -60,7 +60,7 @@ export function Principles() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false }}
                             transition={{ duration: 0.5, delay: 0.3 }}
-                            className="bg-navy-card p-8 rounded-2xl border border-white/5 hover:border-electric-blue/50 transition-colors group text-left flex-1"
+                            className="bg-navy-card p-6 md:p-8 rounded-2xl border border-white/5 hover:border-electric-blue/50 transition-colors group text-left flex-1"
                         >
                             <h3 className="text-xl font-bold text-white mb-2 group-hover:text-electric-blue transition-colors">Domain Agnostic</h3>
                             <p className="text-slate-400 text-sm leading-relaxed">

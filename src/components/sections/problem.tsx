@@ -51,7 +51,7 @@ export function Problem() {
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="relative py-32 px-4 bg-transparent overflow-hidden"
+            className="relative py-16 md:py-32 px-4 bg-transparent overflow-hidden"
         >
             {/* Background Elements */}
             <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:30px_30px] pointer-events-none" />
@@ -59,7 +59,7 @@ export function Problem() {
             {/* Section headline */}
             <motion.h2
                 variants={itemVariants}
-                className="text-4xl md:text-5xl font-bold text-center mb-6 text-white font-heading"
+                className="text-3xl md:text-5xl font-bold text-center mb-6 text-white font-heading"
             >
                 The problem isn&apos;t scale. It&apos;s{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent">complexity</span>.
@@ -76,7 +76,7 @@ export function Problem() {
             <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <motion.div variants={itemVariants} className="group h-full">
                     <GlareCard className="bg-neutral-900 border-white/10 h-full">
-                        <div className="flex flex-col p-8 h-full justify-between">
+                        <div className="flex flex-col p-6 md:p-8 h-full justify-between">
                             <div>
                                 <div className="mb-6 opacity-80"><AlertCircle className="w-8 h-8 text-red-500" /></div>
                                 <h3 className="text-2xl font-bold mb-4 text-white">Too many moving parts</h3>

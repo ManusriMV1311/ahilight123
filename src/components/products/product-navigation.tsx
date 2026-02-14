@@ -23,12 +23,13 @@ export function ProductNavigation() {
     return (
         <div className="relative z-50 mb-8 container mx-auto px-4 mt-8">
             <div className="flex items-center gap-4">
-                <span className="text-slate-400 font-medium">Products</span>
+                {/* Product label removed */}
 
                 <div
                     className="relative"
                     onMouseEnter={() => setIsOpen(true)}
                     onMouseLeave={() => setIsOpen(false)}
+                    onClick={() => setIsOpen(!isOpen)} // Touch support
                 >
                     <button
                         className={cn(

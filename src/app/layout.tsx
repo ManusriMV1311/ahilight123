@@ -69,7 +69,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable} ${ibmPlexSans.variable} antialiased text-foreground bg-background font-sans relative`}
+        className={`${inter.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable} ${ibmPlexSans.variable} antialiased text-foreground bg-background font-sans relative overflow-x-hidden`}
       >
         <CursorGlow />
         <Navbar />

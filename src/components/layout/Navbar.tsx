@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { FloatingDock } from "@/components/ui/floating-dock";
+import { MobileNav } from "@/components/layout/MobileNav";
 import Link from "next/link";
 
 import { Info, Eye, Package, Cpu, FlaskConical, Briefcase } from "lucide-react";
@@ -104,14 +105,17 @@ export function Navbar() {
                 </span>
             </Link>
 
-            {/* Floating Dock - Centered on Desktop, Bottom Right on Mobile */}
-            <div className="fixed z-50 bottom-6 right-6 md:top-8 md:bottom-auto md:left-1/2 md:right-auto md:-translate-x-1/2">
+            {/* Floating Dock - Desktop Only */}
+            <div className="hidden md:block fixed z-50 md:top-8 md:left-1/2 md:-translate-x-1/2">
                 <FloatingDock
                     items={navItems}
                     desktopClassName="bg-black/40 backdrop-blur-xl border border-white/10"
-                    mobileClassName="translate-y-0 bg-black/40 backdrop-blur-xl border border-white/10 px-4 py-2 rounded-full origin-bottom-right"
+                    mobileClassName="hidden" // Redundant but safe
                 />
             </div>
+
+            {/* Mobile Navigation */}
+            <MobileNav />
 
         </>
     );

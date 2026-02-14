@@ -8,7 +8,7 @@ import { TracingBeam } from "@/components/ui/tracing-beam"
 
 export function CompanyRoadmap() {
     return (
-        <Section background="transparent" className="py-24 overflow-visible">
+        <Section background="transparent" className="py-12 md:py-24 overflow-visible">
             <div className="container mx-auto px-4">
                 <div className="text-center md:text-left mb-16 max-w-5xl mx-auto px-6">
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-heading">Where We&apos;re Going</h2>
@@ -30,7 +30,7 @@ export function CompanyRoadmap() {
                                     {/* Mobile timeline line */}
                                     <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-electric-blue/30 md:hidden" />
 
-                                    <div className="bg-navy-card p-8 rounded-2xl border border-electric-blue/30 h-full">
+                                    <div className="bg-navy-card p-6 md:p-8 rounded-2xl border border-electric-blue/30 h-full">
                                         <div className="text-sm font-bold text-electric-blue mb-2">2025 to 2026</div>
                                         <h3 className="text-2xl font-bold text-white mb-6">Security &amp; Threat Intelligence</h3>
                                         <ul className="space-y-3">
@@ -56,7 +56,7 @@ export function CompanyRoadmap() {
                                     {/* Mobile timeline line */}
                                     <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-white/10 md:hidden" />
 
-                                    <div className="bg-navy-card p-8 rounded-2xl border border-white/5 h-full opacity-80 hover:opacity-100 transition-opacity flex flex-col justify-center">
+                                    <div className="bg-navy-card p-6 md:p-8 rounded-2xl border border-white/5 h-full opacity-80 hover:opacity-100 transition-opacity flex flex-col justify-center">
                                         <div className="text-sm font-bold text-slate-500 mb-2">2026 Onwards</div>
                                         <h3 className="text-2xl font-bold text-white mb-4">Future Frontiers</h3>
                                         <p className="text-slate-400 mb-6 leading-relaxed">
