@@ -95,10 +95,10 @@ export default function ResearchPage() {
 
                                 <div className="h-full w-full p-6 flex flex-col relative z-10 font-mono">
                                     {/* Command Line Input Effect */}
-                                    <div className="flex items-center text-sm mb-6 text-cyan-400/80 bg-black/20 p-2 rounded border border-white/5">
-                                        <ChevronRight className="w-4 h-4 mr-1" />
-                                        <span className="opacity-70">user@ahilight:~$</span>
-                                        <span className="ml-2 text-white">{paper.cmd}</span>
+                                    <div className="flex items-center text-xs md:text-sm mb-6 text-cyan-400/80 bg-black/20 p-2 rounded border border-white/5 overflow-x-auto">
+                                        <ChevronRight className="w-3 h-3 md:w-4 md:h-4 mr-1 flex-shrink-0" />
+                                        <span className="opacity-70 flex-shrink-0">user@ahilight:~$</span>
+                                        <span className="ml-2 text-white whitespace-nowrap">{paper.cmd}</span>
                                     </div>
 
                                     <div className="flex items-center space-x-3 mb-4">
@@ -108,7 +108,7 @@ export default function ResearchPage() {
                                         <h4 className="text-xs uppercase tracking-widest text-slate-500 font-semibold">{paper.category}</h4>
                                     </div>
 
-                                    <h3 className="text-xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors">
+                                    <h3 className="text-lg md:text-xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors break-words">
                                         {paper.title}
                                     </h3>
 
