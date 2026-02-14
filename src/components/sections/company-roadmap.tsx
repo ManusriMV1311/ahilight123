@@ -21,7 +21,7 @@ export function CompanyRoadmap() {
                     {/* Integrating HorizontalTracingBeam here to act as the timeline connector */}
                     {/* We wrap the grid in it, and use sticky={false} to position it absolutely at the top of this relative container */}
                     {/* Integrating HorizontalTracingBeam inside TracingBeam to overlap vertical and horizontal tracking */}
-                    <TracingBeam className="px-6 max-w-5xl">
+                    <TracingBeam className="px-0 md:px-6 max-w-5xl">
                         <HorizontalTracingBeam className="px-0" sticky={false}>
                             <div className="grid md:grid-cols-2 gap-12 pt-8">
                                 {/* Phase 1: Security (Active) */}
