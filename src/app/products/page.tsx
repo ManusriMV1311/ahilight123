@@ -3,6 +3,8 @@
 import { DomainApproach } from "@/components/sections/domain-approach"
 import { useState, useEffect } from "react";
 
+import { ProductNavigation } from "@/components/products/product-navigation";
+
 export default function ProductsPage() {
     const [animationComplete, setAnimationComplete] = useState(false);
 
@@ -25,6 +27,11 @@ export default function ProductsPage() {
 
     return (
         <div className="min-h-screen relative">
+            <div className="fixed top-24 left-0 w-full z-40 pointer-events-none">
+                <div className="pointer-events-auto">
+                    <ProductNavigation />
+                </div>
+            </div>
             {/* Main content */}
             <DomainApproach onAnimationComplete={() => setAnimationComplete(true)} />
         </div>

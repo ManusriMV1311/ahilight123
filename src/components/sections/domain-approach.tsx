@@ -115,7 +115,7 @@ export function DomainApproach({ onAnimationComplete }: { onAnimationComplete?: 
             <AnimatePresence>
                 {titleComplete && showAhiLight && (
                     <motion.div
-                        className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none"
+                        className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none translate-y-32"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -249,7 +249,7 @@ export function DomainApproach({ onAnimationComplete }: { onAnimationComplete?: 
             {/* Floating Balls - Continuous Loop */}
             <AnimatePresence>
                 {showFloatingBalls && (
-                    <div className="fixed inset-0 pointer-events-none z-40 overflow-hidden">
+                    <div className="fixed inset-0 pointer-events-none z-40 overflow-hidden translate-y-32">
                         {floatingBalls.map((b) => (
                             <motion.div
                                 key={b.id}
@@ -294,7 +294,7 @@ export function DomainApproach({ onAnimationComplete }: { onAnimationComplete?: 
                                 }
                                 : { scale: 1 }
                         }
-                        className="max-w-3xl mb-12 md:mb-16 mx-auto text-center"
+                        className="max-w-3xl mb-12 md:mb-16 mx-auto text-center -translate-y-24 relative z-10"
                     >
                         <div className="mb-6 flex justify-center">
                             <TypewriterEffect
@@ -383,7 +383,7 @@ export function DomainApproach({ onAnimationComplete }: { onAnimationComplete?: 
                                     </div>
 
                                     <div className="pt-6 border-t border-white/5 group-hover:border-white/20 mt-auto pointer-events-auto">
-                                        <Link href="/cyberfortress" className="block relative z-20">
+                                        <Link href="/products/cyberfortress" className="block relative z-20">
                                             <Button className="w-full bg-white/10 text-white hover:bg-white hover:text-electric-blue border-transparent group-hover:border-white transition-all shadow-lg">
                                                 Explore Platform
                                                 <ArrowRight className="ml-2 w-4 h-4" />

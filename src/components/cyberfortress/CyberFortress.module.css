@@ -1,0 +1,543 @@
+.pageContainer {
+    --bg-black: #030303;
+    --card-bg: #0a0a0a;
+    --accent-red: #ff3333;
+    --accent-red-glow: rgba(255, 51, 51, 0.4);
+    --text-white: #f5f5f5;
+    --text-grey: #888888;
+    --glass-bg: rgba(10, 10, 10, 0.85);
+    --border-color: rgba(255, 255, 255, 0.05);
+    --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    --icon-size: 1.5rem;
+    --icon-size-large: 4rem;
+    --icon-size-tech: 3rem;
+
+    background-color: var(--bg-black);
+    color: var(--text-white);
+    font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1.2rem 0;
+    backdrop-filter: blur(15px);
+    background: var(--glass-bg);
+    border-bottom: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.navbar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--accent-red);
+    box-shadow: 0 0 10px var(--accent-red);
+    transform: translateX(-100%);
+}
+
+.navbar.scanned::after {
+    animation: navScan 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes navScan {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.navbarContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    color: var(--text-white);
+}
+
+.redIcon {
+    color: var(--accent-red);
+    font-size: 1.2rem;
+    filter: drop-shadow(0 0 5px var(--accent-red-glow));
+}
+
+.navLinks {
+    display: flex;
+    gap: 1.8rem;
+}
+
+.navLink {
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0.8;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.navLink:hover,
+.navLink.active {
+    opacity: 1;
+    color: var(--accent-red);
+}
+
+.navLink::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent-red);
+    box-shadow: 0 0 5px var(--accent-red);
+    transition: var(--transition);
+}
+
+.navLink:hover::after {
+    width: 100%;
+}
+
+.mobileToggle {
+    display: none;
+    /* Add media query logic in component if needed */
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.mobileToggle span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: white;
+    transition: all 0.3s;
+}
+
+@media (max-width: 768px) {
+    .navLinks {
+        display: none;
+        /* Or implement mobile menu logic */
+    }
+
+    .mobileToggle {
+        display: flex;
+    }
+}
+
+/* Hero Section */
+.hero {
+    padding: 14rem 0 10rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.heroCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.heroGrid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 5rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.heroContent h1 {
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 2.5rem;
+    letter-spacing: -3px;
+    background: linear-gradient(180deg, #fff 0%, #aaa 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.4rem;
+    color: var(--text-grey);
+    margin-bottom: 3.5rem;
+    max-width: 600px;
+    line-height: 1.4;
+}
+
+.ctaButtons {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.btn {
+    padding: 1rem 2.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btnPrimary {
+    background-color: var(--accent-red);
+    color: white;
+    box-shadow: 0 8px 25px rgba(255, 51, 51, 0.2);
+}
+
+.btnPrimary:hover {
+    background-color: #ff4d4d;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 51, 51, 0.4);
+}
+
+.btnOutline {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.btnOutline:hover {
+    background: white;
+    color: black;
+    transform: translateY(-3px);
+}
+
+/* Hero Visual */
+.heroVisual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+/* News Ticker */
+.newsTicker {
+    background: #080808;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+    overflow: hidden;
+}
+
+.tickerWrap {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.tickerLabel {
+    position: relative;
+    z-index: 10;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--accent-red);
+    background: #080808;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    box-shadow: 10px 0 15px #080808;
+}
+
+.tickerContent {
+    display: flex;
+    gap: 4rem;
+    font-size: 0.9rem;
+    color: var(--text-grey);
+    white-space: nowrap;
+    animation: scroll 40s linear infinite;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.separator {
+    color: var(--accent-red);
+}
+
+/* Problem Statement */
+.problemStatement {
+    padding: 8rem 0;
+}
+
+.sectionHeader {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.sectionHeader h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.sectionHeader p {
+    color: var(--text-grey);
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.problemGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+}
+
+.problemCard {
+    background: var(--card-bg);
+    padding: 3rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.problemCard:hover {
+    border-color: var(--accent-red);
+    transform: translateY(-10px);
+}
+
+.cardIcon {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--accent-red);
+}
+
+.problemCard h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.problemCard p {
+    color: var(--text-grey);
+}
+
+/* Product Highlight */
+.productHighlight {
+    padding: 10rem 0;
+    background: radial-gradient(circle at top, rgba(255, 51, 51, 0.03) 0%, transparent 70%);
+}
+
+.gridLayout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+}
+
+.featureCard {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 3rem;
+    border-radius: 16px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.featureCard:hover {
+    border-color: rgba(255, 51, 51, 0.4);
+    background: #0e0e0e;
+    transform: translateY(-5px);
+}
+
+.featureCardLarge {
+    grid-column: span 2;
+}
+
+.featureCardLarge h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.cardDesc {
+    font-size: 1.1rem;
+    color: var(--text-grey);
+    margin-bottom: 3rem;
+}
+
+.solutionGlow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 51, 51, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 1s;
+    pointer-events: none;
+}
+
+.featureCard.stabilized .solutionGlow {
+    opacity: 1;
+}
+
+.featureCard.stabilized {
+    border-color: var(--accent-red);
+    box-shadow: 0 0 30px rgba(255, 51, 51, 0.2);
+}
+
+/* Trust Section */
+.trustSection {
+    padding: 6rem 0;
+    text-align: center;
+}
+
+.trustGrid {
+    display: flex;
+    justify-content: center;
+    gap: 6rem;
+    margin-top: 3rem;
+}
+
+.trustItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.trustVal {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.trustLabel {
+    font-size: 0.8rem;
+    color: var(--text-grey);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Footer */
+.footer {
+    background: #050505;
+    padding: 8rem 0 4rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.footerGrid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+.footerBrand p {
+    color: var(--text-grey);
+    margin-top: 1rem;
+}
+
+.footerLinks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.linkGroup h4 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.linkGroup a {
+    display: block;
+    color: var(--text-grey);
+    text-decoration: none;
+    margin-bottom: 0.8rem;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+
+.linkGroup a:hover {
+    color: var(--accent-red);
+    padding-left: 5px;
+}
+
+.footerBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-grey);
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+}
+
+.statusSecure {
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00;
+}
+
+/* Global specific override for scan line if needed */
+.scanRevealLine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-red);
+    box-shadow: 0 0 15px var(--accent-red);
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+}
